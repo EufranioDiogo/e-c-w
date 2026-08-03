@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<audio src="https://s3.ustatik.com/audio.com.audio/transcoding/56/20/1863094730752056-1863094730867224-1863094752196977.mp3?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=F0E8U41NBMMW3Y027UTJ%2F20260728%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260728T212853Z&X-Amz-SignedHeaders=host&X-Amz-Expires=518400&X-Amz-Signature=d67f8586858de8a33d8e3796dff72ceba968c7b529d1a6abcd29a223fe77070e" autoplay loop></audio>
 <!-- ================= DECOR: floating hearts ================= -->
 <div class="floaties" id="floaties" aria-hidden="true"></div>
 
@@ -40,6 +39,7 @@
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="topo">
+
   <div class="hero__ornament hero__ornament--tl" aria-hidden="true">
     <svg viewBox="0 0 220 220" fill="none"><path d="M4 4C40 30 30 90 70 110C110 130 100 190 150 210" stroke="var(--blue-soft)" stroke-width="1.4"/><circle cx="70" cy="110" r="4" fill="var(--blue-mid)"/><circle cx="150" cy="210" r="3" fill="var(--blue-mid)"/><circle cx="4" cy="4" r="3" fill="var(--blue-mid)"/></svg>
   </div>
@@ -55,10 +55,11 @@
 
     <div class="hero__date">
       <span class="hero__date-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+        <svg style="color: white;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
       </span>
       27 de Novembro, 2026 — Luanda, Angola
-      
+        <audio src="./resources/audio/day_after_day.mp3" autoplay loop controls></audio>
+
     </div>
 
     <div class="hero__actions">
@@ -67,7 +68,7 @@
     </div>
   </div>
 
-  <img src="./CouplePhoto.png" alt="" class="hero_img">
+  <img src="./resources/imgs/image_1.png" alt="" class="hero_img">
   </div>
 
   <div class="hero__scrolldown" aria-hidden="true"><span></span>Deslize</div>
@@ -88,6 +89,29 @@
 </section>
 
 <!-- ================= NOSSA HISTÓRIA ================= -->
+ <div class="join-path-section-main-container">
+          <p class="join-path-section-text">Junte-se a nós na celebração de mais passo<br>nesta nossa caminhada</p>
+ <section class="join-path-section">
+
+  <img src="./resources/imgs/image_3.png" alt="" class="join-path-section-img join-path-section-img-1">
+   <div class="main-road-div-container">
+   </div>
+    <img src="./resources/imgs/image_5.png" alt="" class="join-path-section-img join-path-section-img-2">
+ </section>
+ </div>
+
+<!--
+  <section class="join-path-2">
+   <p class="eyebrow">Junte-se a nós</p>
+   <h2 class="section-title">Como Chegar</h2>
+   <p>Para chegar ao local da cerimónia, siga estas direcções:</p>
+   <ul>
+     <li>Se vem de carro, use o GPS e procure por "Igreja Nossa Senhora de Fátima".</li>
+     <li>Se vem de transporte público, a linha 5 do autocarro para na porta da igreja.</li>
+   </ul>
+ </section>
+
+-->
 <section class="historia" id="historia">
   <div class="section-head reveal">
     <p class="eyebrow eyebrow--center">A nossa jornada</p>
@@ -197,7 +221,11 @@
 </section>
 
 <!-- ================= CONTRIBUIÇÕES ================= -->
-<section class="contribuir" id="contribuir">
+
+
+
+
+ <section class="contribuir" id="contribuir">
   <div class="contribuir__ornament" aria-hidden="true">
     <svg viewBox="0 0 300 300" fill="none"><path d="M10 290C90 250 60 150 150 130C240 110 210 40 290 10" stroke="var(--blue-soft)" stroke-width="1.2"/></svg>
   </div>
@@ -205,31 +233,34 @@
   <div class="section-head reveal">
     <p class="eyebrow eyebrow--center">Um gesto de carinho</p>
     <h2 class="section-title">Contribua para o Nosso Sonho</h2>
-    <p class="contribuir__intro">A vossa presença já é o maior presente que podemos receber. Mas, se desejarem abençoar-nos ainda mais, podem contribuir para a realização do nosso grande dia ou para a lua de mel dos nossos sonhos.</p>
+    <p class="contribuir__intro">A vossa presença já é o maior presente que podemos receber. Mas sabemos que muitos de vós perguntaram como podem ajudar — por isso deixamos aqui esta forma simples e carinhosa de fazerem parte do nosso grande dia.</p>
   </div>
 
   <div class="contribuir__cards reveal">
     <div class="contribuir__card glass">
-      <div class="contribuir__icon">❤️</div>
-      <h4>Contribuir para o Casamento</h4>
-      <p>Ajude-nos a tornar este dia ainda mais especial.</p>
+      <div class="contribuir__icon">💍</div>
+      <h4>Para o Casamento</h4>
+      <p>Ajude-nos a cuidar de cada detalhe deste dia tão especial.</p>
     </div>
-    <div class="contribuir__card glass">
+    <div class="contribuir__card glass contribuir__card--destaque">
+      <span class="contribuir__badge">Mais escolhido</span>
       <div class="contribuir__icon">✈️</div>
-      <h4>Contribuir para a Lua de Mel</h4>
-      <p>Ajude-nos a construir memórias na nossa viagem dos sonhos.</p>
+      <h4>Para a Lua de Mel</h4>
+      <p>Faça parte da nossa primeira viagem juntos como marido e mulher.</p>
     </div>
     <div class="contribuir__card glass">
       <div class="contribuir__icon">🎁</div>
-      <h4>Oferta Personalizada</h4>
-      <p>Qualquer gesto, de qualquer valor, é muito bem-vindo.</p>
+      <h4>Oferta Livre</h4>
+      <p>Sem valor mínimo — o gesto é que conta, não a quantia.</p>
     </div>
   </div>
 
   <div class="contribuir__cta reveal">
     <button class="btn btn--primary btn--lg" id="openContribModal">Quero Contribuir</button>
+    <p class="contribuir__cta-note">🔒 Rápido, seguro e em poucos passos</p>
   </div>
 </section>
+
 
 <!-- ================= RSVP ================= -->
 <section class="rsvp" id="rsvp">
@@ -319,6 +350,7 @@
       <p class="pay-option__value">AO06 0006 0000 0521 9535 302 77</p>
       <p class="pay-option__owner">Titular: EUFRÁNIO LUKENY MANUEL DIOGO</p>
     </div>
+    <a href="mcxwallet://purchase?qrref=123949" class="open-express">ABRIR MULTICAIXA EXPRESS</a>
   </div>
 </div>
 
