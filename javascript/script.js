@@ -261,8 +261,8 @@ highlightActiveLink();
 toggleBackToTop();
 
 const joinOurPathImage1 = document.querySelector(".join-path-section-img-1");
-
 const joinOurPathImage2 = document.querySelector(".join-path-section-img-2");
+
 const highDislocation = 600;
 const highYLimit = 2062;
 

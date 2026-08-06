@@ -20,7 +20,7 @@
   --blue-pale-2: #F5FAFE;
   --silver: #CDD6DF;
   --white: #FFFFFF;
-  --text: #43556B;
+  --text: #000914;
   --yellow-mid: #ebc803;
 
   --font-display: 'Cormorant Garamond', serif;
@@ -656,9 +656,9 @@ h1, h2, h3, h4 {
 .cards {
   max-width: 1160px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
   align-items: center;
   justify-content: center;
 }
@@ -671,6 +671,7 @@ h1, h2, h3, h4 {
   box-shadow: var(--shadow-card);
   border: 1px solid rgba(187, 214, 239, .4);
   transition: transform .4s var(--ease), box-shadow .4s var(--ease);
+  width: 22.5rem;
 }
 
 .card:hover {
@@ -701,7 +702,7 @@ h1, h2, h3, h4 {
 }
 
 .card p {
-  font-size: .86rem;
+  font-size: .98rem;
   line-height: 1.6;
   margin: 0;
   font-weight: 300;
