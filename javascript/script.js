@@ -275,3 +275,29 @@ document.addEventListener("scroll", (event) => {
   }
   console.log(`Width: ${window.window.innerWidth}px`)
 });
+
+
+
+const audio = document.getElementById("bgMusic");
+audio.volume = 0.5; // 50%
+
+function startMusic() {
+    audio.play().catch(err => console.error(err));
+    document.removeEventListener("click", startMusic);
+    document.removeEventListener("keydown", startMusic);
+    document.removeEventListener("touchstart", startMusic);
+}
+
+
+
+document.addEventListener("click", startMusic);
+document.addEventListener("keydown", startMusic);
+document.addEventListener("touchstart", startMusic);
+
+window.addEventListener("load", () => {
+    audio.play().catch(err => {
+        console.log("Autoplay blocked:", err);
+    });
+});
+
+startMusic();
