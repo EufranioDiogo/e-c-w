@@ -416,6 +416,7 @@ h1, h2, h3, h4 {
 .hero_img {
   height: 55.5rem;
   align-self: flex-end;
+  border-radius: 1rem;
 }
 .hero__ornament {
   position: absolute;
@@ -1543,11 +1544,13 @@ New contribuir
     width: 90vw;
   }
   .sub_hero_diva {
+    justify-content: center;
+    align-items: center;
     flex-direction: column-reverse;
   }
   .hero_img {
     height: 27.5rem;
-    align-self: flex-end;
+    align-self: center;
     margin-bottom: 2rem;
   }
   .cards {
@@ -1561,6 +1564,30 @@ New contribuir
 
   .gallery-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+  .join-path-section-text {
+    font-size: 2.4rem;
+  }
+  .join-path-section-main-container {
+    padding: 6rem 1rem;
+  }
+  .historia__img img {
+    object-fit: cover;
+    object-position: top;
+  }
+  .hero {
+    padding-right: .5rem;
+        padding-left: .5rem;
+
+  }
+  .hero__content {
+  }
+  .hero__title {
+    font-size: clamp(2.5rem, 8vw, 5.6rem); 
+  }
+
+  .hero__date audio {
+    display: none;
   }
 }
 
