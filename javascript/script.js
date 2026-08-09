@@ -289,3 +289,5 @@ document.addEventListener("click", async function playMusic() {
         console.error(e);
     }
 }, { once: true });
+
+music.click();
