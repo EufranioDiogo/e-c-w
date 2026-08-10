@@ -416,7 +416,8 @@ h1, h2, h3, h4 {
 .hero_img {
   height: 55.5rem;
   align-self: flex-end;
-  border-radius: 1rem;
+  border-radius: 25rem 25rem 0 0;
+  border: 0.5rem solid var(--blue-deep)
 }
 .hero__ornament {
   position: absolute;
