@@ -282,19 +282,20 @@ const music = document.getElementById("bgMusic");
 music.addEventListener('play', handleFirstPlay)
 music.volume = 0;
 
+alert('Seja bem-vindo(a), a nossa história 💖')
 
 let hasPlayed = false;
 function handleFirstPlay(event) {
   if (!hasPlayed) {
     hasPlayed = true;
-alert('Seja bem-vindo(a), a nossa história!')
+//alert('Seja bem-vindo(a), a nossa história!')
     // Remove listener so this only gets called once.
     const mu = event.target;
     mu.removeEventListener("play", handleFirstPlay);
 
     // Start whatever you need to do after first playback has started
   } else {
-alert('Seja bem-vindo(a), a nossa história.')
+//alert('Seja bem-vindo(a), a nossa história.')
   }
 }
 document.addEventListener("click", async function playMusic() {
