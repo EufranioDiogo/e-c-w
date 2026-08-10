@@ -279,7 +279,7 @@ document.addEventListener("scroll", (event) => {
 
 
 const music = document.getElementById("bgMusic");
-music.volume = 0.5;
+music.volume = 0;
 
 document.addEventListener("click", async function playMusic() {
     try {
@@ -290,4 +290,8 @@ document.addEventListener("click", async function playMusic() {
     }
 }, { once: true });
 
-music.click();
+music.play();
+
+setTimeout(() => {
+  music.volume = 0.75;
+}, 2000)
