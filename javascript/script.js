@@ -273,41 +273,102 @@ document.addEventListener("scroll", (event) => {
       joinOurPathImage2.style.transform = `translateX(${(-window.scrollY * highDislocation) / highYLimit}px)`;
     }
   }
-  console.log(`Width: ${window.window.innerWidth}px`)
+  console.log(`Width: ${window.window.innerWidth}px`);
+});
+
+// ---- Splash screen: click/tap to enter + start background music ----
+const splash = document.getElementById("splash");
+const enterBtn = document.getElementById("splash-enter");
+const music = document.getElementById("bgMusic");
+const musicToggle = document.getElementById("music-toggle");
+
+function enterSite() {
+  if (splash.classList.contains("hidden")) return;
+  splash.classList.add("hidden");
+  document.body.classList.remove("splash-active");
+
+  // Try to start the background music (user gesture already happened, so this is allowed)
+  music.volume = 0.6;
+  const playPromise = music.play();
+  if (playPromise !== undefined) {
+    playPromise
+      .then(() => {
+        musicToggle.classList.add("playing");
+      })
+      .catch(() => {
+        // Autoplay blocked for some reason — leave paused, user can tap the toggle
+        musicToggle.classList.remove("playing");
+      });
+  }
+  musicToggle.classList.add("visible");
+}
+
+splash.addEventListener("click", enterSite);
+enterBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  enterSite();
+});
+
+musicToggle.addEventListener("click", () => {
+  if (music.paused) {
+    music
+      .play()
+      .then(() => musicToggle.classList.add("playing"))
+      .catch(() => {});
+  } else {
+    music.pause();
+    musicToggle.classList.remove("playing");
+  }
 });
 
 
+// Scroll reveal
+const revealEls = document.querySelectorAll(".reveal");
+const io = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add("is-visible");
+        io.unobserve(e.target);
+      }
+    });
+  },
+  { threshold: 0.15 },
+);
+revealEls.forEach((el) => io.observe(el));
 
-const music = document.getElementById("bgMusic");
-music.addEventListener('play', handleFirstPlay)
-music.volume = 0;
+// Gift tabs
+const tabs = document.querySelectorAll(".give-tab");
+const panels = document.querySelectorAll(".give-panel");
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    tabs.forEach((t) => t.classList.remove("active"));
+    panels.forEach((p) => p.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById("panel-" + tab.dataset.tab).classList.add("active");
+  });
+});
 
-alert('Seja bem-vindo(a), a nossa história 💖')
-
-let hasPlayed = false;
-function handleFirstPlay(event) {
-  if (!hasPlayed) {
-    hasPlayed = true;
-//alert('Seja bem-vindo(a), a nossa história!')
-    // Remove listener so this only gets called once.
-    const mu = event.target;
-    mu.removeEventListener("play", handleFirstPlay);
-
-    // Start whatever you need to do after first playback has started
-  } else {
-//alert('Seja bem-vindo(a), a nossa história.')
-  }
-}
-document.addEventListener("click", async function playMusic() {
+// Copy buttons
+document.querySelectorAll(".copy-btn").forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    const text = btn.dataset.copy;
     try {
-        await music.play();
-        document.removeEventListener("click", playMusic);
+      await navigator.clipboard.writeText(text);
     } catch (e) {
-        console.error(e);
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
     }
-}, { once: true });
-
-
-setTimeout(() => {
-  music.volume = 0.75;
-}, 2000)
+    const original = btn.textContent;
+    btn.textContent = "Copiado!";
+    btn.classList.add("copied");
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove("copied");
+    }, 1800);
+  });
+});

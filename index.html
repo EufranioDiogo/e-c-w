@@ -13,7 +13,46 @@
 
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="splash-active">
+<!-- reusable floral flourish (line-art botanical, matches baby-blue watercolor mood) -->
+<svg style="display:none">
+  <symbol id="floral-sprig" viewBox="0 0 220 220">
+    <g fill="none" stroke="#7fb8de" stroke-width="1.4" stroke-linecap="round">
+      <path d="M10 210 C 40 160, 30 100, 70 40" opacity=".85"/>
+      <path d="M70 40 C 55 55, 30 55, 18 40 C 30 25, 55 22, 70 40 Z" fill="#dcedf8" opacity=".9"/>
+      <path d="M70 40 C 85 25, 110 25, 122 42 C 108 55, 83 55, 70 40 Z" fill="#b7dcf0" opacity=".9"/>
+      <path d="M46 90 C 30 85, 18 65, 24 45" opacity=".6"/>
+      <path d="M24 45 C 12 55, 12 75, 24 88 C 36 78, 36 58, 24 45 Z" fill="#dcedf8" opacity=".75"/>
+      <path d="M60 120 C 42 118, 26 132, 24 152" opacity=".6"/>
+      <path d="M24 152 C 10 158, 6 178, 16 195 C 30 190, 34 168, 24 152 Z" fill="#b7dcf0" opacity=".7"/>
+      <circle cx="70" cy="40" r="5" fill="#cdae7d" opacity=".8"/>
+      <path d="M95 65 C 100 90, 90 115, 100 140" opacity=".5"/>
+      <path d="M100 140 C 88 148, 84 168, 94 184 C 108 178, 112 156, 100 140 Z" fill="#dcedf8" opacity=".65"/>
+    </g>
+  </symbol>
+</svg>
+ 
+<!-- ================= SPLASH ================= -->
+<div id="splash">
+  <div class="floral floral-tl"><svg viewBox="0 0 220 220"><use href="#floral-sprig"/></svg></div>
+  <div class="floral floral-br"><svg viewBox="0 0 220 220"><use href="#floral-sprig"/></svg></div>
+  <div class="splash-inner">
+    <p class="splash-eyebrow eyebrow">Vamos nos casar</p>
+    <div class="splash-ring">E&amp;C</div>
+    <h1 class="splash-names">Eufránio<span class="amp">&amp;</span>Creuma</h1>
+    <button class="splash-cta" id="splash-enter" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 18V6l8 6-8 6Z"/></svg>
+      Entrar
+    </button>
+    <p class="splash-hint">Toca para entrar &middot; com música</p>
+  </div>
+</div>
+ 
+<button id="music-toggle" type="button" aria-label="Pausar ou tocar música">
+  <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7-11-7Z"/></svg>
+  <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+</button>
+
 <!-- ================= DECOR: floating hearts ================= -->
 <div class="floaties" id="floaties" aria-hidden="true"></div>
 
@@ -144,7 +183,7 @@
 
   <div class="historia__row reveal">
     <div class="historia__img">
-      <img src="resources/imgs/image_11.jpg" alt="Eufránio e Creuma — hoje" loading="lazy">
+      <img src="resources/imgs/image_2.jpg" alt="Eufránio e Creuma — hoje" loading="lazy">
     </div>
     <div class="historia__text">
       <span class="historia__mark">03</span>
@@ -218,7 +257,7 @@
     <div class="gallery-item"><img src="resources/imgs/image_1.jpg" loading="lazy" alt="Foto do casal 2"></div>
     <div class="gallery-item"><img src="resources/imgs/image_2.jpg" loading="lazy" alt="Foto do casal 3"></div>
     <div class="gallery-item gallery-item--tall"><img src="resources/imgs/image_3.jpg" loading="lazy" alt="Foto do casal 4"></div>
-    <div class="gallery-item"><img src="resources/imgs/image_4.jpg" loading="lazy" alt="Foto do casal 5"></div>
+    <div class="gallery-item"><img src="resources/imgs/image_22.jpg" loading="lazy" alt="Foto do casal 5"></div>
     <div class="gallery-item gallery-item--tall"><img src="resources/imgs/image_5.jpg" loading="lazy" alt="Foto do casal 6"></div>
     <div class="gallery-item"><img src="resources/imgs/image_6.jpg" loading="lazy" alt="Foto do casal 7"></div>
     <div class="gallery-item"><img src="resources/imgs/image_7.jpg" loading="lazy" alt="Foto do casal 8"></div>
@@ -226,6 +265,12 @@
     <div class="gallery-item"><img src="resources/imgs/image_9.jpg" loading="lazy" alt="Foto do casal 10"></div>
     <div class="gallery-item"><img src="resources/imgs/image_10.jpg" loading="lazy" alt="Foto do casal 11"></div>
     <div class="gallery-item"><img src="resources/imgs/image_11.jpg" loading="lazy" alt="Foto do casal 12"></div>
+        <div class="gallery-item"><img src="resources/imgs/image_12.jpg" loading="lazy" alt="Foto do casal 7"></div>
+    <div class="gallery-item"><img src="resources/imgs/image_13.jpg" loading="lazy" alt="Foto do casal 8"></div>
+    <div class="gallery-item"><img src="resources/imgs/image_14.jpg" loading="lazy" alt="Foto do casal 9"></div>
+    <div class="gallery-item"><img src="resources/imgs/image_15.jpg" loading="lazy" alt="Foto do casal 10"></div>
+    <div class="gallery-item"><img src="resources/imgs/image_16.jpg" loading="lazy" alt="Foto do casal 11"></div>
+    <div class="gallery-item"><img src="resources/imgs/image_17.jpg" loading="lazy" alt="Foto do casal 12"></div>
   </div>
 </section>
 
