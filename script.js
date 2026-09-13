@@ -6,12 +6,12 @@ document.getElementById("year").textContent = new Date().getFullYear();
  */
 const projects = [
   {
-    name: "Projecto 1",
-    url: "https://example.com"
+    name: "Casamento - Aníbal & Tílcia",
+    url: "https://www.amor.ao/anibal-tilcia/index.html"
   },
   {
-    name: "Projecto 2",
-    url: "https://example.com"
+    name: "Casamento - Eufránio & Creuma",
+    url: "https://www.amor.ao/eufranio-creuma/index.html"
   }
 ];
 
