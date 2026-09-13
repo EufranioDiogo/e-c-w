@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anibal &amp; Tílcia · 19 de Dezembro, 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Cinzel:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  
+  <div class="invitation-cover" id="invitation-cover" aria-modal="true" role="dialog" aria-label="Convite de casamento">
+    <div class="invitation-cover__ambient" aria-hidden="true"></div>
+
+    <div class="invitation-card" id="invitation-card">
+      <div class="invitation-card__inside">
+        <div class="invitation-card__monogram">
+<img src="./assets/orla_floral_oliva.png" class="invitation-card__monogram" alt="Monograma dos noivos">
+      <p class="monogram__letters"><span>A</span><i> &amp; </i><span>T</span></p>
+
+        </div>
+      </div>
+
+      <div class="invitation-card__front">
+        <div class="invitation-card__ornament" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+
+        <div class="invitation-card__monogram">
+<img src="./assets/orla_floral_oliva.png" class="invitation-card__monogram" alt="Monograma dos noivos">
+      <p class="monogram__letters"><span>A</span><i>&amp;</i><span>T</span></p>
+
+        </div>
+        
+
+        <p class="invitation-card__eyebrow">Convite de casamento</p>
+        <h1 class="invitation-card__names">Anibal <span>&amp;</span> Tílcia </h1>
+        <p class="invitation-card__date">19 de Dezembro · 2026</p>
+
+        <button type="button" class="invitation-card__open" id="open-invitation">
+          <span class="invitation-card__seal">♡</span>
+          <span>ABRIR CONVITE</span>
+        </button>
+
+        <div class="invitation-card__hint">
+          <span class="invitation-card__hand">↘</span>
+          <span class="invitation-card__date">Toque para abrir</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="invitation-cover__caption">Um dia para celebrar o amor.</p>
+  </div>
+
+  
+  <header class="site-header" id="site-header">
+    <a class="site-brand" href="#inicio" aria-label="Voltar ao início">
+      <span>A</span><i>&amp;</i><span>T</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Navegação principal">
+      <a href="#inicio">Início</a>
+      <a href="#historia">A nossa história</a>
+      <a href="#detalhes">O grande dia</a>
+      <a href="#contribuicao">Contribuição</a>
+      <a href="#rsvp">RSVP</a>
+    </nav>
+
+    <button class="site-nav__toggle" id="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  
+  <div class="music-control" id="music-control">
+    <button type="button" class="music-control__button" id="music-toggle" aria-label="Reproduzir música"
+      aria-pressed="false">
+      <span class="music-control__icon music-control__icon--play">▶</span>
+      <span class="music-control__icon music-control__icon--pause">Ⅱ</span>
+    </button>
+    <span class="music-control__label" id="music-label">Música</span>
+    <audio id="wedding-music" loop preload="auto">
+      <source src="./resources/audio/risk_it_all.mp3" type="audio/mpeg">
+    </audio>
+          <canvas id="music-visualizer" width="46" height="22" aria-hidden="true"></canvas>
+
+  </div>
+
+
+  
+  <section class="hero" id="inicio">
+    <img src="./assets/width_1418.webp" class="floral corner-tl" aria-hidden="true"></img>
+    <img src="./assets/width_1418.webp" class="floral corner-tr" aria-hidden="true"></img>
+    <img src="./assets/width_1418.webp" class="floral corner-bl" aria-hidden="true"></img>
+    <img src="./assets/width_1418.webp" class="floral corner-br" aria-hidden="true"></img>
+
+    <div class="monogram" data-reveal>
+      <span class="monogram__letters"></span>
+    </div>
+
+    <div class="hero__inner">
+
+
+      <div class="portraits" data-reveal>
+        <img src="./assets/IMG_8742.JPG.jpeg" class="arch arch--one"></img>
+        <img src="./assets/IMG_8786.JPG.jpeg" class="arch arch--two"></img>
+      </div>
+
+      <h1 class="hero__names" data-reveal>Aníbal <span class="amp">&amp;</span> Tílcia</h1>
+      <p class="hero__tagline" data-reveal>Convidam-te a celebrar esta união para um sempre!</p>
+    </div>
+
+    <div class="hero__hem"></div>
+  </section>
+
+  
+  <section class="countdown">
+    <p class="countdown__eyebrow">
+      <svg class="icon-cal" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.4" />
+        <line x1="3" y1="9.5" x2="21" y2="9.5" stroke="currentColor" stroke-width="1.4" />
+        <line x1="7.5" y1="2.5" x2="7.5" y2="6.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+        <line x1="16.5" y1="2.5" x2="16.5" y2="6.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+      </svg>
+      Faltam apenas
+    </p>
+
+    <div class="flip-row" data-reveal>
+      <div class="flip-unit">
+        <div class="flip-box" data-unit="days">
+          <div class="flip-box__value">00</div>
+          <div class="flip-box__flap"><span class="flip-box__flap-inner">00</span></div>
+        </div>
+        <span class="flip-unit__label">Dias</span>
+      </div>
+      <div class="flip-unit">
+        <div class="flip-box" data-unit="hours">
+          <div class="flip-box__value">00</div>
+          <div class="flip-box__flap"><span class="flip-box__flap-inner">00</span></div>
+        </div>
+        <span class="flip-unit__label">Horas</span>
+      </div>
+      <div class="flip-unit">
+        <div class="flip-box" data-unit="minutes">
+          <div class="flip-box__value">00</div>
+          <div class="flip-box__flap"><span class="flip-box__flap-inner">00</span></div>
+        </div>
+        <span class="flip-unit__label">Minutos</span>
+      </div>
+      <div class="flip-unit">
+        <div class="flip-box" data-unit="seconds">
+          <div class="flip-box__value">00</div>
+          <div class="flip-box__flap"><span class="flip-box__flap-inner">00</span></div>
+        </div>
+        <span class="flip-unit__label">Segundos</span>
+      </div>
+    </div>
+
+    <div class="countdown__pill" data-reveal>19 de Dezembro, 2026</div>
+  </section>
+
+  
+  <section class="story" id="historia">
+    <div class="story__grid">
+
+      <article class="story__card story__card--dark" data-reveal>
+        <span class="story__num">01</span>
+        <img class="story__media" src="./assets/IMG_8776.JPG.jpeg" alt="Imagem da história 1"></img>
+        <p class="story__verse">Disse mais o Senhor Deus: Não é bom que<br>o homem esteja só; far-lhe-ei uma
+          ajudadora<br>que lhe seja idónea.</p>
+        <p class="story__ref">Génesis 2:18</p>
+      </article>
+
+      <article class="story__card story__card--sand" data-reveal>
+        <span class="story__num">02</span>
+
+        <svg class="story__rings" viewBox="0 0 80 60" aria-hidden="true">
+          <circle cx="30" cy="34" r="16" fill="none" stroke="currentColor" stroke-width="2" />
+          <circle cx="48" cy="34" r="16" fill="none" stroke="currentColor" stroke-width="2" />
+        </svg>
+        <h3 class="story__title story__title--script">E agora, para sempre.</h3>
+        <p class="story__body">O amor escreveu os primeiros capítulos. Agora, diante de Deus e daqueles que amamos,
+          damos início ao nosso próximo capítulo.</p>
+        <p class="story__initials">T <span class="amp">&amp;</span> A</p>
+        <p class="story__date">19 • 12 • 2026</p>
+      </article>
+
+
+
+      <article class="story__card story__card--cream" data-reveal>
+        <span class="story__num">03</span>
+        <h3 class="story__title">Uma história,<br>dois caminhos</h3>
+        <p class="story__body">Duas pessoas, duas histórias e tantos caminhos percorridos. Até que os nossos caminhos se
+          cruzaram novamente e percebemos que alguns encontros não acontecem por acaso.</p>
+        <div class="story__divider" aria-hidden="true">
+          <svg viewBox="0 0 220 60">
+            <path d="M10 5 C 10 45, 105 20, 110 55 C 115 20, 210 45, 210 5" fill="none" stroke="currentColor"
+              stroke-width="1" />
+          </svg>
+        </div>
+      </article>
+
+      <article class="story__card story__card--olive" data-reveal>
+        <span class="story__num">04</span>
+        <img class="story__media" src="./assets/IMG_8758.JPG.jpeg" alt="Imagem da história 1"></img>
+        <p class="story__verse">Quem encontra uma esposa encontra algo<br>excelente; recebeu uma bênção do Senhor.</p>
+        <p class="story__ref">Provérbios 18:22</p>
+      </article>
+
+    </div>
+  </section>
+
+
+
+  
+  <section class="info" id="detalhes">
+    <div class="info__header" data-reveal>
+      <h2 class="info__title">Detalhes do Grande Dia</h2>
+      <p class="info__subtitle">
+        O nosso dia é repleto de momentos e detalhes importantes para tornar ele ainda mais especial,<br>
+        pode ver tudo abaixo
+      </p>
+    </div>
+
+    <div class="info__grid">
+
+      
+      <div class="more-info-card">
+        <img
+          src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWlp6Hk5C6ENDK__10fyXMDpLY3RmtTB0FeUsMW05rq-A3_OJv60hBOO5OTsbv5qQ-3rLyHym6tTQRL9K2UCrjUsnP6I80L73qXvY4hCrDxc9M-ThZ_d9FkAn9VJUuiXGmzrRHuK=w408-h544-k-no"
+          class="more-info-card-img" alt="">
+        <article class="info__card" data-reveal>
+          <div class="info__icon-wrap">
+            <svg class="info__icon" viewBox="0 0 24 24" aria-hidden="true">
+              
+              <path d="M12 3v5M8 9l4-3 4 3v11H8V9Z" fill="none" stroke="currentColor" stroke-width="1.25"
+                stroke-linejoin="round" />
+              <path d="M5 11l7-5 7 5v9H5v-9Z" fill="none" stroke="currentColor" stroke-width="1.25"
+                stroke-linejoin="round" />
+              <path d="M10 20v-5a2 2 0 0 1 4 0v5" fill="none" stroke="currentColor" stroke-width="1.25" />
+            </svg>
+          </div>
+
+          <div class="info__content">
+            <h3 class="info__card-title">Cerimónia Religiosa</h3>
+
+            <p class="info__time">19h00</p>
+
+            <p class="info__place">
+              Nossa Senhora dos Remédios - Mutamba
+            </p>
+
+            <button class="info__btn" type="button" data-map="Nossa Senhora dos Remédios, Mutamba, Luanda">
+              Ver localização
+            </button>
+          </div>
+        </article>
+      </div>
+
+
+      <div class="more-info-card">
+        <img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWnQiHRYGVPwsvvzDjpKC6Te1Tc4ReHqnd2wbv8dk3sn313zh0V4iKM3so6A6CPs7udDYUhjcywj2QQHGDvHgf7apJHHsOnpSBzATFUAP61ElOikkhbpd61YWRZIvSMjrfs_gKT-RbCJSNjZ=w426-h240-k-no" class="more-info-card-img" alt="">
+        <article class="info__card" data-reveal>
+
+          <div class="info__icon-wrap">
+            <svg class="info__icon" viewBox="0 0 24 24" aria-hidden="true">
+              
+              <path d="M7 4h10l-2.1 6.3a3 3 0 0 1-5.8 0L7 4Z" fill="none" stroke="currentColor" stroke-width="1.25"
+                stroke-linejoin="round" />
+              <path d="M12 13v7M8.5 20h7" fill="none" stroke="currentColor" stroke-width="1.25"
+                stroke-linecap="round" />
+              <path d="M5 6l2.5 1M19 6l-2.5 1" fill="none" stroke="currentColor" stroke-width="1"
+                stroke-linecap="round" />
+            </svg>
+          </div>
+
+          <div class="info__content">
+            <h3 class="info__card-title">Copo de Água</h3>
+
+            <p class="info__time">21h00</p>
+
+            <p class="info__place">
+              Salão de Festas LUDAR - Talatona
+            </p>
+
+            <button class="info__btn" type="button" data-map="Salão de Festas LUDAR, Talatona, Luanda">
+              Ver localização
+            </button>
+          </div>
+        </article>
+      </div>
+      
+
+
+
+      
+             <div class="more-info-card">
+        <img src="./assets/IMG_8748.JPG.jpeg" class="more-info-card-img" alt="">
+<article class="info__card" data-reveal>
+        <div class="info__icon-wrap">
+          <svg class="info__icon" viewBox="0 0 24 24" aria-hidden="true">
+            
+            <path d="M9 3l3 3 3-3 2 3-2 2v13H9V8L7 6l2-3Z" fill="none" stroke="currentColor" stroke-width="1.25"
+              stroke-linejoin="round" />
+            <path d="M9 13h6" fill="none" stroke="currentColor" stroke-width="1" />
+          </svg>
+        </div>
+
+        <div class="info__content">
+          <h3 class="info__card-title">Dress Code</h3>
+
+          <p class="info__time">Social Chic</p>
+
+          <p class="info__place">
+            <strong>Mulheres:</strong><br>
+            Nossa Senhora dos Remédios - Mutamba
+          </p>
+        </div>
+      </article>
+        </div>
+      
+
+    </div>
+  </section>
+
+
+  
+  <section class="gift" id="contribuicao">
+    <div class="gift__bg" aria-hidden="true"></div>
+    <div class="gift__inner">
+      <img src="./assets/heart_contribution.png" alt="">
+      <h2 class="gift__title" data-reveal>Pode nos ajudar a concretizar o<br>nosso sonho!</h2>
+      <p class="gift__sub" data-reveal>A vossa presença é o presente mais importante. Para quem desejar ainda assim
+        contribuir para o início da nossa vida a dois, deixamos os dados abaixo.</p>
+
+      <div class="gift__cards" data-reveal>
+        <div class="gift__card">
+          <span class="gift__label">Titular da Conta</span>
+          <p class="gift__value">Aníbal Francisco Gomes Brito</p>
+
+          <span class="gift__label">Banco</span>
+          <p class="gift__value">BAI</p>
+
+          <span class="gift__label">IBAN</span>
+          <div class="gift__copy-row">
+            <p class="gift__value gift__value--mono" data-copy="004000002075182810179">AO06 0040 0000 2075 1828 1017 9
+            </p>
+            <button class="gift__copy-btn" type="button" data-copy-target>Copiar</button>
+          </div>
+
+          <span class="gift__label">Express</span>
+          <div class="gift__copy-row">
+            <p class="gift__value gift__value--mono" data-copy="939563362">939563362</p>
+            <button class="gift__copy-btn" type="button" data-copy-target>Copiar</button>
+          </div>
+        </div>
+
+        <div class="gift__card gift__card--alt">
+          <span class="gift__label">Titular da Conta</span>
+          <p class="gift__value">Tilcia Valsira dos Santos Paulo</p>
+
+          <span class="gift__label">Banco</span>
+          <p class="gift__value">BFA</p>
+
+          <span class="gift__label">IBAN</span>
+          <div class="gift__copy-row">
+            <p class="gift__value gift__value--mono" data-copy="000600003384107530176">AO06 0006 0000 3384 1075 3017 6</p>
+            <button class="gift__copy-btn" type="button" data-copy-target>Copiar</button>
+          </div>
+
+          <span class="gift__label">Número de Conta</span>
+          <div class="gift__copy-row">
+            <p class="gift__value gift__value--mono" data-copy="937568892">937568892</p>
+            <button class="gift__copy-btn" type="button" data-copy-target>Copiar</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="gift__thanks" data-reveal>Com carinho, obrigado por fazerem parte desta história.</p>
+    </div>
+  </section>
+
+  
+  <section class="rsvp" id="rsvp">
+    <div class="rsvp__grid">
+
+      <div class="rsvp__media" data-reveal>
+        <img src="assets/IMG_8755.JPG.jpeg" class="rsvp__photo"></img>
+        <svg class="rsvp__leaf" viewBox="0 0 90 170" aria-hidden="true">
+          <path d="M45 165 C 42 120, 42 90, 45 60 C 47 35, 50 15, 46 3" fill="none" stroke="currentColor"
+            stroke-width="1.1" />
+          <path d="M45 140 C 30 132, 20 118, 22 104 C 36 106, 46 118, 45 140 Z" fill="none" stroke="currentColor"
+            stroke-width="1.1" />
+          <path d="M45 108 C 60 100, 70 86, 68 72 C 54 74, 44 86, 45 108 Z" fill="none" stroke="currentColor"
+            stroke-width="1.1" />
+          <path d="M45 78 C 30 70, 20 56, 22 42 C 36 44, 46 56, 45 78 Z" fill="none" stroke="currentColor"
+            stroke-width="1.1" />
+          <path d="M46 48 C 58 38, 64 24, 60 12 C 48 16, 42 30, 46 48 Z" fill="none" stroke="currentColor"
+            stroke-width="1.1" />
+        </svg>
+      </div>
+
+      <div class="rsvp__content" data-reveal>
+        <h2 class="rsvp__question">Vai poder estar neste dia especial?</h2>
+        <p class="rsvp__subquestion">Por favor confirme a sua presença</p>
+
+        <form class="rsvp__form" id="rsvp-form" novalidate>
+
+          <div class="field">
+            <input type="text" id="rsvp-name" name="name" placeholder=" " required autocomplete="name">
+            <label for="rsvp-name">O seu nome</label>
+          </div>
+
+          <fieldset class="field field--choice">
+            <legend>Confirma a sua presença?</legend>
+            <div class="choice">
+              <button type="button" class="choice__btn" data-choice="sim">Sim, estarei lá</button>
+              <button type="button" class="choice__btn" data-choice="nao">Não poderei ir</button>
+            </div>
+            <input type="hidden" id="rsvp-attending" name="attending" required>
+          </fieldset>
+
+          <div class="field field--guests" id="rsvp-guests-wrap">
+            <input type="number" id="rsvp-guests" name="guests" min="1" max="2" placeholder=" ">
+            <label for="rsvp-guests">Número de acompanhantes</label>
+          </div>
+
+          <div class="field">
+            <input type="number" id="rsvp-message-mobile-number" name="mobile_number" rows="1" placeholder=" "></input>
+            <label for="rsvp-message-mobile-number">Número de Telefones</label>
+          </div>
+
+
+          <div class="field">
+            <textarea id="rsvp-message" name="message" rows="3" placeholder=" "></textarea>
+            <label for="rsvp-message">Deixe uma mensagem para os noivos (opcional)</label>
+          </div>
+
+          <button type="submit" class="rsvp__submit">
+            <span>Confirmar presença</span>
+          </button>
+          <p class="rsvp__error" id="rsvp-error" role="alert" aria-live="polite"></p>
+        </form>
+
+        <div class="rsvp__success" id="rsvp-success" hidden>
+          <svg viewBox="0 0 60 60" class="rsvp__success-icon" aria-hidden="true">
+            <circle cx="30" cy="30" r="27" fill="none" stroke="currentColor" stroke-width="1.4" />
+            <path d="M18 31 L26 39 L43 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"
+              stroke-linejoin="round" pathLength="1" class="rsvp__check" />
+          </svg>
+          <p class="rsvp__success-title" id="rsvp-success-title">Obrigado!</p>
+          <p class="rsvp__success-text" id="rsvp-success-text">A vossa resposta foi registada com carinho.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  
+  <footer class="footer">
+    <div class="footer__wreath">
+      <svg viewBox="0 0 120 60" aria-hidden="true">
+        <path d="M10 40 C 40 5, 80 5, 110 40" fill="none" stroke="currentColor" stroke-width="1" />
+      </svg>
+    </div>
+    <p class="footer__names">Anibal <span class="amp">&amp;</span> Tílcia</p>
+    <p class="footer__date">19 · 12 · 2026</p>
+    <p class="footer__note">Com todo o nosso amor e gratidão por celebrarem este dia connosco.</p>
+  </footer>
+
+  
+  <div class="toast" id="toast">Copiado!</div>
+
+  
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <g id="floral-spray">
+        <g fill="none" stroke="#7C8450" stroke-width="1.1" opacity="0.9">
+          <path d="M5 5 C 40 10, 60 35, 65 70 C 68 100, 60 140, 50 170" />
+          <path d="M15 19 C 45 25, 55 45, 70 55" />
+          <path d="M25 40 C 45 45, 60 60, 62 85" />
+          <path d="M10 60 C 30 65, 45 80, 48 105" />
+          <path d="M5 100 C 25 100, 40 115, 40 140" />
+        </g>
+        <g fill="#EDE6C6" stroke="#B9A46B" stroke-width="0.8">
+          <circle cx="18" cy="14" r="8" />
+          <circle cx="34" cy="6" r="6.5" />
+          <circle cx="46" cy="20" r="9" />
+          <circle cx="66" cy="12" r="6" />
+          <circle cx="60" cy="38" r="7" />
+          <circle cx="80" cy="30" r="5.5" />
+          <circle cx="30" cy="48" r="6" />
+          <circle cx="50" cy="64" r="6.5" />
+          <circle cx="20" cy="70" r="5" />
+          <circle cx="42" cy="92" r="6" />
+          <circle cx="18" cy="108" r="5.5" />
+          <circle cx="38" cy="128" r="5" />
+        </g>
+        <g fill="#8C9A5E" opacity="0.85">
+          <ellipse cx="10" cy="30" rx="10" ry="4" transform="rotate(-35 10 30)" />
+          <ellipse cx="55" cy="55" rx="12" ry="4.5" transform="rotate(20 55 55)" />
+          <ellipse cx="20" cy="90" rx="11" ry="4" transform="rotate(-19 20 90)" />
+          <ellipse cx="45" cy="115" rx="10" ry="4" transform="rotate(30 45 115)" />
+          <ellipse cx="70" cy="65" rx="9" ry="3.5" transform="rotate(-10 70 65)" />
+        </g>
+        <g fill="#C77B4B" opacity="0.9">
+          <circle cx="34" cy="6" r="2" />
+          <circle cx="18" cy="14" r="2.2" />
+          <circle cx="46" cy="20" r="2.4" />
+        </g>
+      </g>
+    </defs>
+  </svg>
+
+    <script src="config.js"></script>
+  <script src="js/script.js"></script>
+
+  
+</body>
+
+</html>
