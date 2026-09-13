@@ -1,420 +1,128 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-AO">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eufránio Diogo &amp; Creuma Kuzola | Vamos Casar</title>
-<meta name="description" content="Website oficial do casamento do Eufránio Diogo & da Creuma Kuzola — 27 de Novembro, Luanda, Angola.">
-
-<!-- Google Fonts: Cormorant Garamond (display), Parisienne (script/signature), Jost (body) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Parisienne&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="amor.ao — histórias que unem.">
+  <title>amor.ao — Histórias que unem</title>
+  <link rel="icon" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="splash-active">
-<!-- reusable floral flourish (line-art botanical, matches baby-blue watercolor mood) -->
-<svg style="display:none">
-  <symbol id="floral-sprig" viewBox="0 0 220 220">
-    <g fill="none" stroke="#7fb8de" stroke-width="1.4" stroke-linecap="round">
-      <path d="M10 210 C 40 160, 30 100, 70 40" opacity=".85"/>
-      <path d="M70 40 C 55 55, 30 55, 18 40 C 30 25, 55 22, 70 40 Z" fill="#dcedf8" opacity=".9"/>
-      <path d="M70 40 C 85 25, 110 25, 122 42 C 108 55, 83 55, 70 40 Z" fill="#b7dcf0" opacity=".9"/>
-      <path d="M46 90 C 30 85, 18 65, 24 45" opacity=".6"/>
-      <path d="M24 45 C 12 55, 12 75, 24 88 C 36 78, 36 58, 24 45 Z" fill="#dcedf8" opacity=".75"/>
-      <path d="M60 120 C 42 118, 26 132, 24 152" opacity=".6"/>
-      <path d="M24 152 C 10 158, 6 178, 16 195 C 30 190, 34 168, 24 152 Z" fill="#b7dcf0" opacity=".7"/>
-      <circle cx="70" cy="40" r="5" fill="#cdae7d" opacity=".8"/>
-      <path d="M95 65 C 100 90, 90 115, 100 140" opacity=".5"/>
-      <path d="M100 140 C 88 148, 84 168, 94 184 C 108 178, 112 156, 100 140 Z" fill="#dcedf8" opacity=".65"/>
-    </g>
-  </symbol>
-</svg>
- 
-<!-- ================= SPLASH ================= -->
-<div id="splash">
-  <div class="floral floral-tl"><svg viewBox="0 0 220 220"><use href="#floral-sprig"/></svg></div>
-  <div class="floral floral-br"><svg viewBox="0 0 220 220"><use href="#floral-sprig"/></svg></div>
-  <div class="splash-inner">
-    <p class="splash-eyebrow eyebrow">Vamos nos casar</p>
-    <div class="splash-ring">E&amp;C</div>
-    <h1 class="splash-names">Eufránio Diogo<span class="amp">&amp;</span>Creuma Kuzola</h1>
-    <button class="splash-cta" id="splash-enter" type="button">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 18V6l8 6-8 6Z"/></svg>
-      Entrar
-    </button>
-    <p class="splash-hint">Toca para entrar &middot; com música</p>
-  </div>
-</div>
- 
-<button id="music-toggle" type="button" aria-label="Pausar ou tocar música">
-  <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7-11-7Z"/></svg>
-  <svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
-</button>
-
-<!-- ================= DECOR: floating hearts ================= -->
-<div class="floaties" id="floaties" aria-hidden="true"></div>
-
-<!-- ================= NAV ================= -->
-<header class="nav" id="nav">
-  <div class="nav__inner">
-    <a href="#topo" class="nav__logo">E<span class="amp">&amp;</span>C</a>
-
-    <nav class="nav__links" id="navLinks">
-      <a href="#topo" class="nav__link is-active">Início</a>
-      <a href="#historia" class="nav__link">Nossa História</a>
-      <a href="#detalhes" class="nav__link">Detalhes</a>
-      <a href="#galeria" class="nav__link">Galeria</a>
-      <a href="#contribuir" class="nav__link">Contribuir</a>
-      <a href="#rsvp" class="nav__link nav__link--cta">Confirme Presença</a>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#inicio" aria-label="amor.ao">
+      <img src="assets/logo.png" alt="amor.ao">
+    </a>
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contactos">Contactos</a>
     </nav>
+  </header>
 
-    <button class="nav__burger" id="navBurger" aria-label="Abrir menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<!-- ================= HERO ================= -->
-<section class="hero" id="topo">
-
-  <div class="hero__ornament hero__ornament--tl" aria-hidden="true">
-    <svg viewBox="0 0 220 220" fill="none"><path d="M4 4C40 30 30 90 70 110C110 130 100 190 150 210" stroke="var(--blue-soft)" stroke-width="1.4"/><circle cx="70" cy="110" r="4" fill="var(--blue-mid)"/><circle cx="150" cy="210" r="3" fill="var(--blue-mid)"/><circle cx="4" cy="4" r="3" fill="var(--blue-mid)"/></svg>
-  </div>
-  <div class="hero__ornament hero__ornament--br" aria-hidden="true">
-    <svg viewBox="0 0 220 220" fill="none"><path d="M216 216C180 190 190 130 150 110C110 90 120 30 70 10" stroke="var(--blue-soft)" stroke-width="1.4"/><circle cx="150" cy="110" r="4" fill="var(--blue-mid)"/><circle cx="70" cy="10" r="3" fill="var(--blue-mid)"/><circle cx="216" cy="216" r="3" fill="var(--blue-mid)"/></svg>
-  </div>
-
-  <div class="sub_hero_diva">
-    <div class="hero__content reveal">
-    <p class="eyebrow">Vamos casar</p>
-    <h1 class="hero__title">Eufránio <span class="amp">&amp;</span> Creuma </h1>
-    <p class="hero__text">Estamos a escrever o capítulo mais bonito das nossas vidas e da nossa história. E gostaríamos muito que fizesses parte deste momento inesquecível para nós!</p>
-
-    <div class="hero__date">
-      <span class="hero__date-icon">
-        <svg style="color: white;" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
-      </span>
-      27 de Novembro, 2026 (Sexta-feira) — Luanda, Angola
-        <audio id="bgMusic" loop autoplay>
-          <source src="./resources/audio/day_after_day_1.mp3" type="audio/mpeg">
-        </audio>
-    </div>
-
-    <div class="hero__actions">
-      <a href="#rsvp" class="btn btn--primary">Confirmar Presença</a>
-      <a href="#contribuir" class="btn btn--ghost">Contribuir para o nosso sonho</a>
-    </div>
-  </div>
-
-  <img src="./resources/imgs/image_1.jpg" alt="" class="hero_img">
-  </div>
-
-  <div class="hero__scrolldown" aria-hidden="true"><span></span>Deslize</div>
-</section>
-
-<!-- ================= COUNTDOWN ================= -->
-<section class="countdown-section">
-  <p class="countdown-label">Faltam apenas</p>
-  <div class="countdown" id="countdown">
-    <div class="countdown__unit"><span id="cd-days">00</span><small>Dias</small></div>
-    <div class="countdown__sep">&amp;</div>
-    <div class="countdown__unit"><span id="cd-hours">00</span><small>Horas</small></div>
-    <div class="countdown__sep">&amp;</div>
-    <div class="countdown__unit"><span id="cd-mins">00</span><small>Minutos</small></div>
-    <div class="countdown__sep">&amp;</div>
-    <div class="countdown__unit"><span id="cd-secs">00</span><small>Segundos</small></div>
-  </div>
-</section>
-
-<!-- ================= NOSSA HISTÓRIA ================= -->
- <div class="join-path-section-main-container">
-          <p class="join-path-section-text">Junte-se a nós para celebrar dois corações que se unem, <br> para construir uma vida e uma família</p>
- <section class="join-path-section">
-
-  <img src="./resources/imgs/image_22.jpg" alt="" class="join-path-section-img join-path-section-img-1">
-   <div class="main-road-div-container">
-   </div>
-    <img src="./resources/imgs/image_18.jpg" alt="" class="join-path-section-img join-path-section-img-2">
- </section>
- </div>
-
-<!--
-  <section class="join-path-2">
-   <p class="eyebrow">Junte-se a nós</p>
-   <h2 class="section-title">Como Chegar</h2>
-   <p>Para chegar ao local da cerimónia, siga estas direcções:</p>
-   <ul>
-     <li>Se vem de carro, use o GPS e procure por "Igreja Nossa Senhora de Fátima".</li>
-     <li>Se vem de transporte público, a linha 5 do autocarro para na porta da igreja.</li>
-   </ul>
- </section>
-
--->
-<section class="historia" id="historia">
-  <div class="section-head reveal">
-    <p class="eyebrow eyebrow--center">A nossa jornada</p>
-    <h2 class="section-title">Nossa História</h2>
-  </div>
-
-  <div class="historia__row reveal">
-    <div class="historia__img">
-      <img src="resources/imgs/inicio_relacionamento.jpeg" alt="Eufránio e Creuma — primeiro encontro" loading="lazy">
-    </div>
-    <div class="historia__text">
-      <span class="historia__mark">01</span>
-      <h3>Como tudo começou</h3>
-      <p>Foi em 2018 na Universidade Católica que os nossos caminhos cruzaram, primeiro como colegas, posteriormente como amigos, delegado e sub-delegada e depois de algum tempo as coisas começaram a mudar...</p>
-      
-    </div>
-  </div>
-
-  <div class="historia__row historia__row--rev reveal">
-    <div class="historia__img">
-      <img src="resources/imgs/caminhada_relacionamento.jpeg" alt="Eufránio e Creuma — o pedido" loading="lazy">
-    </div>
-    <div class="historia__text">
-      <span class="historia__mark">02</span>
-      <h3>A caminhada</h3>
-      <p>Entre sorrisos, desafios, projectos e sonhos partilhados, o amor foi crescendo devagar e para sempre. Em 2021 um pedido de namoro deu início a nossa jornada. Saímos de uma paixão ardente, para um amor consciente, presente e paciente. </p>
-    </div>
-  </div>
-
-  <div class="historia__row reveal">
-    <div class="historia__img">
-      <img src="resources/imgs/image_2.jpg" alt="Eufránio e Creuma — hoje" loading="lazy">
-    </div>
-    <div class="historia__text">
-      <span class="historia__mark">03</span>
-      <h3>Hoje</h3>
-      <p>Deus escreveu o amor que nos trouxe até aqui. E agora, rodeados das pessoas que amamos, vamos viver o nosso para sempre, e adorávamos que estivesses presente.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= DETALHES ================= -->
-<section class="detalhes" id="detalhes">
-  <div class="section-head reveal">
-    <p class="eyebrow eyebrow--center">Informações</p>
-    <h2 class="section-title">Detalhes do Grande Dia</h2>
-  </div>
-
-  <div class="cards reveal">
-     <div class="card">
-      <div class="card__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+  <main>
+    <section id="inicio" class="hero">
+      <div class="hero-content">
+        <span class="eyebrow">amor.ao</span>
+        <h1>Histórias que <span>unem.</span></h1>
+        <p>
+          Criamos experiências digitais bonitas, simples e memoráveis
+          para celebrar pessoas, marcas e momentos especiais.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projetos">Ver os nossos projectos</a>
+          <a class="btn secondary" href="#contactos">Falar connosco</a>
+        </div>
       </div>
-      <h4>Data</h4>
-      <p>27 de Novembro<br>2026 (Sexta-feira)</p>
-    </div>
-    
-
-    <div class="card">
-      <div class="card__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M6 3h6l-1 8a4 4 0 01-8 0L2 3h4M15 3h6l-1 6a4 4 0 01-4 4M18 13v8M14 21h8M6 11v10M2 21h8"/></svg>
+      <div class="hero-mark">
+        <img src="assets/logo.png" alt="" aria-hidden="true">
       </div>
-      <h4>Copo de Água</h4>
-      <p>21h00<br>Projecto Nova Vida - Salão Silv Place (Próximo ao Rabugento - Rua 49)</p>
-      <br>
-      <a href="https://maps.app.goo.gl/ATHfLgqNCdaiBRgH8" target="_blank" class="nav__link nav__link--cta">Ver Localização</a>
-    </div>
+    </section>
 
-
-    <div class="card">
-      <div class="card__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M8 3l4 3 4-3 3 4-3 2 1 11H7L8 9 5 7z"/></svg>
+    <section id="projetos" class="projects section">
+      <div class="section-heading">
+        <span class="eyebrow">Os nossos projectos</span>
+        <h2>Conheça o que já criámos</h2>
+        <p>Explore os nossos dois projectos directamente nesta página.</p>
       </div>
-      <h4>Dress Code</h4>
-      <p>Social Chic<br><b>Mulheres: </b>Não usar branco, nem creme<br><b>Homens: </b>Usar fato escuro</p>
-    </div>
 
-   <div class="card">
-      <div class="card__icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v4M8 6h8v4H8zM6 22V10h12v12M9 22v-6h6v6"/></svg>
+      <div class="project-grid">
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <span class="project-number">01</span>
+              <h3>Projecto 1</h3>
+            </div>
+            <a id="project1-link" href="https://www.amor.ao/anibal-tilcia/index.html" target="_blank" rel="noopener">Abrir ↗</a>
+          </div>
+          <div class="iframe-wrap">
+            <iframe
+              id="project1-frame"
+              src="https://www.amor.ao/anibal-tilcia/index.html"
+              title="Projecto 1"
+              loading="lazy"
+              allow="fullscreen"
+            ></iframe>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <span class="project-number">02</span>
+              <h3>Projecto 2</h3>
+            </div>
+            <a id="project2-link" href="https://www.amor.ao/eufranio-creuma/index.html" target="_blank" rel="noopener">Abrir ↗</a>
+          </div>
+          <div class="iframe-wrap">
+            <iframe
+              id="project2-frame"
+              src="https://www.amor.ao/eufranio-creuma/index.html"
+              title="Projecto 2"
+              loading="lazy"
+              allow="fullscreen"
+            ></iframe>
+          </div>
+        </article>
       </div>
-      <h4>Cerimónia Religiosa</h4>
-      <p>16h00<br>Igreja Nossa Senhora de Fátima</p>
-      <br>
-      
-            <a href="https://maps.app.goo.gl/N2z82VX1FKrXn6KZ9" target="_blank" class="nav__link nav__link--cta">Ver Localização</a>
+    </section>
 
-    </div>
-
-  </div>
-</section>
-
-<!-- ================= GALERIA ================= -->
-<section class="galeria" id="galeria">
-  <div class="section-head reveal">
-    <p class="eyebrow eyebrow--center">Momentos</p>
-    <h2 class="section-title">Galeria</h2>
-  </div>
-
-  <div class="gallery-grid reveal" id="galleryGrid">
-    <!-- 12 fotos placeholder — substitui o src por fotos reais do casal -->
-    <div class="gallery-item gallery-item--tall"><img src="resources/imgs/image_12.jpg" loading="lazy" alt="Foto do casal 1"></div>
-    <div class="gallery-item"><img src="resources/imgs/image_25.jpg" loading="lazy" alt="Foto do casal 2"></div>
-    <div class="gallery-item"><img src="resources/imgs/image_21.jpg" loading="lazy" alt="Foto do casal 3"></div>
-    <div class="gallery-item gallery-item--tall"><img src="resources/imgs/image_23.jpg" loading="lazy" alt="Foto do casal 4"></div>
-    <div class="gallery-item"><img src="resources/imgs/image_22.jpg" loading="lazy" alt="Foto do casal 5"></div>
-    <div class="gallery-item gallery-item--tall"><img src="resources/imgs/image_11.jpg" loading="lazy" alt="Foto do casal 6"></div>
-    <div class="gallery-item"><img src="resources/imgs/image_6.jpg" loading="lazy" alt="Foto do casal 7"></div>
-    <div class="gallery-item"><img src="resources/imgs/image_5.jpg" loading="lazy" alt="Foto do casal 8"></div>
-    <div class="gallery-item"><img src="resources/imgs/image_8.jpg" loading="lazy" alt="Foto do casal 9"></div>
-    <div class="gallery-item"><img src="resources/imgs/image_9.jpg" loading="lazy" alt="Foto do casal 10"></div>
-    <div class="gallery-item"><img src="resources/imgs/image_7.jpg" loading="lazy" alt="Foto do casal 11"></div>
-    <div class="gallery-item"><img src="resources/imgs/image_10.jpg" loading="lazy" alt="Foto do casal 12"></div>
-        <div class="gallery-item"><img src="resources/imgs/image_12.jpg" loading="lazy" alt="Foto do casal 7"></div>
-    <div class="gallery-item"><img src="resources/imgs/image_13.jpg" loading="lazy" alt="Foto do casal 8"></div>
-    <div class="gallery-item"><img src="resources/imgs/image_14.jpg" loading="lazy" alt="Foto do casal 9"></div>
-    <div class="gallery-item"><img src="resources/imgs/image_15.jpg" loading="lazy" alt="Foto do casal 10"></div>
-    <div class="gallery-item"><img src="resources/imgs/image_16.jpg" loading="lazy" alt="Foto do casal 11"></div>
-    <div class="gallery-item"><img src="resources/imgs/image_17.jpg" loading="lazy" alt="Foto do casal 12"></div>
-  </div>
-</section>
-
-<!-- ================= CONTRIBUIÇÕES ================= -->
-
-
-
-
- <section class="contribuir" id="contribuir">
-  <div class="contribuir__ornament" aria-hidden="true">
-    <svg viewBox="0 0 300 300" fill="none"><path d="M10 290C90 250 60 150 150 130C240 110 210 40 290 10" stroke="var(--blue-soft)" stroke-width="1.2"/></svg>
-  </div>
-
-  <div class="section-head reveal">
-    <p class="eyebrow eyebrow--center">Um gesto de carinho</p>
-    <h2 class="section-title">Contribua para o Nosso Sonho</h2>
-    <p class="contribuir__intro">A tua presença é o nosso maior presente. Mas, para quem desejar contribuir para a realização dos nossos sonhos, deixamos aqui uma forma simples e especial de o fazer.
-</p>
-  </div>
-
-  <div class="contribuir__cards reveal">
-    <div class="contribuir__card glass">
-      <div class="contribuir__icon">💍</div>
-      <h4>Para o Casamento</h4>
-      <p>Ajude-nos a cuidar de cada detalhe deste dia tão especial.</p>
-    </div>
-    <div class="contribuir__card glass contribuir__card--destaque">
-      <span class="contribuir__badge">Mais escolhido</span>
-      <div class="contribuir__icon">✈️</div>
-      <h4>Para a Lua de Mel</h4>
-      <p>Faça parte da nossa primeira viagem juntos como marido e mulher.</p>
-    </div>
-    <div class="contribuir__card glass">
-      <div class="contribuir__icon">🎁</div>
-      <h4>Oferta Livre</h4>
-      <p>Sem valor mínimo — o gesto é que conta, não a quantia.</p>
-    </div>
-  </div>
-
-  <div class="contribuir__cta reveal">
-    <button class="btn btn--primary btn--lg" id="openContribModal">Quero Contribuir</button>
-    <p class="contribuir__cta-note">🔒 Rápido, seguro e em poucos passos</p>
-  </div>
-</section>
-
-
-<!-- ================= RSVP ================= -->
-<section class="rsvp" id="rsvp">
-  <div class="section-head reveal">
-    <p class="eyebrow eyebrow--center">Não percas este momento</p>
-    <h2 class="section-title">Confirme a Sua Presença</h2>
-    <p class="rsvp__intro">Preencha o formulário abaixo — a confirmação será enviada directamente para o nosso WhatsApp.</p>
-  </div>
-
-  <form class="rsvp__form glass reveal" id="rsvpForm">
-    <div class="field">
-      <label for="f-nome">Nome do(s) Convidado(s)</label>
-      <input type="text" id="f-nome" name="nome" placeholder="O teu nome" required>
-    </div>
-
-    <div class="field">
-      <label for="f-telefone">Telefone</label>
-      <input type="tel" id="f-telefone" name="telefone" placeholder="9XX XXX XXX" required>
-    </div>
-
-    <div class="field-row">
-      <div class="field">
-        <label for="f-presenca">Confirmas a tua presença?</label>
-        <select id="f-presenca" name="presenca" required>
-          <option value="Sim, estarei presente">Sim, estarei presente</option>
-          <option value="Infelizmente não poderei ir">Infelizmente não poderei ir</option>
-        </select>
+    <section id="contactos" class="contact section">
+      <div class="contact-card">
+        <div>
+          <span class="eyebrow">Contactos</span>
+          <h2>Vamos criar algo especial?</h2>
+          <p>Entre em contacto connosco. Teremos todo o gosto em conversar sobre o seu próximo projecto.</p>
+        </div>
+        <div class="contact-list">
+          <a href="mailto:contacto@amor.ao">
+            <span>Email</span>
+            <strong>contacto@amor.ao</strong>
+          </a>
+          <a href="tel:+244900000000">
+            <span>Telefone / WhatsApp</span>
+            <strong>+244 900 000 000</strong>
+          </a>
+          <div>
+            <span>Localização</span>
+            <strong>Luanda, Angola</strong>
+          </div>
+        </div>
       </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <strong>amor.ao</strong>
+      <span>Histórias que unem.</span>
     </div>
+    <span>© <span id="year"></span> amor.ao. Todos os direitos reservados.</span>
+  </footer>
 
-
-    <div class="field">
-      <label for="f-mensagem">Mensagem para os noivos</label>
-      <textarea id="f-mensagem" name="mensagem" rows="3" placeholder="Deixa aqui uma palavra de carinho (opcional)"></textarea>
-    </div>
-
-    <button type="submit" class="btn btn--primary btn--lg btn--block">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-right:8px;vertical-align:-3px"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.96L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.87 9.87 0 0012.04 2m0 1.67c2.22 0 4.3.87 5.87 2.44a8.23 8.23 0 012.42 5.85c0 4.56-3.71 8.27-8.28 8.27a8.3 8.3 0 01-4.22-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.22 8.22 0 01-1.28-4.4c0-4.56 3.71-8.3 8.28-8.3M8.53 6.9c-.16 0-.43.06-.65.31-.22.24-.86.84-.86 2.05s.88 2.38 1 2.55c.13.16 1.7 2.72 4.2 3.71 2.07.83 2.49.66 2.94.62.45-.04 1.45-.59 1.65-1.16.2-.57.2-1.06.14-1.16-.06-.1-.23-.16-.48-.28-.25-.13-1.45-.72-1.68-.8-.22-.08-.39-.13-.55.13-.16.25-.63.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.39-1.73-.14-.25-.02-.38.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.41.08-.16.04-.31-.02-.44-.06-.13-.55-1.36-.78-1.86-.19-.44-.4-.4-.55-.4h-.4z"/></svg>
-      Enviar a Confirmação via WhatsApp
-    </button>
-  </form>
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer class="footer">
-  <div class="footer__amp amp">&amp;</div>
-  <p class="footer__thanks">Obrigado por fazer parte deste dia inesquecível para nós.</p>
-  <p class="footer__sign">Com carinho,<br>Eufránio &amp; Creuma</p>
-  <p class="footer__meta"279 . 11 . 2026 — Luanda, Angola</p>
-</footer>
-
-<!-- ================= BACK TO TOP ================= -->
-<button class="back-to-top" id="backToTop" aria-label="Voltar ao topo">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-</button>
-
-<!-- ================= MODAL: CONTRIBUIÇÕES ================= -->
-<div class="modal" id="contribModal" aria-hidden="true">
-  <div class="modal__backdrop" data-close></div>
-  <div class="modal__panel glass">
-    <button class="modal__close" data-close aria-label="Fechar">&times;</button>
-    <h3>Formas de Contribuir</h3>
-    <p class="modal__intro">Escolha a opção que preferir. Muito obrigado pelo carinho! 💙</p>
-
-    <div class="pay-option">
-      <div class="pay-option__head">
-        <span>IBAN</span>
-        <button class="copy-btn" data-copy="000600000521953530277">Copiar</button>
-      </div>
-      <p class="pay-option__value">AO06 0006 0000 0521 9535 302 77</p>
-      <p class="pay-option__owner">Titular: EUFRÁNIO LUKENY MANUEL DIOGO</p>
-    </div>
-
-    <div class="pay-option">
-      <div class="pay-option__head">
-        <span>Multicaixa Express</span>
-        <button class="copy-btn" data-copy="922873628">Copiar</button>
-      </div>
-      <p class="pay-option__value">922 873 628</p>
-    </div>
-
-    <div class="pay-option">
-      <div class="pay-option__head">
-        <span>Kwik</span>
-        <button class="copy-btn" data-copy="000600000521953530277">Copiar</button>
-      </div>
-      <p class="pay-option__value">AO06 0006 0000 0521 9535 302 77</p>
-      <p class="pay-option__owner">Titular: EUFRÁNIO LUKENY MANUEL DIOGO</p>
-    </div>
-    <a href="mcxwallet://purchase?qrcode=000600000521953530277" class="open-express">ABRIR MULTICAIXA EXPRESS</a>
-  </div>
-</div>
-
-<!-- ================= LIGHTBOX ================= -->
-<div class="lightbox" id="lightbox" aria-hidden="true">
-  <button class="lightbox__close" id="lightboxClose" aria-label="Fechar">&times;</button>
-  <img src="" alt="" id="lightboxImg">
-</div>
-
-<script src="javascript/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
