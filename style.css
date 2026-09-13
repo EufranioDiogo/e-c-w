@@ -269,7 +269,7 @@ footer span { align-self: center; }
   .hero, .contact-card, .project-grid {
     grid-template-columns: 1fr;
   }
-  .hero { padding-top: 55px; }
+  .hero { padding-top: 55px; display: flex; flex-direction: column-reverse; align-items: center;}
   .hero-mark { min-height: 330px; }
   .iframe-wrap { height: 500px; }
 }
