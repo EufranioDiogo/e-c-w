@@ -1,6 +1,6 @@
 async function submitForm(e, body) {
   e.preventDefault();
-  const SCRIPT_URL = window.ENV.SCRIPT_URL;
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzhkcH6WzCoyCJk9DASRSRjyn5YUfp1ECoXX75d1Z4FW2ebHQXMv0XDoYFETA0DWQ05/exec';
   
   const rsvpForm = document.getElementById("rsvp-form");
   const submitBtn = rsvpForm.querySelector(".rsvp__submit");
@@ -60,6 +60,7 @@ async function submitForm(e, body) {
   const musicBtn = document.getElementById("music-toggle");
   const musicLabel = document.getElementById("music-label");
   const audio = document.getElementById("wedding-music");
+
 
   // Lock scroll behind the cover until it's opened.
   document.body.classList.add("invitation-opening");
@@ -408,8 +409,9 @@ async function submitForm(e, body) {
   if (rsvpForm) {
     const attendingInput = document.getElementById("rsvp-attending");
     const choiceBtns = rsvpForm.querySelectorAll(".choice__btn");
+    const quantInvitesBtns = document.querySelectorAll('.choice__btn_invites');
     const guestsWrap = document.getElementById("rsvp-guests-wrap");
-    const guestsInput = document.getElementById("rsvp-guests");
+    let guestsInput = '';
     const messageMobileNumberInput = document.getElementById(
       "rsvp-message-mobile-number",
     );
@@ -430,8 +432,19 @@ async function submitForm(e, body) {
           guestsWrap.classList.add("is-open");
         } else {
           guestsWrap.classList.remove("is-open");
-          guestsInput.value = "";
         }
+      });
+    });
+
+    quantInvitesBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        quantInvitesBtns.forEach((b) => b.classList.remove("is-active"));
+        btn.classList.add("is-active");
+        const choice = btn.getAttribute("data-choice");
+        guestsInput = choice;
+        errorEl.textContent = "";
+
+      
       });
     });
 
@@ -460,9 +473,9 @@ async function submitForm(e, body) {
       const body = {
         name: name,
         presence: attending === "sim" ? true : false,
-        quant_people:
-          !guestsInput.value.trim().length !== 0
-            ? Number(guestsInput.value.trim())
+        quant_people: attending !== 'sim' ? 0 :
+          !guestsInput.trim().length !== 0
+            ? Number(guestsInput.trim())
             : 0,
         message: message,
         mobile_number: messageMobileNumber,

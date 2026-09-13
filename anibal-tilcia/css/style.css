@@ -724,7 +724,7 @@ button {
   flex-wrap: wrap;
 }
 
-.choice__btn {
+.choice__btn, .choice__btn_invites {
   border: 1px solid rgba(43, 36, 24, .28);
   background: transparent;
   color: var(--ink);
@@ -735,12 +735,13 @@ button {
   transition: background .3s ease, color .3s ease, border-color .3s ease, transform .2s ease;
 }
 
-.choice__btn:hover {
+
+.choice__btn:hover, .choice__btn_invites:hover {
   border-color: var(--olive-deep);
   transform: translateY(-1px);
 }
 
-.choice__btn.is-active {
+.choice__btn.is-active, .choice__btn_invites.is-active {
   background: var(--olive-deep);
   border-color: var(--olive-deep);
   color: var(--paper);
@@ -755,9 +756,20 @@ button {
 }
 
 .field--guests.is-open {
-  max-height: 90px;
+  max-height: 110px;
   opacity: 1;
   margin-top: 0;
+  display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.rsvp-guests-wrap label{
+  position: absolute;
+}
+
+.field--guests.is-open div {
+  margin-top: 30px;
 }
 
 .rsvp__submit {
