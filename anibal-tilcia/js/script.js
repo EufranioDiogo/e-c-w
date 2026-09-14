@@ -12,7 +12,7 @@ async function submitForm(e, body) {
   try {
     await fetch(SCRIPT_URL, {
       method: "POST",
-      signal: AbortSignal.timeout(10000), // 10s timeout
+      signal: AbortSignal.timeout(20000), // 10s timeout
       mode: "no-cors", // necessário para Apps Script
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
