@@ -9,10 +9,12 @@ async function submitForm(e, body) {
   const successTitle = document.getElementById("rsvp-success-title");
   const successText = document.getElementById("rsvp-success-text");
 
+  submitBtn.disabled = true;
+
   try {
     await fetch(SCRIPT_URL, {
       method: "POST",
-      signal: AbortSignal.timeout(20000), // 10s timeout
+      signal: AbortSignal.timeout(30000), // 10s timeout
       mode: "no-cors", // necessário para Apps Script
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -457,6 +459,7 @@ async function submitForm(e, body) {
       const messageMobileNumber = messageMobileNumberInput.value.trim();
       const message = messageInput.value.trim();
 
+      
       if (!name) {
         errorEl.textContent = "Por favor, indique o seu nome.";
         nameInput.focus();
@@ -480,12 +483,20 @@ async function submitForm(e, body) {
         message: message,
         mobile_number: messageMobileNumber,
       };
+      nameInput.disabled = true;
+      attendingInput.disabled = true;
+      messageMobileNumberInput.disabled = true;
+      messageInput.disabled = true;
 
       submitForm(e, body)
         .then((res) => {
           console.log(res);
         })
         .catch((error) => {
+          nameInput.disabled = false;
+      attendingInput.disabled = false;
+      messageMobileNumberInput.disabled = false;
+      messageInput.disabled = false;
           console.error("Erro ao enviar formulário:", error);
         });
     });
