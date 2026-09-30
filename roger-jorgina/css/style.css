@@ -1,5 +1,5 @@
 /* =========================================================
-   Tílcia & Anibal — Wedding invitation
+   Jorgina & Roger — Wedding invitation
    ========================================================= */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Parisienne&display=swap');
 
@@ -1009,9 +1009,17 @@ button {
 
 .more-info-card-img {
   width: 100%;
-  height: 12rem;
+  height: 10rem;
   object-fit: cover;
   z-index: 1;
+  /*border-top: 2px;
+  border-left: 2px;
+  border-right: 2px;
+    border-radius: 1rem 1rem 0 0;
+border-style: solid;
+  border-color: var(--olive-deep);
+  */
+
 }
 
 .info__card {
