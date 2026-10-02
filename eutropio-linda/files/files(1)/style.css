@@ -66,18 +66,13 @@ section{position:relative}
 
 .flowers{height:min(60vw,320px);overflow:hidden;margin-top:10px}
 .fl{position:absolute;width:min(62vw,340px);top:0;opacity:.95}
-.fl.l{left:-14vw;animation:float 7s ease-in-out infinite;     rotate: 35deg;
-    transform: translateX(0px);}
-.fl.r{right:-14vw;transform:scaleX(-1);animation:floatR 7s ease-in-out infinite;    }
+.fl.l{left:-14vw;animation:float 7s ease-in-out infinite}
+.fl.r{right:-14vw;transform:scaleX(-1);animation:floatR 7s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-10px) rotate(2deg)}}
 @keyframes floatR{50%{transform:scaleX(-1) translateY(-10px) rotate(2deg)}}
 
 .info{max-width:900px;margin:auto;padding:30px 20px 60px;text-align:center}
-.doves img {
-width: 75%;
-}
-.doves{position:relative;width:min(55vw,230px);margin:0 auto 40px;    display: flex;
-    justify-content: center;}
+.doves{position:relative;width:min(55vw,230px);margin:0 auto 20px}
 .doves .cloud{position:absolute;inset:50% -20% -20%;z-index:-1;opacity:.6;width:140%;max-width:none}
 h2{font-weight:500;font-size:clamp(1.1rem,4.4vw,1.5rem);color:var(--green);margin-bottom:40px}
 .event{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
@@ -108,7 +103,6 @@ figcaption{font-size:1rem;font-style:italic;color:var(--gold);max-width:260px;ma
   #bird{width:70px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
-
 
 /* ---------- NOVAS SECÇÕES ---------- */
 .block{max-width:760px;margin:0 auto;padding:50px 20px;text-align:center}

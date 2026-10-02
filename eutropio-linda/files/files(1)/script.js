@@ -1,21 +1,7 @@
 const cover = document.getElementById('cover');
 const bird = document.getElementById('bird');
 const petalsBox = document.getElementById('petals');
-const audio = document.getElementById("wedding-music");
 
-
-async function tryPlayMusic() {
-    if (!audio) return;
-    try {
-      await audio.play();
-      setMusicState(true);
-    } catch (err) {
-      // Autoplay was blocked — leave it paused, the visible button lets
-      // the guest start it with a click.
-      setMusicState(false);
-    }
-  }
-  
 /* ---- Abertura espetacular: pétalas + portas florais que se abrem ---- */
 function spawnPetals(n) {
   for (let i = 0; i < n; i++) {
@@ -40,7 +26,6 @@ function openInvite() {
     revealCheck();
   }, 2200);
   setTimeout(() => cover.remove(), 7000);
-  tryPlayMusic();
 }
 document.getElementById('seal').addEventListener('click', openInvite);
 
@@ -70,17 +55,16 @@ function fly() {
   const ty = g.y + Math.cos(t * 3) * 10;
   const dx = tx - cx, dy = ty - cy;
   cx += dx * .045; cy += dy * .045;
-  if (Math.abs(dx) > .6) dir += ((dx > 0 ? 1 : 1) - dir) * 1;   // vira suavemente
+  if (Math.abs(dx) > .6) dir += ((dx > 0 ? 1 : -1) - dir) * .08;   // vira suavemente
   angle += ((dy * .6 * dir) - angle) * .1;
   const a = Math.max(-25, Math.min(25, angle));
-  bird.style.transform = `translate(${cx - 45}px,${cy - 30}px) scaleX(${dir}) `;
+  bird.style.transform = `translate(${cx - 45}px,${cy - 30}px) scaleX(${dir}) rotate(${a}deg)`;
   requestAnimationFrame(fly);
 }
 fly();
 
-
 /* ---- Contagem decrescente (Luanda, UTC+1) ---- */
-const wedding = new Date('2026-10-30T14:00:00+01:00');
+const wedding = new Date('2026-10-31T14:00:00+01:00');
 function tick() {
   let s = Math.max(0, Math.floor((wedding - Date.now()) / 1000));
   const v = { d: Math.floor(s / 86400), h: Math.floor(s % 86400 / 3600), m: Math.floor(s % 3600 / 60), s: s % 60 };
@@ -89,7 +73,7 @@ function tick() {
 tick(); setInterval(tick, 1000);
 
 /* ---- Confirmação de presença via WhatsApp ---- */
-const WHATSAPP = '244939751318'; // <-- troca pelo número dos noivos (indicativo + número, sem +)
+const WHATSAPP = '244900000000'; // <-- troca pelo número dos noivos (indicativo + número, sem +)
 document.getElementById('rsvpForm').addEventListener('submit', e => {
   e.preventDefault();
   const nome = document.getElementById('nome').value.trim();
