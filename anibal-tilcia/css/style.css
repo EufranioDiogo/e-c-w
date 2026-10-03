@@ -1539,6 +1539,21 @@ a:focus-visible, button:focus-visible {
   --paper: #fffdf8;
   --ink: #25251f;
 }
+.amor-ao-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.amor-ao-footer .made-by-label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.6rem;
+}
+
+.amor-ao-footer .made-by-logo {
+  width: 48px;
+  object-fit: cover;
+  margin-top: 2px;
+}
 
 /* Keep the page hidden behind the physical invitation until opened. */
 body.invitation-opening {

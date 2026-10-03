@@ -96,6 +96,6 @@ document.getElementById('rsvpForm').addEventListener('submit', e => {
   const n = document.getElementById('pessoas').value;
   const p = document.querySelector('input[name=p]:checked').value;
   const msg = document.getElementById('msg').value.trim();
-  const text = `Olá! Sou ${nome} e ${p} no casamento de Eutrópio & Linda (${n} pessoa${n > 1 ? 's' : ''}).` + (msg ? `\n\n${msg}` : '');
+  const text = `Olá Eutrópio e Linda! Sou ${nome} e ${p} no casamento de Eutrópio & Linda (${n} pessoa${n > 1 ? 's' : ''}).` + (msg ? `\n\n${msg}` : '');
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`, '_blank');
 });

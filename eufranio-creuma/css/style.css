@@ -1788,6 +1788,22 @@ New contribuir
   background: #4C8B6B;
 }
 
+.amor-ao-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.amor-ao-footer .made-by-label {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.6rem;
+}
+
+.amor-ao-footer .made-by-logo {
+  width: 48px;
+  object-fit: cover;
+  margin-top: 2px;
+}
+
 /* ==========================================================================
    LIGHTBOX
    ========================================================================== */
