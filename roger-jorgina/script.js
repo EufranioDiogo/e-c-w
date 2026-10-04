@@ -9,7 +9,7 @@ const CONFIG = {
   whatsapp: "244900000000",
   // Música de fundo: coloquem um ficheiro (ex.: "musica.mp3") na mesma pasta
   // e escrevam o nome aqui. Vazio = usa a melodia de caixinha de música incluída.
-  musicUrl: ""
+  musicUrl: "./resources/audio/turning_the_page.mp3"
 };
 
 /* ===== Capa e abertura ===== */
