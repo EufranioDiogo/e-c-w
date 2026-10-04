@@ -172,6 +172,7 @@ const Music = (() => {
         audioEl = new Audio(CONFIG.musicUrl);
         audioEl.loop = true;
         audioEl.volume = 0.6;
+        audioEl.currentTime = 45;
         audioEl.play().catch(() => { playing = false; musicBtn.classList.add("is-muted"); });
       } else {
         startSynth();
@@ -203,7 +204,7 @@ document.addEventListener("visibilitychange", () => Music.suspendForHidden(docum
   for (let i = 0; i < first; i++) html += '<li aria-hidden="true"></li>';
   for (let d = 1; d <= 30; d++) {
     if (d === CONFIG.weddingDay) {
-      html += `<li class="is-day" aria-label="${d} de abril, o dia do casamento">${heart}<span>${d}</span></li>`;
+      html += `<li class="is-day" aria-label="${d} de abril, o dia do casamento">${heart}<span style="color: #fff;">${d}</span></li>`;
     } else {
       html += `<li>${d}</li>`;
     }
@@ -412,7 +413,7 @@ const Motion = (() => {
   function setup() {
     // Abertura
     tag(".hero__kicker", "reveal", { delay: .5 });
-    tag(".hero__mono", "write", { delay: .7 });
+    tag(".hero__mono", "reveal", { delay: .7 });
     tag(".hero__text", "reveal", { delay: 1.3 });
     draw(".rings", { delay: 1.6 });
 
@@ -425,7 +426,7 @@ const Motion = (() => {
     fireflies();
 
     // Calendário
-    tag(".calendar__title", "write");
+    tag(".calendar__title", "reveal", { delay: .3 });
     tag(".calendar__flora--l", "reveal reveal--left sway", { delay: .3 });
     tag(".calendar__flora--r", "reveal reveal--right sway", { delay: .3 });
     tag(".calendar__week", "reveal reveal--fade", { delay: .1 });
@@ -439,7 +440,7 @@ const Motion = (() => {
 
     // Confirmação
     tag(".rsvp__img", "reveal reveal--left float", { delay: .1 });
-    tag(".rsvp__title, .rsvp__sub", "write", { delay: .2, step: .6 });
+    tag(".rsvp__title, .rsvp__sub", "reveal", { delay: .2, step: .6 });
     tag(".rsvp__form > :not(.rsvp__title):not(.rsvp__sub)", "reveal reveal--right", { delay: .7, step: .07 });
 
     // Contribuições
@@ -452,7 +453,7 @@ const Motion = (() => {
     // Encerramento
     tag(".closing__line", "grow");
     tag(".closing__day, .closing__date, .closing__place, .closing__note", "reveal", { delay: .5, step: .15 });
-    tag(".closing__mono", "write", { delay: 1.2 });
+    tag(".closing__mono", "reveal", { delay: 1.2 });
     tag(".closing__flora", "reveal sway", { delay: .2, step: .15 });
   }
 
