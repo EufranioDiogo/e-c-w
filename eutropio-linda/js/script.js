@@ -42,7 +42,7 @@ function setGuestName() {
     personSpan.textContent = guestName ? `${guestName}!` : 'Sem convidado definido';
 
     if (tableSpan) {
-      tableSpan.textContent = guestTable ? `Mesa: ${guestTable}` : '';
+      tableSpan.textContent = guestTable ? `${guestTable}` : 'Mesa por ser definida';
     }
   }
 }

@@ -537,6 +537,7 @@ figure img {
   align-items: center;
   position: relative;
   z-index: 2;
+  overflow: hidden
 }
 .couple_img_container::after, .couple_img_container_2::after {
     content: "";
@@ -544,7 +545,7 @@ figure img {
     inset: 0;
     border-radius: 300px;
     /*box-shadow: inset 0 0 0 4px rgba(194, 161, 90, .35);*/
-    width: 52%;
+    width: 57%;
     height: 85%;
     top: 50%;
     left: 50%;
