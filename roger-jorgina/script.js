@@ -23,6 +23,7 @@ document.body.classList.add("is-locked");
 openBtn.addEventListener("click", () => {
   Music.start();
   cover.classList.add("is-open");
+  Motion.start();
   invite.removeAttribute("aria-hidden");
   document.body.classList.remove("is-locked");
   window.scrollTo(0, 0);
@@ -216,6 +217,15 @@ document.addEventListener("visibilitychange", () => Music.suspendForHidden(docum
   const els = {};
   document.querySelectorAll(".countdown__num").forEach((el) => (els[el.dataset.unit] = el));
   const pad = (n) => String(n).padStart(2, "0");
+  // Só substitui o número quando muda, para a animação de "queda" correr nesse momento
+  const put = (el, v) => {
+    if (el.dataset.v === v) return;
+    el.dataset.v = v;
+    const s = document.createElement("span");
+    s.className = "countdown__digit";
+    s.textContent = v;
+    el.replaceChildren(s);
+  };
   function update() {
     let diff = Math.max(0, target - Date.now());
     if (diff === 0) {
@@ -227,10 +237,10 @@ document.addEventListener("visibilitychange", () => Music.suspendForHidden(docum
     const h = Math.floor(diff / 36e5); diff -= h * 36e5;
     const m = Math.floor(diff / 6e4); diff -= m * 6e4;
     const s = Math.floor(diff / 1e3);
-    els.d.textContent = pad(d);
-    els.h.textContent = pad(h);
-    els.m.textContent = pad(m);
-    els.s.textContent = pad(s);
+    put(els.d, pad(d));
+    put(els.h, pad(h));
+    put(els.m, pad(m));
+    put(els.s, pad(s));
     setTimeout(update, 1000 - (Date.now() % 1000));
   }
   update();
@@ -251,7 +261,11 @@ document.getElementById("copyIban").addEventListener("click", async (e) => {
     sel.addRange(r);
     btn.textContent = "IBAN selecionado, copie-o";
   }
-  setTimeout(() => (btn.textContent = "Copiar IBAN"), 2500);
+  btn.classList.add("is-done");
+  setTimeout(() => {
+    btn.textContent = "Copiar IBAN";
+    btn.classList.remove("is-done");
+  }, 2500);
 });
 
 /* ===== Confirmação de presença ===== */
@@ -287,4 +301,182 @@ document.getElementById("copyIban").addEventListener("click", async (e) => {
     window.open(url, "_blank", "noopener");
     ok.textContent = "A abrir o WhatsApp para enviar a sua mensagem.";
   });
+})();
+
+/* ===== Animações =====
+   Prepara as classes ao carregar (o convite está escondido atrás da capa)
+   e só começa a revelar quando o convite é aberto. */
+const Motion = (() => {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+  const rand = (a, b) => a + Math.random() * (b - a);
+  const watched = [];
+  let started = false;
+
+  // Marca elementos para animar; --d é o atraso, step escalona vários elementos
+  function tag(sel, classes, { delay = 0, step = 0 } = {}) {
+    $$(sel).forEach((el, i) => {
+      el.classList.add("js-anim", ...classes.split(" ").filter(Boolean));
+      el.style.setProperty("--d", `${(delay + i * step).toFixed(2)}s`);
+      watched.push(el);
+    });
+  }
+
+  // Traços SVG: normaliza o comprimento para poder "desenhá-los"
+  function draw(sel, opts) {
+    $$(sel).forEach((svg) =>
+      $$("circle, path, rect, line, polyline", svg).forEach((shape, k) => {
+        shape.setAttribute("pathLength", "1");
+        shape.style.setProperty("--k", k);
+      })
+    );
+    tag(sel, "draw", opts);
+  }
+
+  // Divide a citação em palavras que aparecem uma a uma
+  function splitWords(el) {
+    const words = el.textContent.trim().split(/\s+/);
+    el.textContent = "";
+    words.forEach((w, i) => {
+      const s = document.createElement("span");
+      s.className = "word";
+      s.style.setProperty("--i", i);
+      s.textContent = w;
+      el.append(s, " ");
+    });
+  }
+
+  function fireflies() {
+    const story = document.querySelector(".story");
+    if (!story) return;
+    const layer = document.createElement("div");
+    layer.className = "fireflies";
+    layer.setAttribute("aria-hidden", "true");
+    for (let i = 0; i < 18; i++) {
+      const f = document.createElement("span");
+      f.className = "firefly";
+      f.style.left = `${rand(4, 96)}%`;
+      f.style.top = `${rand(6, 94)}%`;
+      f.style.setProperty("--s", `${rand(2, 4.5).toFixed(1)}px`);
+      f.style.setProperty("--dx", `${rand(-30, 30).toFixed(0)}px`);
+      f.style.setProperty("--dy", `${rand(-40, 20).toFixed(0)}px`);
+      f.style.setProperty("--t", `${rand(6, 12).toFixed(1)}s`);
+      f.style.setProperty("--tw", `${rand(2.5, 5).toFixed(1)}s`);
+      f.style.setProperty("--dl", `${-rand(0, 5).toFixed(1)}s`);
+      layer.append(f);
+    }
+    story.prepend(layer);
+  }
+
+  function petals() {
+    const layer = document.createElement("div");
+    layer.className = "petals";
+    layer.setAttribute("aria-hidden", "true");
+    const tones = [["#F4F2E2", "#D6D49A"], ["#E8E6C2", "#BAB86C"], ["#FDFCF7", "#E3E1C4"], ["#DCDAA8", "#A6A35A"]];
+    const count = window.innerWidth < 500 ? 10 : 16;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement("span");
+      const [c1, c2] = tones[i % tones.length];
+      p.className = "petal";
+      p.style.setProperty("--x", `${rand(0, 100).toFixed(1)}vw`);
+      p.style.setProperty("--s", `${rand(9, 16).toFixed(0)}px`);
+      p.style.setProperty("--drift", `${rand(-18, 18).toFixed(0)}vw`);
+      p.style.setProperty("--spin", `${rand(-360, 360).toFixed(0)}deg`);
+      p.style.setProperty("--dur", `${rand(12, 22).toFixed(1)}s`);
+      p.style.setProperty("--delay", `${rand(0, 12).toFixed(1)}s`);
+      p.style.setProperty("--fl", `${rand(1.4, 3).toFixed(1)}s`);
+      p.style.setProperty("--o", rand(.5, .85).toFixed(2));
+      p.style.setProperty("--c1", c1);
+      p.style.setProperty("--c2", c2);
+      p.append(document.createElement("i"));
+      layer.append(p);
+    }
+    document.body.append(layer);
+  }
+
+  // Flores da abertura descem um pouco mais devagar que o scroll
+  function parallax() {
+    const flora = $$(".hero__flora");
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = Math.min(window.scrollY, 900);
+        flora.forEach((f) => (f.style.translate = `0 ${(y * 0.18).toFixed(1)}px`));
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+
+  function setup() {
+    // Abertura
+    tag(".hero__kicker", "reveal", { delay: .5 });
+    tag(".hero__mono", "write", { delay: .7 });
+    tag(".hero__text", "reveal", { delay: 1.3 });
+    draw(".rings", { delay: 1.6 });
+
+    // História
+    tag(".story__label", "spread", { delay: .1 });
+    tag(".story > svg", "vine", { delay: .2 });
+    tag(".story__img", "reveal reveal--zoom float", { delay: .3 });
+    $$(".story__quote").forEach(splitWords);
+    tag(".story__quote", "words");
+    fireflies();
+
+    // Calendário
+    tag(".calendar__title", "write");
+    tag(".calendar__flora--l", "reveal reveal--left sway", { delay: .3 });
+    tag(".calendar__flora--r", "reveal reveal--right sway", { delay: .3 });
+    tag(".calendar__week", "reveal reveal--fade", { delay: .1 });
+    $$("#calGrid li").forEach((li, i) =>
+      li.style.setProperty("--i", li.classList.contains("is-day") ? 46 : i)
+    );
+    tag("#calGrid", "pop-group");
+    tag(".calendar__bigday", "reveal reveal--fade", { delay: 1.4 });
+    draw(".calendar__bigday svg", { delay: 1.4 });
+    tag(".countdown__item", "reveal", { delay: .1, step: .12 });
+
+    // Confirmação
+    tag(".rsvp__img", "reveal reveal--left float", { delay: .1 });
+    tag(".rsvp__title, .rsvp__sub", "write", { delay: .2, step: .6 });
+    tag(".rsvp__form > :not(.rsvp__title):not(.rsvp__sub)", "reveal reveal--right", { delay: .7, step: .07 });
+
+    // Contribuições
+    tag(".gift__card", "reveal reveal--zoom shine");
+    draw(".gift__icon", { delay: .4 });
+    tag(".gift__title", "write", { delay: .6 });
+    tag(".gift__card > :not(.gift__icon):not(.divider):not(.gift__title)", "reveal", { delay: .5, step: .1 });
+    tag(".divider", "");
+
+    // Encerramento
+    tag(".closing__line", "grow");
+    tag(".closing__day, .closing__date, .closing__place, .closing__note", "reveal", { delay: .5, step: .15 });
+    tag(".closing__mono", "write", { delay: 1.2 });
+    tag(".closing__flora", "reveal sway", { delay: .2, step: .15 });
+  }
+
+  if (!reduce) setup();
+
+  return {
+    start() {
+      if (started) return;
+      started = true;
+      document.body.classList.add("is-opened");
+      if (reduce || !("IntersectionObserver" in window)) {
+        watched.forEach((el) => el.classList.add("is-in"));
+        return;
+      }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          e.target.classList.add("is-in");
+          io.unobserve(e.target);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+      watched.forEach((el) => io.observe(el));
+      petals();
+      parallax();
+    }
+  };
 })();
