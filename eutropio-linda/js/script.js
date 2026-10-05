@@ -2,7 +2,8 @@ const cover = document.getElementById('cover');
 const bird = document.getElementById('bird');
 const petalsBox = document.getElementById('petals');
 const audio = document.getElementById("wedding-music");
-
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
 
 async function tryPlayMusic() {
     if (!audio) return;
@@ -10,11 +11,9 @@ async function tryPlayMusic() {
       await audio.play();
       setMusicState(true);
     } catch (err) {
-      // Autoplay was blocked — leave it paused, the visible button lets
-      // the guest start it with a click.
       setMusicState(false);
     }
-  }
+}
   
 /* ---- Abertura espetacular: pétalas + portas florais que se abrem ---- */
 function spawnPetals(n) {
@@ -26,6 +25,25 @@ function spawnPetals(n) {
       `--dx:${(Math.random() - .5) * 240}px;--r:${Math.random() * 720 - 360}deg;` +
       `animation-duration:${4 + Math.random() * 4}s;animation-delay:${Math.random() * 2.5}s`;
     petalsBox.appendChild(p);
+  }
+}
+
+function setGuestName() {
+  const guestName = urlParams.get('guest');
+  const guestTable = urlParams.get('table');
+  console.log(guestTable)
+
+  const guestNameElement = document.querySelector('.guest-name');
+  
+  if (guestNameElement) {
+    const personSpan = guestNameElement.querySelector('.guest-person') || guestNameElement;
+    const tableSpan = guestNameElement.querySelector('.guest-table');
+
+    personSpan.textContent = guestName ? `${guestName}!` : 'Sem convidado definido';
+
+    if (tableSpan) {
+      tableSpan.textContent = guestTable ? `${guestTable}` : 'Mesa por ser definida';
+    }
   }
 }
 
@@ -41,6 +59,7 @@ function openInvite() {
   }, 2200);
   setTimeout(() => cover.remove(), 7000);
   tryPlayMusic();
+  setGuestName();
 }
 document.getElementById('seal').addEventListener('click', openInvite);
 
@@ -66,18 +85,17 @@ function target() {
 function fly() {
   t += .02;
   const g = target();
-  const tx = g.x + Math.sin(t * 2) * 14;        // pequena deriva natural
+  const tx = g.x + Math.sin(t * 2) * 14;
   const ty = g.y + Math.cos(t * 3) * 10;
   const dx = tx - cx, dy = ty - cy;
   cx += dx * .045; cy += dy * .045;
-  if (Math.abs(dx) > .6) dir += ((dx > 0 ? 1 : 1) - dir) * 1;   // vira suavemente
+  if (Math.abs(dx) > .6) dir += ((dx > 0 ? 1 : 1) - dir) * 1;
   angle += ((dy * .6 * dir) - angle) * .1;
   const a = Math.max(-25, Math.min(25, angle));
   bird.style.transform = `translate(${cx - 45}px,${cy - 30}px) scaleX(${dir}) `;
   requestAnimationFrame(fly);
 }
 fly();
-
 
 /* ---- Contagem decrescente (Luanda, UTC+1) ---- */
 const wedding = new Date('2026-10-30T14:00:00+01:00');
@@ -89,7 +107,7 @@ function tick() {
 tick(); setInterval(tick, 1000);
 
 /* ---- Confirmação de presença via WhatsApp ---- */
-const WHATSAPP = '244939751318'; // <-- troca pelo número dos noivos (indicativo + número, sem +)
+const WHATSAPP = '244939751318';
 document.getElementById('rsvpForm').addEventListener('submit', e => {
   e.preventDefault();
   const nome = document.getElementById('nome').value.trim();

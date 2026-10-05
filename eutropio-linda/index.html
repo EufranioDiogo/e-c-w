@@ -1,171 +1,240 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Eutrópio & Linda · 30 Outubro 2026</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="./css/style.css">
-</head>
-
-<body class="locked">
-
-  <!-- ABERTURA -->
-  <div class="cover" id="cover">
-    <div class="door left"><img src="assets/complete_floral.webp" alt=""></div>
-    <div class="door right"><img src="assets/complete_floral.webp" alt=""></div>
-    <button class="seal" id="seal" aria-label="Abrir convite">
-      <img src="assets/coral_header.png" alt="" class="seal-wreath">
-      <span class="seal-mono">E<i>|</i>L</span>
-    </button>
-    <p class="cover-hint">Toque para abrir o convite</p>
-    <div class="petals" id="petals"></div>
-  </div>
-
-  <!-- POMBA QUE VOA COM O SCROLL -->
-  <svg id="bird" viewBox="0 0 130 90" aria-hidden="true">
-    <g class="wing back">
-      <path d="M62 44C48 12 24 2 6 8c20 4 34 18 44 40z" />
-    </g>
-    <path class="body" d="M36 52c10-12 38-16 54-10l-2-10c6 2 8 8 6 12l22-10-18 22c-8 14-36 20-62 2z" />
-    <circle cx="99" cy="38" r="1.6" fill="#555" />
-    <g class="wing front">
-      <path d="M70 48C60 14 82 0 112 2c-18 8-26 22-30 48z" />
-    </g>
-  </svg>
-
-  <main id="invite">
-    <audio id="wedding-music" loop preload="auto">
-      <source src="./resources/audio/risk_it_all.mp3" type="audio/mpeg">
-    </audio>
-    <section class="hero">
-      <div class="wreath reveal">
-        <img src="assets/coral_header.png" alt="">
-        <span class="mono">E<i>|</i>L</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eutrópio & Linda · 30 Outubro 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class="locked">
+    <!-- ABERTURA -->
+    <div class="cover" id="cover">
+      <div class="door left">
+        <img src="assets/complete_floral.webp" alt="" />
       </div>
-      <p class="small reveal">COM ENORME PRAZER</p>
-      <h1 class="names reveal"><span>Eutrópio</span><em>&amp;</em><span>Linda</span></h1>
-      <p class="invite-line reveal">CONVIDAM-TE A CELEBRAR O SEU CASAMENTO</p>
-      <div class="divider reveal"><span></span><b>⚜</b><span></span></div>
-      <p class="date reveal">30 <i>·</i> <em>Outubro</em> <i>·</i> 2026</p>
-    </section>
-
-    <section class="flowers">
-      <img class="fl l" src="assets/complete_floral.webp" alt="">
-      <img class="fl r" src="assets/complete_floral.webp" alt="">
-    </section>
-
-    <section class="info">
-      <div class="doves reveal">
-        <img src="assets/love_birds_GOLD.png" alt="">
-        <img class="cloud" src="assets/s.webp" alt="">
+      <div class="door right">
+        <img src="assets/complete_floral.webp" alt="" />
       </div>
-      <h2 class="reveal">INFORMAÇÕES SOBRE O DIA</h2>
-
-      <div class="event">
-        <article class="card reveal">
-          <img class="peony" src="assets/card_floral_green.webp" alt="">
-          <span class="ico">⚭</span>
-          <h3 class="time">09h00</h3>
-          <h4>Cerimónia Civil</h4>
-          <p class="loc"><b>Localização</b> 2ª Conservatória de Luanda, Vila Alice, Rua da Liberdade<br></p>
-          <a class="btn" href="https://maps.app.goo.gl/5cjstiouiRZja1Rm8" target="_blank">VER NO MAPA</a>
-        </article>
-        <figure class="reveal"><img src="assets/couple_togther.png" alt="">
-          <figcaption>Esse será o momento em que Deus unirá o nosso amor, a chegar para sempre.</figcaption>
-        </figure>
-      </div>
-
-      <div class="vline"></div>
-
-      <div class="event flip">
-        <article class="card reveal">
-          <img class="peony" src="assets/card_floral_green.webp" alt="">
-          <span class="ico">✎</span>
-          <h3 class="time">20h00</h3>
-          <h4>Copo de Água</h4>
-          <p class="loc"><b>Localização</b>Restaurante Sacolão, Vila Alice, Rua da Liberdade<br>(Junto à Casa 70)</p>
-          <a class="btn" href="https://maps.app.goo.gl/zSqBca54SD1GSpi77" target="_blank">VER NO MAPA</a>
-        </article>
-        <figure class="reveal"><img src="assets/couple_dancing.png" alt="">
-          <figcaption>Prometemos muito amor e festa num momento que vai ficar na nossa memória.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-
-    <section class="block count reveal">
-      <h2>FALTAM</h2>
-      <div class="timer" id="timer">
-        <div><b id="d">0</b><span>dias</span></div>
-        <div><b id="h">0</b><span>horas</span></div>
-        <div><b id="m">0</b><span>min</span></div>
-        <div><b id="s">0</b><span>seg</span></div>
-      </div>
-    </section>
-
-    <section class="block reveal">
-      <h2>DRESS CODE</h2>
-      <p class="txt">Traje social. Sugerimos tons suaves e naturais, e pedimos que se evite o branco, reservado à noiva.
-      </p>
-      <div class="swatches"><i style="background:#9aa65a"></i><i style="background:#c2a15a"></i><i
-          style="background:#e9f0d0"></i><i style="background:#7a98a0"></i><i style="background:#d9c7cc"></i></div>
-    </section>
-
-    <section class="block reveal">
-      <h2>INFORMAÇÕES ÚTEIS</h2>
-      <div class="tips">
-        <div><b>Pontualidade</b>
-          <p>Pedimos que chegues 15 minutos antes da cerimónia.</p>
-        </div>
-        <div><b>Estacionamento</b>
-          <p>Haverá estacionamento junto ao local.</p>
-        </div>
-        <div><b>Fotografias</b>
-          <p>Vive o momento connosco. Os fotógrafos tratarão das memórias.</p>
-        </div>
-        <div><b>Presentes</b>
-          <p>A tua presença é o nosso maior presente. Se quiseres oferecer algo, fala connosco.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="block rsvp reveal" id="rsvp">
-      <h2>CONFIRMA A TUA PRESENÇA</h2>
-      <p class="txt">Por favor, confirma até <em>15 de Outubro</em>.</p>
-      <form id="rsvpForm">
-        <input id="nome" placeholder="O teu nome completo" required>
-        <select id="pessoas">
-          <option value="1">1 pessoa</option>
-          <option value="2">2 pessoas</option>
-        </select>
-        <div class="choice">
-          <label><input type="radio" name="p" value="vou estar presente" checked><span>Estarei presente</span></label>
-          <label><input type="radio" name="p" value="não poderei comparecer"><span>Não poderei ir</span></label>
-        </div>
-        <textarea id="msg" rows="3" placeholder="Uma mensagem para os noivos (opcional)"></textarea>
-        <button class="btn solid" type="submit">ENVIAR POR WHATSAPP</button>
-      </form>
-    </section>
-
-    <footer class="end reveal">
-      <div class="wreath small-w"><img src="assets/coral_header.png" alt=""><span class="mono">E<i>|</i>L</span></div>
-      <p class="thanks">Contamos contigo!</p>
-    </footer>
-
-    <div class="amor-ao-footer">
-      <p class="made-by-label">Feito por</p>
-      <a href="https://www.amor.ao/" target="_blank">
-        <img class="made-by-logo" src="./assets/logo_amor.png" alt="">
-      </a>
+      <button class="seal" id="seal" aria-label="Abrir convite">
+        <img src="assets/coral_header.png" alt="" class="seal-wreath" />
+        <span class="seal-mono">E<i>|</i>L</span>
+      </button>
+      <p class="cover-hint">Toque para abrir o convite</p>
+      <div class="petals" id="petals"></div>
     </div>
-  </main>
 
-  <script src="./js/script.js"></script>
-</body>
+    <!-- POMBA QUE VOA COM O SCROLL -->
+    <svg id="bird" viewBox="0 0 130 90" aria-hidden="true">
+      <g class="wing back">
+        <path d="M62 44C48 12 24 2 6 8c20 4 34 18 44 40z" />
+      </g>
+      <path
+        class="body"
+        d="M36 52c10-12 38-16 54-10l-2-10c6 2 8 8 6 12l22-10-18 22c-8 14-36 20-62 2z"
+      />
+      <circle cx="99" cy="38" r="1.6" fill="#555" />
+      <g class="wing front">
+        <path d="M70 48C60 14 82 0 112 2c-18 8-26 22-30 48z" />
+      </g>
+    </svg>
 
+    <main id="invite">
+      <audio id="wedding-music" loop preload="auto">
+        <source src="./resources/audio/love_me_tender.mp3" type="audio/mpeg" />
+      </audio>
+      <section class="hero">
+        <div class="wreath reveal">
+          <img src="assets/coral_header.png" alt="" />
+          <span class="mono">E<i>|</i>L</span>
+        </div>
+        <p class="small reveal">COM ENORME PRAZER</p>
+        <h1 class="names reveal">
+          <span>Eutrópio</span><em>&amp;</em><span>Linda</span>
+        </h1>
+        <p class="invite-line reveal">TÊM A HONRA DE CONVIDAR</p>
+
+        <div class="date reveal guest-name">
+          <span class="guest-person"></span>
+          <span class="guest-table"></span>
+        </div>
+        <p class="invite-line reveal">PARA CELEBRAR O SEU CASAMENTO</p>
+
+        <div class="divider reveal"><span></span><b>⚜</b><span></span></div>
+        <p class="date reveal">31 <i>·</i> <em>Outubro</em> <i>·</i> 2026</p>
+      </section>
+
+      <section class="flowers">
+        <img class="fl l" src="assets/complete_floral.webp" alt="" />
+        <img class="fl r" src="assets/complete_floral.webp" alt="" />
+      </section>
+
+      <section class="info">
+        <div class="doves reveal">
+          <img src="assets/love_birds_GOLD.png" alt="" />
+          <img class="cloud" src="assets/s.webp" alt="" />
+        </div>
+        <h2 class="reveal">INFORMAÇÕES SOBRE O DIA</h2>
+
+        <div class="event">
+          <article class="card reveal">
+            <img class="peony" src="assets/card_floral_green.webp" alt="" />
+            <span class="ico">⚭</span>
+            <h3 class="time">09h00</h3>
+            <h4>Cerimónia Civil</h4>
+            <p class="loc">
+              <b>Localização</b>2ª Conservatória de Luanda, Vila Alice, Rua da Liberdade<br />
+            </p>
+            <a class="btn" href="https://maps.app.goo.gl/cvhVEuezCXpANczr8" target="_blank">VER NO MAPA</a>
+          </article>
+          <figure class="reveal">
+            <div class="couple_img_container">
+              <img
+                id="couple_img_1"
+                class="couple_img"
+                src="resources/couple_img_1.png"
+                alt=""
+              />
+              <div class="couple_img_container_inner"></div>
+            </div>
+            <figcaption>
+              Esse será o momento em que Deus unirá o nosso amor, a chegar para
+              sempre.
+            </figcaption>
+          </figure>
+        </div>
+
+        <div class="vline"></div>
+
+        <div class="event flip">
+          <article class="card reveal">
+            <img class="peony" src="assets/card_floral_green.webp" alt="" />
+            <span class="ico">✎</span>
+            <h3 class="time">20h00</h3>
+            <h4>Copo de Água</h4>
+            <p class="loc">
+              <b>Localização</b>Salão Sacolão, Vila Alice, Rua da Liberdade<br />
+            </p>
+            <a class="btn" href="https://maps.app.goo.gl/iPS8KdggKy83h7RA6" target="_blank">VER NO MAPA</a>
+          </article>
+          <figure class="reveal">
+            <div class="couple_img_container couple_img_container_2">
+              <img
+                id="couple_img_2"
+                class="couple_img"
+                src="resources/couple_img_2.png"
+                alt=""
+              />
+              <div class="couple_img_container_inner"></div>
+            </div>
+
+            <figcaption>
+              Prometemos muito amor e festa num momento que vai ficar na nossa
+              memória.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="block count reveal">
+        <h2>FALTAM</h2>
+        <div class="timer" id="timer">
+          <div><b id="d">0</b><span>dias</span></div>
+          <div><b id="h">0</b><span>horas</span></div>
+          <div><b id="m">0</b><span>min</span></div>
+          <div><b id="s">0</b><span>seg</span></div>
+        </div>
+      </section>
+
+      <section class="block reveal">
+        <h2>DRESS CODE</h2>
+        <p class="txt">
+          Traje social. Sugerimos tons suaves e naturais, e pedimos que se evite
+          o branco, reservado à noiva.
+        </p>
+        <div class="swatches">
+          <i style="background: #9aa65a"></i><i style="background: #c2a15a"></i
+          ><i style="background: #e9f0d0"></i><i style="background: #7a98a0"></i
+          ><i style="background: #d9c7cc"></i>
+        </div>
+      </section>
+
+      <section class="block reveal">
+        <h2>INFORMAÇÕES ÚTEIS</h2>
+        <div class="tips">
+          <div>
+            <b>Pontualidade</b>
+            <p>Pedimos que chegues 15 minutos antes da cerimónia.</p>
+          </div>
+          <div>
+            <b>Estacionamento</b>
+            <p>Haverá estacionamento junto ao local.</p>
+          </div>
+          <div>
+            <b>Fotografias</b>
+            <p>Vive o momento connosco. Os fotógrafos tratarão das memórias.</p>
+          </div>
+          <div>
+            <b>Presentes</b>
+            <p>
+              A tua presença é o nosso maior presente. Se quiseres oferecer
+              algo, fala connosco.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="block rsvp reveal" id="rsvp">
+        <h2>CONFIRMA A TUA PRESENÇA</h2>
+        <p class="txt">Por favor, confirma até <em>15 de Outubro</em>.</p>
+        <form id="rsvpForm">
+          <input id="nome" placeholder="O teu nome completo" required />
+          <select id="pessoas">
+            <option value="1">1 pessoa</option>
+            <option value="2">2 pessoas</option>
+            <option value="3">3 pessoas</option>
+            <option value="4">4 pessoas</option>
+          </select>
+          <div class="choice">
+            <label
+              ><input
+                type="radio"
+                name="p"
+                value="vou estar presente"
+                checked
+              /><span>Estarei presente</span></label
+            >
+            <label
+              ><input
+                type="radio"
+                name="p"
+                value="não poderei comparecer"
+              /><span>Não poderei ir</span></label
+            >
+          </div>
+          <textarea
+            id="msg"
+            rows="3"
+            placeholder="Uma mensagem para os noivos (opcional)"
+          ></textarea>
+          <button class="btn solid" type="submit">ENVIAR POR WHATSAPP</button>
+        </form>
+      </section>
+
+      <footer class="end reveal">
+        <div class="wreath small-w">
+          <img src="assets/coral_header.png" alt="" /><span class="mono"
+            >E<i>|</i>L</span
+          >
+        </div>
+        <p class="thanks">Contamos contigo!</p>
+      </footer>
+    </main>
+
+    <script src="./js/script.js"></script>
+  </body>
 </html>
