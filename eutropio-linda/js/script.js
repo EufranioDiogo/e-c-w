@@ -107,7 +107,7 @@ function tick() {
 tick(); setInterval(tick, 1000);
 
 /* ---- Confirmação de presença via WhatsApp ---- */
-const WHATSAPP = '244939751318';
+const WHATSAPP = '244975598874';
 document.getElementById('rsvpForm').addEventListener('submit', e => {
   e.preventDefault();
   const nome = document.getElementById('nome').value.trim();
