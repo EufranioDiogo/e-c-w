@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lista de Convidados — Amor.ao</title>
+<meta name="description" content="Gestão dos convidados e convites do casamento">
+<style>
+:root {
+  --bg: #f7f5f0;
+  --card: #ffffff;
+  --text: #2f302d;
+  --muted: #777a73;
+  --line: #e7e4dc;
+  --gold: #b39a5b;
+  --gold-dark: #8f773e;
+  --gold-soft: #f4efdf;
+  --success: #477a5c;
+  --shadow: 0 12px 35px rgba(45,40,28,.07);
+}
+* { box-sizing:border-box; }
+body {
+  margin:0; background:var(--bg); color:var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.page { max-width:1180px; margin:auto; padding:36px 20px 60px; }
+.hero {
+  background:linear-gradient(135deg,#fffdf8,#f3eee1);
+  border:1px solid #e8e0ce; border-radius:28px; padding:34px;
+  box-shadow:var(--shadow); margin-bottom:24px;
+}
+.brand { color:var(--gold-dark); letter-spacing:.22em; text-transform:uppercase; font-size:12px; font-weight:700; }
+h1 { margin:8px 0 8px; font-family:Georgia,serif; font-weight:500; font-size:clamp(30px,5vw,48px); }
+.subtitle { color:var(--muted); margin:0; max-width:720px; line-height:1.6; }
+.stats { display:flex; gap:12px; flex-wrap:wrap; margin-top:24px; }
+.stat { background:#fff; border:1px solid var(--line); border-radius:16px; padding:12px 16px; }
+.stat strong { display:block; font-size:20px; }
+.stat span { color:var(--muted); font-size:12px; }
+.toolbar {
+  position:sticky; top:12px; z-index:10; background:rgba(247,245,240,.88);
+  backdrop-filter:blur(12px); padding:10px 0 16px;
+}
+.search {
+  width:100%; border:1px solid var(--line); background:#fff; border-radius:16px;
+  padding:15px 18px; font-size:15px; outline:none; box-shadow:0 6px 18px rgba(45,40,28,.04);
+}
+.search:focus { border-color:var(--gold); box-shadow:0 0 0 4px rgba(179,154,91,.12); }
+.mesa-card {
+  background:var(--card); border:1px solid var(--line); border-radius:22px;
+  overflow:hidden; margin:18px 0; box-shadow:var(--shadow);
+}
+.mesa-header {
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  padding:22px 24px; background:#fffdf9; border-bottom:1px solid var(--line);
+}
+.mesa-number { color:var(--gold-dark); font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.12em; }
+.mesa-header h2 { margin:5px 0 0; font:500 21px Georgia,serif; }
+.guest-count { white-space:nowrap; color:var(--gold-dark); background:var(--gold-soft); padding:8px 11px; border-radius:999px; font-size:12px; font-weight:700; }
+.table-wrap { overflow-x:auto; }
+table { width:100%; border-collapse:collapse; min-width:560px; }
+th,td { padding:15px 20px; text-align:left; border-bottom:1px solid #f0eee9; }
+th { color:var(--muted); font-size:11px; text-transform:uppercase; letter-spacing:.08em; background:#fcfbf8; }
+td.num { width:70px; color:var(--muted); }
+td.guest-name { font-weight:600; }
+tr:last-child td { border-bottom:0; }
+.copy-btn {
+  border:0; background:#2f302d; color:#fff; border-radius:11px; padding:10px 14px;
+  cursor:pointer; font-weight:700; font-size:13px; display:inline-flex; gap:8px; align-items:center;
+  transition:.2s ease;
+}
+.copy-btn:hover { transform:translateY(-1px); background:#171815; }
+.copy-btn.copied { background:var(--success); }
+.copy-icon { font-size:16px; line-height:1; }
+.empty {
+  display:none; text-align:center; color:var(--muted); padding:36px;
+  background:#fff; border:1px dashed var(--line); border-radius:18px;
+}
+.footer { text-align:center; color:var(--muted); font-size:12px; padding-top:28px; }
+@media(max-width:640px) {
+  .page { padding:20px 12px 40px; }
+  .hero { padding:25px 20px; border-radius:22px; }
+  .mesa-header { padding:18px; align-items:flex-start; }
+  th,td { padding:13px 14px; }
+  .copy-btn span:last-child { display:none; }
+  .copy-btn { width:42px; height:42px; justify-content:center; padding:0; }
+}
+</style>
+</head>
+<body>
+<main class="page">
+  <section class="hero">
+    <div class="brand">amor.ao · gestão do casamento</div>
+    <h1>Lista de Convidados</h1>
+    <p class="subtitle">Consulte os convidados por mesa e copie o convite individual com um único clique. Os links completos ficam ocultos para manter a lista limpa e fácil de utilizar.</p>
+    <div class="stats">
+      <div class="stat"><strong>46</strong><span>Convidados</span></div>
+      <div class="stat"><strong>7</strong><span>Mesas</span></div>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <input id="search" class="search" type="search" placeholder="Pesquisar convidado..." aria-label="Pesquisar convidado">
+  </div>
+
+  <div id="tables">
+    
+      <section class="mesa-card" data-mesa="1ª MESA">
+        <div class="mesa-header">
+          <div>
+            <span class="mesa-number">1ª MESA</span>
+            <h2>A/P INTERNACIONAL PAULO TEXEIRA JORGE (CATUMBELA)</h2>
+          </div>
+          <span class="guest-count">11 convidados</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Nº</th><th>Convidado</th><th>Ação</th></tr>
+            </thead>
+            <tbody>
+              
+        <tr data-name="victoriano &amp; iana magalhães">
+          <td class="num">1</td>
+          <td class="guest-name">VICTORIANO &amp; IANA MAGALHÃES</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=VICTORIANO%20%26%20IANA%20MAGALH%C3%83ES&amp;table=1%C2%AA%20MESA%20-%20A/P%20INTERNACIONAL%20PAULO%20TEXEIRA%20JORGE%20%28CATUMBELA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="carlos &amp; dulce filipe">
+          <td class="num">2</td>
+          <td class="guest-name">CARLOS &amp; DULCE FILIPE</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=CARLOS%20%26%20DULCE%20FILIPE&amp;table=1%C2%AA%20MESA%20-%20A/P%20INTERNACIONAL%20PAULO%20TEXEIRA%20JORGE%20%28CATUMBELA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="anabela salvador &amp; maria manuel">
+          <td class="num">3</td>
+          <td class="guest-name">ANABELA SALVADOR &amp; MARIA MANUEL</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=ANABELA%20SALVADOR%20%26%20MARIA%20MANUEL&amp;table=1%C2%AA%20MESA%20-%20A/P%20INTERNACIONAL%20PAULO%20TEXEIRA%20JORGE%20%28CATUMBELA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="nicolau antónio &amp; ledema do nascimento">
+          <td class="num">4</td>
+          <td class="guest-name">NICOLAU ANTÓNIO &amp; LEDEMA DO NASCIMENTO</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=NICOLAU%20ANT%C3%93NIO%20%26%20LEDEMA%20DO%20NASCIMENTO&amp;table=1%C2%AA%20MESA%20-%20A/P%20INTERNACIONAL%20PAULO%20TEXEIRA%20JORGE%20%28CATUMBELA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="teresa manuel francisco">
+          <td class="num">5</td>
+          <td class="guest-name">TERESA MANUEL FRANCISCO</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=TERESA%20MANUEL%20FRANCISCO&amp;table=1%C2%AA%20MESA%20-%20A/P%20INTERNACIONAL%20PAULO%20TEXEIRA%20JORGE%20%28CATUMBELA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="leonel lutumba &amp; celma nascimento">
+          <td class="num">6</td>
+          <td class="guest-name">LEONEL LUTUMBA &amp; CELMA NASCIMENTO</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=LEONEL%20LUTUMBA%20%26%20CELMA%20NASCIMENTO&amp;table=1%C2%AA%20MESA%20-%20A/P%20INTERNACIONAL%20PAULO%20TEXEIRA%20JORGE%20%28CATUMBELA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="branca manuel">
+          <td class="num">7</td>
+          <td class="guest-name">BRANCA MANUEL</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=BRANCA%20MANUEL&amp;table=1%C2%AA%20MESA%20-%20A/P%20INTERNACIONAL%20PAULO%20TEXEIRA%20JORGE%20%28CATUMBELA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="gelson francisco &amp; cristina tongue">
+          <td class="num">8</td>
+          <td class="guest-name">GELSON FRANCISCO &amp; CRISTINA TONGUE</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=GELSON%20FRANCISCO%20%26%20CRISTINA%20TONGUE&amp;table=1%C2%AA%20MESA%20-%20A/P%20INTERNACIONAL%20PAULO%20TEXEIRA%20JORGE%20%28CATUMBELA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="antónio francisco &amp; maria jancinto">
+          <td class="num">9</td>
+          <td class="guest-name">ANTÓNIO FRANCISCO &amp; MARIA JANCINTO</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=ANT%C3%93NIO%20FRANCISCO%20%26%20MARIA%20JANCINTO&amp;table=1%C2%AA%20MESA%20-%20A/P%20INTERNACIONAL%20PAULO%20TEXEIRA%20JORGE%20%28CATUMBELA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="jesus &amp; teresa venâncio">
+          <td class="num">10</td>
+          <td class="guest-name">JESUS &amp; TERESA VENÂNCIO</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=JESUS%20%26%20TERESA%20VEN%C3%82NCIO&amp;table=1%C2%AA%20MESA%20-%20A/P%20INTERNACIONAL%20PAULO%20TEXEIRA%20JORGE%20%28CATUMBELA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="maria helena &amp; acompanhante">
+          <td class="num">11</td>
+          <td class="guest-name">MARIA HELENA &amp; ACOMPANHANTE</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=MARIA%20HELENA%20%26%20ACOMPANHANTE&amp;table=1%C2%AA%20MESA%20-%20A/P%20INTERNACIONAL%20PAULO%20TEXEIRA%20JORGE%20%28CATUMBELA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    
+      <section class="mesa-card" data-mesa="2ª MESA">
+        <div class="mesa-header">
+          <div>
+            <span class="mesa-number">2ª MESA</span>
+            <h2>A/P WELWITSCHIA MIRABILIS (MOÇÂMEDES)</h2>
+          </div>
+          <span class="guest-count">11 convidados</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Nº</th><th>Convidado</th><th>Ação</th></tr>
+            </thead>
+            <tbody>
+              
+        <tr data-name="alberto &amp; marília estevão">
+          <td class="num">1</td>
+          <td class="guest-name">ALBERTO &amp; MARÍLIA ESTEVÃO</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=ALBERTO%20%26%20MAR%C3%8DLIA%20ESTEV%C3%83O&amp;table=2%C2%AA%20MESA%20-%20A/P%20WELWITSCHIA%20MIRABILIS%20%28MO%C3%87%C3%82MEDES%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="amélia coimbra diogo">
+          <td class="num">2</td>
+          <td class="guest-name">AMÉLIA COIMBRA DIOGO</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=AM%C3%89LIA%20COIMBRA%20DIOGO&amp;table=2%C2%AA%20MESA%20-%20A/P%20WELWITSCHIA%20MIRABILIS%20%28MO%C3%87%C3%82MEDES%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="eleutério &amp; helga valente">
+          <td class="num">3</td>
+          <td class="guest-name">ELEUTÉRIO &amp; HELGA VALENTE</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=ELEUT%C3%89RIO%20%26%20HELGA%20VALENTE&amp;table=2%C2%AA%20MESA%20-%20A/P%20WELWITSCHIA%20MIRABILIS%20%28MO%C3%87%C3%82MEDES%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="adriano &amp; claudeth fernandes">
+          <td class="num">4</td>
+          <td class="guest-name">ADRIANO &amp; CLAUDETH FERNANDES</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=ADRIANO%20%26%20CLAUDETH%20FERNANDES&amp;table=2%C2%AA%20MESA%20-%20A/P%20WELWITSCHIA%20MIRABILIS%20%28MO%C3%87%C3%82MEDES%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="helder &amp; amélia cordeiro alves">
+          <td class="num">5</td>
+          <td class="guest-name">HELDER &amp; AMÉLIA CORDEIRO ALVES</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=HELDER%20%26%20AM%C3%89LIA%20CORDEIRO%20ALVES&amp;table=2%C2%AA%20MESA%20-%20A/P%20WELWITSCHIA%20MIRABILIS%20%28MO%C3%87%C3%82MEDES%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="narcíso &amp; paula fortunato">
+          <td class="num">6</td>
+          <td class="guest-name">NARCÍSO &amp; PAULA FORTUNATO</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=NARC%C3%8DSO%20%26%20PAULA%20FORTUNATO&amp;table=2%C2%AA%20MESA%20-%20A/P%20WELWITSCHIA%20MIRABILIS%20%28MO%C3%87%C3%82MEDES%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="ary &amp; mariquinhas da silva">
+          <td class="num">7</td>
+          <td class="guest-name">ARY &amp; MARIQUINHAS DA SILVA</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=ARY%20%26%20MARIQUINHAS%20DA%20SILVA&amp;table=2%C2%AA%20MESA%20-%20A/P%20WELWITSCHIA%20MIRABILIS%20%28MO%C3%87%C3%82MEDES%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="marcos caetano &amp; suzana samacongo">
+          <td class="num">8</td>
+          <td class="guest-name">MARCOS CAETANO &amp; SUZANA SAMACONGO</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=MARCOS%20CAETANO%20%26%20SUZANA%20SAMACONGO&amp;table=2%C2%AA%20MESA%20-%20A/P%20WELWITSCHIA%20MIRABILIS%20%28MO%C3%87%C3%82MEDES%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="hevlin valente">
+          <td class="num">9</td>
+          <td class="guest-name">HEVLIN VALENTE</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=HEVLIN%20VALENTE&amp;table=2%C2%AA%20MESA%20-%20A/P%20WELWITSCHIA%20MIRABILIS%20%28MO%C3%87%C3%82MEDES%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="eufránio diogo &amp; creuma matias">
+          <td class="num">10</td>
+          <td class="guest-name">EUFRÁNIO DIOGO &amp; CREUMA MATIAS</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=EUFR%C3%81NIO%20DIOGO%20%26%20CREUMA%20MATIAS&amp;table=2%C2%AA%20MESA%20-%20A/P%20WELWITSCHIA%20MIRABILIS%20%28MO%C3%87%C3%82MEDES%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="jaime coimbra &amp; francisca leite">
+          <td class="num">11</td>
+          <td class="guest-name">JAIME COIMBRA &amp; FRANCISCA LEITE</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=JAIME%20COIMBRA%20%26%20FRANCISCA%20LEITE&amp;table=2%C2%AA%20MESA%20-%20A/P%20WELWITSCHIA%20MIRABILIS%20%28MO%C3%87%C3%82MEDES%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    
+      <section class="mesa-card" data-mesa="3ª MESA">
+        <div class="mesa-header">
+          <div>
+            <span class="mesa-number">3ª MESA</span>
+            <h2>A/P MARIA MAMBO CAFÉ (CABINDA)</h2>
+          </div>
+          <span class="guest-count">5 convidados</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Nº</th><th>Convidado</th><th>Ação</th></tr>
+            </thead>
+            <tbody>
+              
+        <tr data-name="claudriana &amp; nilza fernandes">
+          <td class="num">1</td>
+          <td class="guest-name">CLAUDRIANA &amp; NILZA FERNANDES</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=CLAUDRIANA%20%26%20NILZA%20FERNANDES&amp;table=3%C2%AA%20MESA%20-%20A/P%20MARIA%20MAMBO%20CAF%C3%89%20%28CABINDA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="david &amp; otoniel fernandes">
+          <td class="num">2</td>
+          <td class="guest-name">DAVID &amp; OTONIEL FERNANDES</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=DAVID%20%26%20OTONIEL%20FERNANDES&amp;table=3%C2%AA%20MESA%20-%20A/P%20MARIA%20MAMBO%20CAF%C3%89%20%28CABINDA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="lupércio &amp; laerson fortunato">
+          <td class="num">3</td>
+          <td class="guest-name">LUPÉRCIO &amp; LAERSON FORTUNATO</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=LUP%C3%89RCIO%20%26%20LAERSON%20FORTUNATO&amp;table=3%C2%AA%20MESA%20-%20A/P%20MARIA%20MAMBO%20CAF%C3%89%20%28CABINDA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="zara diogo">
+          <td class="num">4</td>
+          <td class="guest-name">ZARA DIOGO</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=ZARA%20DIOGO&amp;table=3%C2%AA%20MESA%20-%20A/P%20MARIA%20MAMBO%20CAF%C3%89%20%28CABINDA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="gabriela valente">
+          <td class="num">5</td>
+          <td class="guest-name">GABRIELA VALENTE</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=GABRIELA%20VALENTE&amp;table=3%C2%AA%20MESA%20-%20A/P%20MARIA%20MAMBO%20CAF%C3%89%20%28CABINDA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    
+      <section class="mesa-card" data-mesa="4ª MESA">
+        <div class="mesa-header">
+          <div>
+            <span class="mesa-number">4ª MESA</span>
+            <h2>A/P ALBANO MACHADO (HUAMBO)</h2>
+          </div>
+          <span class="guest-count">5 convidados</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Nº</th><th>Convidado</th><th>Ação</th></tr>
+            </thead>
+            <tbody>
+              
+        <tr data-name="lúcia belengue">
+          <td class="num">1</td>
+          <td class="guest-name">LÚCIA BELENGUE</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=L%C3%9ACIA%20BELENGUE&amp;table=4%C2%AA%20MESA%20-%20A/P%20ALBANO%20MACHADO%20%28HUAMBO%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="rita belengue &amp; joão félix">
+          <td class="num">2</td>
+          <td class="guest-name">RITA BELENGUE &amp; JOÃO FÉLIX</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=RITA%20BELENGUE%20%26%20JO%C3%83O%20F%C3%89LIX&amp;table=4%C2%AA%20MESA%20-%20A/P%20ALBANO%20MACHADO%20%28HUAMBO%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="afonso &amp; dionísia kapenda">
+          <td class="num">3</td>
+          <td class="guest-name">AFONSO &amp; DIONÍSIA KAPENDA</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=AFONSO%20%26%20DION%C3%8DSIA%20KAPENDA&amp;table=4%C2%AA%20MESA%20-%20A/P%20ALBANO%20MACHADO%20%28HUAMBO%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="anselmo &amp; arieth cudila">
+          <td class="num">4</td>
+          <td class="guest-name">ANSELMO &amp; ARIETH CUDILA</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=ANSELMO%20%26%20ARIETH%20CUDILA&amp;table=4%C2%AA%20MESA%20-%20A/P%20ALBANO%20MACHADO%20%28HUAMBO%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="abel belengue">
+          <td class="num">5</td>
+          <td class="guest-name">ABEL BELENGUE</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=ABEL%20BELENGUE&amp;table=4%C2%AA%20MESA%20-%20A/P%20ALBANO%20MACHADO%20%28HUAMBO%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    
+      <section class="mesa-card" data-mesa="5ª MESA">
+        <div class="mesa-header">
+          <div>
+            <span class="mesa-number">5ª MESA</span>
+            <h2>A/P INTERNACIONAL 4º DE FEVEREIRO (LUANDA)</h2>
+          </div>
+          <span class="guest-count">4 convidados</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Nº</th><th>Convidado</th><th>Ação</th></tr>
+            </thead>
+            <tbody>
+              
+        <tr data-name="alcides &amp; teresa simão">
+          <td class="num">1</td>
+          <td class="guest-name">ALCIDES &amp; TERESA SIMÃO</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=ALCIDES%20%26%20TERESA%20SIM%C3%83O&amp;table=5%C2%AA%20MESA%20-%20A/P%20INTERNACIONAL%204%C2%BA%20DE%20FEVEREIRO%20%28LUANDA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="francisco &amp; lizete vicente">
+          <td class="num">2</td>
+          <td class="guest-name">FRANCISCO &amp; LIZETE VICENTE</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=FRANCISCO%20%26%20LIZETE%20VICENTE&amp;table=5%C2%AA%20MESA%20-%20A/P%20INTERNACIONAL%204%C2%BA%20DE%20FEVEREIRO%20%28LUANDA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="adérito &amp; florinda samuel">
+          <td class="num">3</td>
+          <td class="guest-name">ADÉRITO &amp; FLORINDA SAMUEL</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=AD%C3%89RITO%20%26%20FLORINDA%20SAMUEL&amp;table=5%C2%AA%20MESA%20-%20A/P%20INTERNACIONAL%204%C2%BA%20DE%20FEVEREIRO%20%28LUANDA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="joão paulo &amp; manuela mavila">
+          <td class="num">4</td>
+          <td class="guest-name">JOÃO PAULO &amp; MANUELA MAVILA</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=JO%C3%83O%20PAULO%20%26%20MANUELA%20MAVILA&amp;table=5%C2%AA%20MESA%20-%20A/P%20INTERNACIONAL%204%C2%BA%20DE%20FEVEREIRO%20%28LUANDA%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    
+      <section class="mesa-card" data-mesa="6ª MESA">
+        <div class="mesa-header">
+          <div>
+            <span class="mesa-number">6ª MESA</span>
+            <h2>A/P COMANDANTE NDOZI (SOYO)</h2>
+          </div>
+          <span class="guest-count">4 convidados</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Nº</th><th>Convidado</th><th>Ação</th></tr>
+            </thead>
+            <tbody>
+              
+        <tr data-name="claver anjo &amp; silvina bunga">
+          <td class="num">1</td>
+          <td class="guest-name">CLAVER ANJO &amp; SILVINA BUNGA</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=CLAVER%20ANJO%20%26%20SILVINA%20BUNGA&amp;table=6%C2%AA%20MESA%20-%20A/P%20COMANDANTE%20NDOZI%20%28SOYO%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="wilson &amp; miquelina faustino">
+          <td class="num">2</td>
+          <td class="guest-name">WILSON &amp; MIQUELINA FAUSTINO</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=WILSON%20%26%20MIQUELINA%20FAUSTINO&amp;table=6%C2%AA%20MESA%20-%20A/P%20COMANDANTE%20NDOZI%20%28SOYO%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="daniel alves &amp; acompanhante">
+          <td class="num">3</td>
+          <td class="guest-name">DANIEL ALVES &amp; ACOMPANHANTE</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=DANIEL%20ALVES%20%26%20ACOMPANHANTE&amp;table=6%C2%AA%20MESA%20-%20A/P%20COMANDANTE%20NDOZI%20%28SOYO%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="maria joão &amp; acompanhante">
+          <td class="num">4</td>
+          <td class="guest-name">MARIA JOÃO &amp; ACOMPANHANTE</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=MARIA%20JO%C3%83O%20%26%20ACOMPANHANTE&amp;table=6%C2%AA%20MESA%20-%20A/P%20COMANDANTE%20NDOZI%20%28SOYO%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    
+      <section class="mesa-card" data-mesa="7ª MESA">
+        <div class="mesa-header">
+          <div>
+            <span class="mesa-number">7ª MESA</span>
+            <h2>A/P MUKANKA (LUBANGO)</h2>
+          </div>
+          <span class="guest-count">6 convidados</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Nº</th><th>Convidado</th><th>Ação</th></tr>
+            </thead>
+            <tbody>
+              
+        <tr data-name="nelson cristovão &amp; benedita antónio">
+          <td class="num">1</td>
+          <td class="guest-name">NELSON CRISTOVÃO &amp; BENEDITA ANTÓNIO</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=NELSON%20CRISTOV%C3%83O%20%26%20BENEDITA%20ANT%C3%93NIO&amp;table=7%C2%AA%20MESA%20-%20A/P%20MUKANKA%20%28LUBANGO%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="wilson &amp; nica pereira">
+          <td class="num">2</td>
+          <td class="guest-name">WILSON &amp; NICA PEREIRA</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=WILSON%20%26%20NICA%20PEREIRA&amp;table=7%C2%AA%20MESA%20-%20A/P%20MUKANKA%20%28LUBANGO%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="joão cazengue">
+          <td class="num">3</td>
+          <td class="guest-name">JOÃO CAZENGUE</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=JO%C3%83O%20CAZENGUE&amp;table=7%C2%AA%20MESA%20-%20A/P%20MUKANKA%20%28LUBANGO%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="walter francisco">
+          <td class="num">4</td>
+          <td class="guest-name">WALTER FRANCISCO</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=WALTER%20FRANCISCO&amp;table=7%C2%AA%20MESA%20-%20A/P%20MUKANKA%20%28LUBANGO%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="mariquinhas francisco">
+          <td class="num">5</td>
+          <td class="guest-name">MARIQUINHAS FRANCISCO</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=MARIQUINHAS%20FRANCISCO&amp;table=7%C2%AA%20MESA%20-%20A/P%20MUKANKA%20%28LUBANGO%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+        <tr data-name="salete monteiro &amp; acompanhante">
+          <td class="num">6</td>
+          <td class="guest-name">SALETE MONTEIRO &amp; ACOMPANHANTE</td>
+          <td class="action-cell">
+            <button class="copy-btn" type="button"
+              data-link="https://www.amor.ao/eutropio-linda/index.html?guest=SALETE%20MONTEIRO%20%26%20ACOMPANHANTE&amp;table=7%C2%AA%20MESA%20-%20A/P%20MUKANKA%20%28LUBANGO%29"
+              onclick="copyInvite(this)">
+              <span class="copy-icon">⧉</span>
+              <span>Copiar convite</span>
+            </button>
+          </td>
+        </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    
+  </div>
+  <div id="empty" class="empty">Nenhum convidado encontrado.</div>
+
+  <div class="footer">amor.ao · Lista de convidados do casamento</div>
+</main>
+
+<script>
+function copyInvite(button) {
+  const link = button.dataset.link;
+  const original = button.innerHTML;
+
+  const done = () => {
+    button.classList.add('copied');
+    button.innerHTML = '<span class="copy-icon">✓</span><span>Copiado!</span>';
+    setTimeout(() => {
+      button.classList.remove('copied');
+      button.innerHTML = original;
+    }, 1600);
+  };
+
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(link).then(done).catch(() => fallbackCopy(link, done));
+  } else {
+    fallbackCopy(link, done);
+  }
+}
+
+function fallbackCopy(text, done) {
+  const area = document.createElement('textarea');
+  area.value = text;
+  area.style.position = 'fixed';
+  area.style.opacity = '0';
+  document.body.appendChild(area);
+  area.focus();
+  area.select();
+  try { document.execCommand('copy'); done(); }
+  finally { area.remove(); }
+}
+
+document.getElementById('search').addEventListener('input', function() {
+  const term = this.value.trim().toLowerCase();
+  let visible = 0;
+
+  document.querySelectorAll('.mesa-card').forEach(card => {
+    let cardVisible = 0;
+    card.querySelectorAll('tbody tr').forEach(row => {
+      const match = !term || row.dataset.name.includes(term);
+      row.style.display = match ? '' : 'none';
+      if (match) cardVisible++;
+    });
+    card.style.display = cardVisible ? '' : 'none';
+    visible += cardVisible;
+  });
+
+  document.getElementById('empty').style.display = visible ? 'none' : 'block';
+});
+</script>
+</body>
+</html>
