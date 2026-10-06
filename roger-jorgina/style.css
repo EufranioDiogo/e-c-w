@@ -44,7 +44,9 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -134,7 +136,8 @@ p {
   transition: opacity .6s ease, transform .8s ease;
 }
 
-.cover__kicker, .hero__kicker {
+.cover__kicker,
+.hero__kicker {
   font-family: var(--f-body);
   font-weight: 500;
   font-size: 15px;
@@ -143,6 +146,10 @@ p {
   color: var(--olive-text);
 }
 
+.and_flower_img_hero {
+  height: 70px;
+  display: inline-block;
+}
 .cover__mono {
   font-family: var(--f-script);
   color: var(--olive-deep);
@@ -151,7 +158,8 @@ p {
   margin-top: 8px;
 }
 
-.cover__mono span, .hero__mono span {
+.cover__mono span,
+.hero__mono span {
   font-family: var(--f-body);
   font-size: .3em;
   color: var(--ink);
@@ -185,16 +193,29 @@ p {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: radial-gradient(circle at 35% 30%, #A6A35A, #858340 60%, #6F6D35);
-  color: #FDFCF7;
+    color: #1f1a00;
   font-family: var(--f-script);
-  font-size: 30px;
+  font-size: 26px;
+    background-image: url("./resources/Selo\ de\ cera\ verde-azeitona\ brilhante.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  
+    transition: transform .3s ease, box-shadow .3s ease;
+
+  /*
+    animation: breathe 2.8s ease-in-out infinite;
   box-shadow: 0 0 0 6px rgba(186, 184, 108, .25), 0 8px 18px rgba(60, 58, 30, .25);
   transition: transform .3s ease, box-shadow .3s ease;
-  animation: breathe 2.8s ease-in-out infinite;
+  background: radial-gradient(circle at 35% 30%, #A6A35A, #858340 60%, #6F6D35);
+  background-image: url("./resources/Selo\ de\ cera\ verde-azeitona\ brilhante.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  */
+
 }
 
-.seal:hover .seal__ring, .seal:focus-visible .seal__ring {
+.seal:hover .seal__ring,
+.seal:focus-visible .seal__ring {
   transform: scale(1.06);
 }
 
@@ -212,7 +233,9 @@ p {
 }
 
 @keyframes breathe {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 0 6px rgba(186, 184, 108, .25), 0 8px 18px rgba(60, 58, 30, .25);
   }
 
@@ -285,11 +308,11 @@ p {
 }
 
 .hero__mono {
-  margin: 10px 0 0;
+  margin: 40px 0 10px;
   font-weight: 400;
   font-family: var(--f-script);
   color: var(--olive-deep);
-  font-size: clamp(88px, 24vw, 120px);
+  font-size: clamp(88px, 24vw, 72px);
   line-height: 1.1;
 }
 
@@ -303,7 +326,31 @@ p {
   font-size: 19px;
   line-height: 1.7;
 }
-
+.hero_date {
+  position: relative;
+  display: flex;
+  align-items: center;
+  color: var(--olive);
+  font-family: var(--f-body);
+  font-size: 32px;
+}
+.hero_date::after, .hero_date::before{
+  content: "";
+  position: relative;
+  width: 20px;
+  height: 2px;
+  background-color: var(--olive);
+}
+.hero_date::after {
+  margin-left: 10px;
+}
+.hero_date::before {
+  margin-right: 10px;
+}
+.hero__kicker__the_log {
+  font-family: var(--f-script);
+  font-size: 24px;
+}
 .rings {
   width: 52px;
   margin-top: 28px;
@@ -396,7 +443,8 @@ p {
   transform: scaleX(-1);
 }
 
-.calendar__week, .calendar__grid {
+.calendar__week,
+.calendar__grid {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
   list-style: none;
@@ -456,8 +504,8 @@ p {
   font-size: 28px;
   color: var(--olive-deep);
   flex-direction: row-reverse;
-transform: translate(-2px, -54px);
-    flex-direction: row-reverse;
+  transform: translate(-2px, -54px);
+  flex-direction: row-reverse;
 }
 
 .calendar__bigday svg {
@@ -885,7 +933,9 @@ transform: translate(-2px, -54px);
 }
 
 @keyframes sway {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: rotate(-6deg);
   }
 
@@ -936,13 +986,17 @@ transform: translate(-2px, -54px);
     justify-self: center;
   }
 
-  .rsvp__title, .rsvp__sub {
+  .rsvp__title,
+  .rsvp__sub {
     text-align: center;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation: none !important;
     transition-duration: .01ms !important;
   }
@@ -1319,7 +1373,9 @@ transform: translate(-2px, -54px);
 }
 
 @keyframes leaf-sway {
-  0%, 100% {
+
+  0%,
+  100% {
     rotate: -1.2deg;
   }
 
@@ -1329,7 +1385,9 @@ transform: translate(-2px, -54px);
 }
 
 @keyframes vine-sway {
-  0%, 100% {
+
+  0%,
+  100% {
     rotate: 0deg;
   }
 
@@ -1339,7 +1397,9 @@ transform: translate(-2px, -54px);
 }
 
 @keyframes float-y {
-  0%, 100% {
+
+  0%,
+  100% {
     translate: 0 0;
   }
 
@@ -1349,7 +1409,9 @@ transform: translate(-2px, -54px);
 }
 
 @keyframes hint-pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
 
@@ -1365,7 +1427,9 @@ transform: translate(-2px, -54px);
 }
 
 @keyframes twinkle {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0;
   }
 
@@ -1375,7 +1439,10 @@ transform: translate(-2px, -54px);
 }
 
 @keyframes heartbeat {
-  0%, 40%, 100% {
+
+  0%,
+  40%,
+  100% {
     scale: 1;
   }
 
@@ -1434,7 +1501,8 @@ transform: translate(-2px, -54px);
     translate: -100% 0;
   }
 
-  30%, 100% {
+  30%,
+  100% {
     translate: 100% 0;
   }
 }
@@ -1473,11 +1541,15 @@ transform: translate(-2px, -54px);
 
 /* Movimento reduzido: tudo aparece de imediato, sem pétalas nem pirilampos */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     transition-delay: 0s !important;
   }
 
-  .petals, .fireflies {
+  .petals,
+  .fireflies {
     display: none;
   }
 }
