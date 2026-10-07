@@ -63,3 +63,161 @@
 
 /* Correcção: fonte inválida var(--f-) */
 .hero__mono span{font-family:var(--f-body)}
+
+/* HERO · coração a pulsar (versão suave) */
+.couple{
+  --hx:50%; --hy:96% !important;
+  position:relative; width:17rem; margin:40px 0; isolation:isolate;
+}
+.couple .story__img{ width:100%; margin:0; position:relative; z-index:1; }
+
+/* halo mais discreto e batimento mais lento */
+.couple::before{
+  content:""; position:absolute; z-index:0;
+  left:var(--hx); top:var(--hy);
+  width:130%; aspect-ratio:1; translate:-50% -50%; border-radius:50%;
+  background:radial-gradient(circle,
+    rgba(186,184,108,.22) 0, rgba(186,184,108,.08) 35%, transparent 62%);
+  animation:glow-beat 3s ease-in-out infinite;
+}
+
+.pulse{ position:absolute; left:var(--hx); top:var(--hy);
+  width:0; height:0; z-index:2; pointer-events:none; }
+
+.pulse__heart{
+  position:absolute; width:20px; height:20px; left:-10px; top:-10px;
+  fill:var(--olive-deep); opacity:.85;
+  filter:drop-shadow(0 0 3px rgba(186,184,108,.5));
+  animation:lubdub 3s ease-in-out infinite;
+}
+
+/* só uma onda, bem subtil */
+.pulse__ring{
+  position:absolute; width:36px; height:36px; left:-18px; top:-18px;
+  border:1px solid var(--olive); border-radius:50%; opacity:0;
+  animation:ring-out 3s ease-out infinite;
+}
+.pulse__ring:nth-of-type(2),
+.pulse__ring:nth-of-type(3){ display:none; }
+
+/* mini-corações: menos visíveis */
+.pulse__spark{
+  position:absolute; width:8px; height:8px; left:-4px; top:-4px;
+  fill:var(--olive); opacity:0;
+  animation:spark-up 6s ease-in infinite; animation-delay:var(--d,0s);
+}
+.pulse__spark:nth-of-type(n+3){ display:none; }
+
+@keyframes lubdub{
+  0%{scale:1} 14%{scale:1.14} 28%{scale:1}
+  42%{scale:1.08} 70%,100%{scale:1}
+}
+@keyframes glow-beat{
+  0%{scale:.96;opacity:.6} 14%{scale:1.03;opacity:.85} 28%{scale:.98;opacity:.65}
+  42%{scale:1.01;opacity:.75} 70%,100%{scale:.96;opacity:.6}
+}
+@keyframes ring-out{
+  0%{scale:.4;opacity:0} 10%{opacity:.35} 100%{scale:2.4;opacity:0}
+}
+@keyframes spark-up{
+  0%{translate:0 0;scale:.4;opacity:0} 20%{opacity:.5}
+  100%{translate:var(--x) -70px;scale:1;opacity:0}
+}
+
+/* =========================================================
+   CAPA · entrada cinematográfica
+   1) cortinas escuras com uma linha de luz ao centro
+   2) abrem-se e revelam o monograma a "materializar-se"
+   3) selo com ondas a convidar ao toque
+   4) ao abrir: clarão de luz + portas a rodar em 3D
+   ========================================================= */
+.cover{ perspective:1800px; }
+
+/* cortinas de entrada */
+.cover::before,.cover::after{
+  content:""; position:absolute; top:0; bottom:0; z-index:5;
+  width:calc(50% - 1px); pointer-events:none;
+  animation-duration:2.4s; animation-delay:.25s; animation-fill-mode:both;
+  animation-timing-function:cubic-bezier(.75,0,.2,1);
+}
+.cover::before{
+  left:0;
+  background:linear-gradient(90deg,var(--night) 70%,#4b4a2a);
+  animation-name:curtain-l;
+}
+.cover::after{
+  right:0;
+  background:linear-gradient(270deg,var(--night) 70%,#4b4a2a);
+  animation-name:curtain-r;
+}
+@keyframes curtain-l{ 0%,40%{transform:translateX(0)}  100%{transform:translateX(-101%)} }
+@keyframes curtain-r{ 0%,40%{transform:translateX(0)}  100%{transform:translateX(101%)} }
+
+/* conteúdo: tempos novos */
+.cover__kicker{ animation:kicker-in 1.6s cubic-bezier(.2,.7,.2,1) 1.3s both; }
+@keyframes kicker-in{
+  from{opacity:0; letter-spacing:1em; translate:0 12px}
+  to{opacity:1; letter-spacing:.3em; translate:0 0}
+}
+
+.cover__mono{
+  animation:mono-impact 2.2s cubic-bezier(.2,.8,.2,1) 1.6s both,
+            mono-glow 4s ease-in-out 3.9s infinite;
+}
+@keyframes mono-impact{
+  0%{opacity:0; scale:1.6; filter:blur(18px)}
+  55%{opacity:1; filter:blur(0)}
+  100%{opacity:1; scale:1; filter:blur(0)}
+}
+@keyframes mono-glow{
+  0%,100%{text-shadow:0 0 0 rgba(186,184,108,0)}
+  50%{text-shadow:0 0 26px rgba(186,184,108,.65)}
+}
+
+.cover__date{ animation:rise-in 1s cubic-bezier(.2,.7,.2,1) 2.7s both; }
+.seal{ animation:rise-in 1s cubic-bezier(.2,.7,.2,1) 3s both; }
+.cover__hint{ animation:rise-in 1s ease 3.3s both, hint-pulse 3s ease-in-out 4.5s infinite; }
+
+/* flores entram a "desabrochar" e a rodar */
+.cover__flora{
+  animation:bloom-big 2.6s cubic-bezier(.2,.8,.2,1) 1.2s backwards,
+            leaf-sway 8s ease-in-out 3.8s infinite;
+}
+@keyframes bloom-big{
+  from{opacity:0; scale:.45; rotate:-22deg}
+}
+
+/* selo: batimento + ondas */
+.seal__ring{ position:relative; animation:seal-beat 2.4s ease-in-out 3.6s infinite; }
+.seal__ring::before,.seal__ring::after{
+  content:""; position:absolute; inset:0; border-radius:50%;
+  border:2px solid var(--olive); opacity:0;
+  animation:ripple 2.4s ease-out 3.6s infinite;
+}
+.seal__ring::after{ animation-delay:4.8s; }
+@keyframes seal-beat{
+  0%,100%{scale:1} 50%{scale:1.05}
+}
+.cover.is-open .seal__ring,
+.cover.is-open .seal__ring::before,
+.cover.is-open .seal__ring::after{ animation:none; }
+
+/* abertura: clarão + portas 3D */
+.cover__burst{
+  position:absolute; left:50%; top:50%;
+  width:140vmax; height:140vmax; margin:-70vmax 0 0 -70vmax;
+  border-radius:50%; opacity:0; scale:0; pointer-events:none;
+  background:radial-gradient(circle,
+    rgba(253,252,247,.95) 0, rgba(218,216,166,.7) 18%, rgba(186,184,108,0) 55%);
+}
+.cover.is-open .cover__burst{ animation:burst 1.3s ease-out both; }
+@keyframes burst{ 0%{scale:0;opacity:1} 100%{scale:1;opacity:0} }
+
+.cover__half{
+  backface-visibility:hidden;
+  transition:transform 1.4s cubic-bezier(.65,0,.25,1), opacity .5s ease .9s;
+}
+.cover__half--left{ transform-origin:left center; }
+.cover__half--right{ transform-origin:right center; }
+.cover.is-open .cover__half--left { transform:rotateY(-105deg); opacity:0; }
+.cover.is-open .cover__half--right{ transform:rotateY(105deg);  opacity:0; }

@@ -2,10 +2,13 @@
 <html lang="pt">
   <head>
     <meta charset="utf-8" />
-       <meta property="og:title" content="Save the Date · Jorgina & Roger">
-   <meta property="og:description" content="24 de abril de 2027 · Luanda">
-   <meta property="og:image" content="https://amor.ao/roger-jorgina/images/casal-silhueta.webp">
-   <meta name="theme-color" content="#FDFCF7">
+    <meta property="og:title" content="Save the Date · Jorgina & Roger" />
+    <meta property="og:description" content="24 de abril de 2027 · Luanda" />
+    <meta
+      property="og:image"
+      content="https://amor.ao/roger-jorgina/images/casal-silhueta.webp"
+    />
+    <meta name="theme-color" content="#FDFCF7" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, viewport-fit=cover"
@@ -22,12 +25,14 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="extras.css">
+    <link rel="stylesheet" href="extras.css" />
   </head>
   <body>
     <!-- ============ CAPA ============ -->
     <div class="cover" id="cover">
       <div class="cover__half cover__half--left" aria-hidden="true"></div>
+      <div class="cover__half cover__half--right" aria-hidden="true"></div>
+      <div class="cover__burst" aria-hidden="true"></div>
       <div class="cover__half cover__half--right" aria-hidden="true"></div>
       <img
         class="cover__flora cover__flora--tl"
@@ -42,8 +47,16 @@
         aria-hidden="true"
       />
       <div class="cover__content">
-        <p class="cover__kicker">Save <span class="hero__kicker__the_log">the</span> date</p>
-        <p class="cover__mono">J <span><img class="and_flower_img_hero" src="./resources/flower.png"></span> R</p>
+        <p class="cover__kicker">
+          Save <span class="hero__kicker__the_log">the</span> date
+        </p>
+        <p class="cover__mono">
+          J
+          <span
+            ><img class="and_flower_img_hero" src="./resources/flower.png"
+          /></span>
+          R
+        </p>
         <p class="cover__date">24 de abril de 2027</p>
         <button class="seal" id="openBtn" type="button">
           <div class="seal__ring" aria-hidden="true">
@@ -71,15 +84,30 @@
           alt=""
           aria-hidden="true"
         />
-        <p class="hero__kicker"><span>Save</span> <span class="hero__kicker__the_log">the</span> <span>date</span></p>
-        <img
-          class="story__img"
-          src="images/casal-silhueta.webp"
-          alt="Silhueta em aguarela do casal, frente a frente"
-          width="800"
-          height="781"
-        />
-        
+        <p class="hero__kicker">
+          <span>Save</span> <span class="hero__kicker__the_log">the</span>
+          <span>date</span>
+        </p>
+        <div class="couple" style="--hx:50%; --hy:36%">
+  <img class="story__img" src="images/casal-silhueta.webp"
+       alt="Silhueta em aguarela do casal, frente a frente" width="800" height="781" />
+
+  <div class="pulse" aria-hidden="true">
+    <svg width="0" height="0" style="position:absolute">
+      <symbol id="hrt" viewBox="0 0 24 24">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      </symbol>
+    </svg>
+    <span class="pulse__ring"></span>
+    <span class="pulse__ring"></span>
+    <span class="pulse__ring"></span>
+    <svg class="pulse__spark" style="--x:-26px;--d:0s"><use href="#hrt"/></svg>
+    <svg class="pulse__spark" style="--x:18px;--d:1.2s"><use href="#hrt"/></svg>
+    <svg class="pulse__spark" style="--x:-4px;--d:2.4s"><use href="#hrt"/></svg>
+    <svg class="pulse__heart" viewBox="0 0 24 24"><use href="#hrt"/></svg>
+  </div>
+</div>
+
         <h1 class="hero__mono">Jorgina <span>&</span> Roger</h1>
         <h2 class="hero_date">24 · Abril · 2027</h2>
         <!--<p class="hero__text">
@@ -104,7 +132,9 @@
           height="781"
         />
         <blockquote class="story__quote">
-          “Uma festa cruzou os nossos caminhos. E, desde então, entre passos pela Marginal e tantos dias partilhados, descobrimos que o nosso destino era caminhar juntos, para sempre.”
+          “Uma festa cruzou os nossos caminhos. E, desde então, entre passos
+          pela Marginal e tantos dias partilhados, descobrimos que o nosso
+          destino era caminhar juntos, para sempre.”
         </blockquote>
 
         <svg
