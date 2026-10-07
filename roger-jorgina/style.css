@@ -182,7 +182,11 @@ p {
   font-size: .3em;
   color: var(--ink);
   vertical-align: middle;
-  margin: 0 .2em;
+  margin: 0 .1em;
+}
+
+.hero__mono span {
+  font-family: var(--f-display) !important
 }
 
 .cover__date {
@@ -330,7 +334,7 @@ p {
   font-weight: 400;
   font-family: var(--f-script);
   color: var(--olive-deep);
-  font-size: clamp(2.5rem, 24vw, 38px);
+    font-size: clamp(2.65rem, 3rem, 4rem);
   line-height: 1.1;
 }
 .hero__mono span {
@@ -987,6 +991,7 @@ p {
 
 /* Ecrãs pequenos */
 @media (max-width: 420px) {
+
   body {
     font-size: 17px;
   }
@@ -995,6 +1000,13 @@ p {
     padding-top: 120px;
   }
 
+    .hero__mono {
+    display: flex;
+    flex-direction: column;
+  }
+  .hero__mono  {
+    font-size: 3.7rem !important;
+  }
   .calendar__body {
     grid-template-columns: minmax(0, 1fr) minmax(250px, 280px) minmax(0, 1fr);
   }
