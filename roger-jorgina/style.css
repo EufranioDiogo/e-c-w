@@ -302,7 +302,7 @@ p {
 .hero {
   position: relative;
   text-align: center;
-  padding: 150px 36px 72px;
+  padding: 150px 10px 72px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -330,7 +330,7 @@ p {
   font-weight: 400;
   font-family: var(--f-script);
   color: var(--olive-deep);
-  font-size: clamp(3rem, 24vw, 42px);
+  font-size: clamp(2.5rem, 24vw, 38px);
   line-height: 1.1;
 }
 .hero__mono span {
@@ -358,7 +358,7 @@ p {
     color: var(--olive-deep);
 
   font-family: var(--f-body);
-  font-size: 32px;
+  font-size: 28px;
   margin: 20px 10px 0;
 }
 
@@ -543,6 +543,7 @@ p {
   transform: translate(-2px, -27px);
   flex-direction: row-reverse;
   margin-bottom: 120px;
+  display: none;
 }
 
 .calendar__bigday svg {
@@ -559,11 +560,12 @@ p {
 
 /* Contagem */
 .countdown {
-  margin: 90px auto 0;
+  margin: 65px auto 0;
   max-width: 400px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
+  padding: 0 10px;
 }
 
 .countdown__item {

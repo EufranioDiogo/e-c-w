@@ -7,7 +7,6 @@
 }
 
 /* Coração no selo (estava vazio) */
-.seal__ring_heart::before{content:"\2665"}
 
 /* Convidado personalizado na capa */
 .cover__guest{

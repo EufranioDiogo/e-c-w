@@ -51,12 +51,12 @@
     "BEGIN:VALARM","TRIGGER:-P7D","ACTION:DISPLAY","DESCRIPTION:Falta 1 semana","END:VALARM",
     "END:VEVENT","END:VCALENDAR"].join("\r\n");
 
-  const box = document.createElement("div");
+  /*const box = document.createElement("div");
   box.className = "actions";
   box.innerHTML = '<p class="actions__title">Guarde esta data</p>' +
     '<button class="btn btn--solid" id="addIcs" type="button">Adicionar ao calendário</button>' +
     '<a class="btn btn--ghost" id="addGoogle" target="_blank" rel="noopener">Google Agenda</a>';
-  const cd = $("#countdownDone"); cd?.after(box);
+  const cd = $("#countdownDone"); cd?.after(box);*/
   $("#addGoogle").href = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
     "&text=" + encodeURIComponent(EVENT.title) + "&dates=" + EVENT.date + "/" + EVENT.next +
     "&location=" + encodeURIComponent(EVENT.place) + "&details=" + encodeURIComponent(EVENT.desc);

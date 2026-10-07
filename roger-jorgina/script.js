@@ -506,7 +506,7 @@ const Motion = (() => {
   function setup() {
     // Abertura
     tag(".hero__kicker", "reveal", { delay: 0.5 });
-    tag(".hero__mono", "reveal", { delay: 0.7 });
+    tag(".hero__mono", "reveal", { delay: 0.0 });
     tag(".hero__text", "reveal", { delay: 1.3 });
     draw(".rings", { delay: 1.6 });
 
@@ -543,7 +543,7 @@ const Motion = (() => {
     // Contribuições
     tag(".gift__card", "reveal reveal--zoom shine");
     draw(".gift__icon", { delay: 0.4 });
-    tag(".gift__title", "write", { delay: 0.6 });
+    tag(".gift__title", "reveal", { delay: 0.6 });
     tag(
       ".gift__card > :not(.gift__icon):not(.divider):not(.gift__title)",
       "reveal",
