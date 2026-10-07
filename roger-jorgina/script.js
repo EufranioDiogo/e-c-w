@@ -6,7 +6,7 @@ const CONFIG = {
   weddingDate: "2027-04-24T16:00:00+01:00",
   weddingDay: 24,
   // Número de WhatsApp que recebe as confirmações (só dígitos, com indicativo)
-  whatsapp: "244900000000",
+  whatsapp: "244975598874",
   // Música de fundo: coloquem um ficheiro (ex.: "musica.mp3") na mesma pasta
   // e escrevam o nome aqui. Vazio = usa a melodia de caixinha de música incluída.
   musicUrl: "./resources/audio/turning_the_page.mp3",

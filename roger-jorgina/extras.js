@@ -55,8 +55,7 @@
   box.className = "actions";
   box.innerHTML = '<p class="actions__title">Guarde esta data</p>' +
     '<button class="btn btn--solid" id="addIcs" type="button">Adicionar ao calendário</button>' +
-    '<a class="btn btn--ghost" id="addGoogle" target="_blank" rel="noopener">Google Agenda</a>' +
-    '<button class="btn btn--ghost" id="shareBtn" type="button">Partilhar convite</button>';
+    '<a class="btn btn--ghost" id="addGoogle" target="_blank" rel="noopener">Google Agenda</a>';
   const cd = $("#countdownDone"); cd?.after(box);
   $("#addGoogle").href = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
     "&text=" + encodeURIComponent(EVENT.title) + "&dates=" + EVENT.date + "/" + EVENT.next +
@@ -89,13 +88,13 @@
     $(".choice", form).after(row);
     const out = $(".party__n", row), [minus, plus] = row.querySelectorAll("button");
     let n = 1;
-    const set = (v) => { n = Math.max(1, Math.min(8, v)); out.textContent = n; };
+    const set = (v) => { n = Math.max(1, Math.min(2, v)); out.textContent = n; };
     minus.onclick = () => set(n - 1); plus.onclick = () => set(n + 1);
     // capture: corre antes do handler original e acrescenta a contagem à mensagem
     form.addEventListener("submit", () => {
       const yes = $('[data-choice="yes"]', form).getAttribute("aria-pressed") === "true";
       if (yes && n > 1 && !/Seremos \d+/.test(area.value))
-        area.value = `Seremos ${n} pessoas.` + (area.value ? "\n" + area.value : "");
+        area.value = `` + (area.value ? "\n" + area.value : "");
       if (yes && !reduce) burst(form.getBoundingClientRect());
     }, true);
   }
