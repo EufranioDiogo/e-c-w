@@ -138,12 +138,13 @@ p {
 
 .cover__kicker,
 .hero__kicker {
-  font-family: var(--f-body);
-  font-weight: 500;
-  font-size: 15px;
-  letter-spacing: .3em;
-  text-transform: uppercase;
-  color: var(--olive-text);
+font-family: var(--f-body);
+    font-weight: 500;
+    font-size: 17px;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--olive-text);
+    margin-bottom: 5px;
 }
 
 .and_flower_img_hero {
@@ -330,9 +331,10 @@ p {
   position: relative;
   display: flex;
   align-items: center;
-  color: var(--olive);
+  color: var(--olive-deep);
   font-family: var(--f-body);
   font-size: 32px;
+  margin-bottom: 0;
 }
 .hero_date::after, .hero_date::before{
   content: "";
