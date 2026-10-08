@@ -87,6 +87,7 @@ p {
   align-items: center;
   overflow: hidden;
   justify-content: center;
+  display: flex;
 }
 
 .cover__half {
