@@ -84,9 +84,9 @@ p {
   position: fixed;
   inset: 0;
   z-index: 50;
-  display: grid;
-  place-items: center;
+  align-items: center;
   overflow: hidden;
+  justify-content: center;
 }
 
 .cover__half {
@@ -134,6 +134,7 @@ p {
   flex-direction: column;
   align-items: center;
   transition: opacity .6s ease, transform .8s ease;
+  left: 4%;
 }
 
 .cover__kicker,
@@ -148,6 +149,7 @@ p {
   align-items: center;
   margin-bottom: 0.5rem;
 }
+
 .cover__kicker {
   font-size: 1.4rem;
   margin-bottom: 1rem;
@@ -193,11 +195,11 @@ p {
   font-family: var(--f-display);
   font-size: 2rem;
   color: var(--ink);
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .seal {
-  margin-top: 40px;
+  margin-top: 30px;
   border: 0;
   background: none;
   cursor: pointer;
@@ -334,22 +336,24 @@ p {
   font-weight: 400;
   font-family: var(--f-script);
   color: var(--olive-deep);
-    font-size: clamp(2.65rem, 3rem, 4rem);
+  font-size: clamp(2.6rem, 7vw, 4rem);
   line-height: 1.1;
 }
+
 .hero__mono span {
-    font-family: var(--f-);
-    font-size: 0.8em;
-    color: var(--olive-deep);
-    vertical-align: middle;
-    margin: 0 .2em;
+  font-family: var(--f-);
+  font-size: 0.8em;
+  color: var(--olive-deep);
+  vertical-align: middle;
+  margin: 0 .2em;
 }
+
 .hero__mono:focus {
   outline: none;
 }
 
 .hero__text {
-  margin-top: 24px;
+  margin-top: 0;
   max-width: 34ch;
   font-size: 19px;
   line-height: 1.7;
@@ -359,7 +363,7 @@ p {
   position: relative;
   display: flex;
   align-items: center;
-    color: var(--olive-deep);
+  color: var(--olive-deep);
 
   font-family: var(--f-body);
   font-size: 28px;
@@ -384,7 +388,7 @@ p {
 
 .hero__kicker__the_log {
   font-family: var(--f-vibes) !important;
-  font-size: 42px !important; 
+  font-size: 42px !important;
   text-transform: lowercase !important;
   margin: 0 0.5rem;
 }
@@ -445,8 +449,9 @@ p {
 
 /* Calendário */
 .calendar {
-  padding: 80px 16px 40px;
+  padding: 90px 16px 100px;
   text-align: center;
+  background: var(--olive-tint);
 }
 
 .calendar__title {
@@ -558,7 +563,7 @@ p {
   stroke-linecap: round;
   stroke-linejoin: round;
   transform: rotateY(180deg);
-      display: none;
+  display: none;
 
 }
 
@@ -583,7 +588,7 @@ p {
   width: 100%;
   aspect-ratio: 1;
   border-radius: 14px;
-  background: var(--olive-tint);
+  background: var(--paper) !important;
   display: grid;
   place-items: center;
   font-family: var(--f-display);
@@ -1000,13 +1005,15 @@ p {
     padding-top: 120px;
   }
 
-    .hero__mono {
+  .hero__mono {
     display: flex;
     flex-direction: column;
   }
-  .hero__mono  {
+
+  .hero__mono {
     font-size: 3.7rem !important;
   }
+
   .calendar__body {
     grid-template-columns: minmax(0, 1fr) minmax(250px, 280px) minmax(0, 1fr);
   }
@@ -1097,6 +1104,7 @@ p {
   justify-content: center;
   position: relative;
 }
+
 .seal__ring_heart {
   font-size: 32px;
   position: absolute;

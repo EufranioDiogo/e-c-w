@@ -506,7 +506,7 @@ const Motion = (() => {
   function setup() {
     // Abertura
     tag(".hero__kicker", "reveal", { delay: 0.5 });
-    tag(".hero__mono", "reveal", { delay: 0.0 });
+    //tag(".hero__mono", "reveal", { delay: 0.0 });
     tag(".hero__text", "reveal", { delay: 0.3 });
     draw(".rings", { delay: 1.6 });
 
