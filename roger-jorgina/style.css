@@ -19,10 +19,11 @@
   /* faixa escura */
   --night-text: #DAD8A6;
 
-  --f-script: "Parisienne", "Snell Roundhand", cursive;
+  --f-script: "Parisienne", cursive;
   --f-vibes: "Great Vibes", "Snell Roundhand", cursive;
   --f-display: "Grandiflora One", Georgia, "Times New Roman", serif;
   --f-body: "Parastoo", Georgia, "Times New Roman", serif;
+  --f-label: 'Cinzel', serif;
 
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
