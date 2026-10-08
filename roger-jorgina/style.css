@@ -338,7 +338,7 @@ p {
   font-weight: 400;
   font-family: var(--f-script);
   color: var(--olive-deep);
-  font-size: clamp(2rem, 6vw, 2.4rem);
+  font-size: clamp(1.8rem, 2rem, 2.2rem);
   line-height: 1.1;
 }
 
