@@ -440,7 +440,7 @@ p {
 
 .story__quote {
   margin: 0 0 0;
-  max-width: 32ch;
+  max-width: 50ch;
   font-family: var(--f-body);
   font-style: italic;
   font-size: 19px;
