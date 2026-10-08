@@ -19,10 +19,11 @@
   /* faixa escura */
   --night-text: #DAD8A6;
 
-  --f-script: "Parisienne", "Snell Roundhand", cursive;
+  --f-script: "Parisienne", cursive;
   --f-vibes: "Great Vibes", "Snell Roundhand", cursive;
   --f-display: "Grandiflora One", Georgia, "Times New Roman", serif;
   --f-body: "Parastoo", Georgia, "Times New Roman", serif;
+  --f-label: 'Cinzel', serif;
 
   box-sizing: border-box;
   padding-top: env(safe-area-inset-top, 0px);
@@ -84,9 +85,10 @@ p {
   position: fixed;
   inset: 0;
   z-index: 50;
-  display: grid;
-  place-items: center;
+  align-items: center;
   overflow: hidden;
+  justify-content: center;
+  display: flex;
 }
 
 .cover__half {
@@ -134,29 +136,48 @@ p {
   flex-direction: column;
   align-items: center;
   transition: opacity .6s ease, transform .8s ease;
+  left: 4%;
 }
 
 .cover__kicker,
 .hero__kicker {
-font-family: var(--f-body);
-    font-weight: 500;
-    font-size: 17px;
-    letter-spacing: .3em;
-    text-transform: uppercase;
-    color: var(--olive-text);
-    margin-bottom: 5px;
+  font-family: var(--f-body);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--olive-text);
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.cover__kicker {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.hero__kicker span {
+  font-family: var(--f-body);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--olive-text);
 }
 
 .and_flower_img_hero {
   height: 70px;
   display: inline-block;
+  margin: 0 10px;
 }
+
 .cover__mono {
   font-family: var(--f-script);
   color: var(--olive-deep);
   font-size: clamp(84px, 22vw, 132px);
   line-height: 1.1;
-  margin-top: 8px;
+  margin: 20px 0;
 }
 
 .cover__mono span,
@@ -165,18 +186,22 @@ font-family: var(--f-body);
   font-size: .3em;
   color: var(--ink);
   vertical-align: middle;
-  margin: 0 .2em;
+  margin: 0 .1em;
+}
+
+.hero__mono span {
+  font-family: var(--f-display) !important
 }
 
 .cover__date {
   font-family: var(--f-display);
-  font-size: 22px;
+  font-size: 2rem;
   color: var(--ink);
-  margin-top: 4px;
+  margin-top: 10px;
 }
 
 .seal {
-  margin-top: 40px;
+  margin-top: 30px;
   border: 0;
   background: none;
   cursor: pointer;
@@ -194,14 +219,14 @@ font-family: var(--f-body);
   border-radius: 50%;
   display: grid;
   place-items: center;
-    color: #1f1a00;
+  color: #1f1a00;
   font-family: var(--f-script);
   font-size: 26px;
-    background-image: url("./resources/Selo\ de\ cera\ verde-azeitona\ brilhante.png");
+  background-image: url("./resources/Selo\ de\ cera\ verde-azeitona\ brilhante.png");
   background-size: cover;
   background-repeat: no-repeat;
-  
-    transition: transform .3s ease, box-shadow .3s ease;
+
+  transition: transform .3s ease, box-shadow .3s ease;
 
   /*
     animation: breathe 2.8s ease-in-out infinite;
@@ -285,7 +310,7 @@ font-family: var(--f-body);
 .hero {
   position: relative;
   text-align: center;
-  padding: 150px 36px 72px;
+  padding: 150px 10px 72px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -309,12 +334,20 @@ font-family: var(--f-body);
 }
 
 .hero__mono {
-  margin: 40px 0 10px;
+  margin: 0px 0 10px;
   font-weight: 400;
   font-family: var(--f-script);
   color: var(--olive-deep);
-  font-size: clamp(88px, 24vw, 72px);
+  font-size: clamp(2rem, 6vw, 2.4rem);
   line-height: 1.1;
+}
+
+.hero__mono span {
+  font-family: var(--f-);
+  font-size: 0.8em;
+  color: var(--olive-deep);
+  vertical-align: middle;
+  margin: 0 .2em;
 }
 
 .hero__mono:focus {
@@ -322,37 +355,46 @@ font-family: var(--f-body);
 }
 
 .hero__text {
-  margin-top: 24px;
+  margin-top: 0;
   max-width: 34ch;
   font-size: 19px;
   line-height: 1.7;
 }
+
 .hero_date {
   position: relative;
   display: flex;
   align-items: center;
   color: var(--olive-deep);
+
   font-family: var(--f-body);
-  font-size: 32px;
-  margin-bottom: 0;
+  font-size: 28px;
+  margin: 20px 10px 0;
 }
-.hero_date::after, .hero_date::before{
+
+.hero_date::after, .hero_date::before {
   content: "";
   position: relative;
   width: 20px;
   height: 2px;
   background-color: var(--olive);
 }
+
 .hero_date::after {
   margin-left: 10px;
 }
+
 .hero_date::before {
   margin-right: 10px;
 }
+
 .hero__kicker__the_log {
-  font-family: var(--f-script);
-  font-size: 24px;
+  font-family: var(--f-vibes) !important;
+  font-size: 42px !important;
+  text-transform: lowercase !important;
+  margin: 0 0.5rem;
 }
+
 .rings {
   width: 52px;
   margin-top: 28px;
@@ -362,6 +404,7 @@ font-family: var(--f-body);
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
 
 /* História */
 .story {
@@ -390,15 +433,16 @@ font-family: var(--f-body);
 }
 
 .story__img {
-  width: min(78%, 330px);
+  width: 17rem;
   height: auto;
   margin-top: 22px;
   z-index: 2;
+  margin: 40px 0;
 }
 
 .story__quote {
-  margin: 28px 0 0;
-  max-width: 32ch;
+  margin: 0 0 0;
+  max-width: 50ch;
   font-family: var(--f-body);
   font-style: italic;
   font-size: 19px;
@@ -407,8 +451,9 @@ font-family: var(--f-body);
 
 /* Calendário */
 .calendar {
-  padding: 80px 16px 40px;
+  padding: 90px 16px 100px;
   text-align: center;
+  background: var(--olive-tint);
 }
 
 .calendar__title {
@@ -506,8 +551,10 @@ font-family: var(--f-body);
   font-size: 28px;
   color: var(--olive-deep);
   flex-direction: row-reverse;
-  transform: translate(-2px, -54px);
+  transform: translate(-2px, -27px);
   flex-direction: row-reverse;
+  margin-bottom: 120px;
+  display: none;
 }
 
 .calendar__bigday svg {
@@ -518,15 +565,18 @@ font-family: var(--f-body);
   stroke-linecap: round;
   stroke-linejoin: round;
   transform: rotateY(180deg);
+  display: none;
+
 }
 
 /* Contagem */
 .countdown {
-  margin: 44px auto 0;
+  margin: 65px auto 0;
   max-width: 400px;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 12px;
+  padding: 0 10px;
 }
 
 .countdown__item {
@@ -540,7 +590,7 @@ font-family: var(--f-body);
   width: 100%;
   aspect-ratio: 1;
   border-radius: 14px;
-  background: var(--olive-tint);
+  background: var(--paper) !important;
   display: grid;
   place-items: center;
   font-family: var(--f-display);
@@ -948,12 +998,22 @@ font-family: var(--f-body);
 
 /* Ecrãs pequenos */
 @media (max-width: 420px) {
+
   body {
     font-size: 17px;
   }
 
   .hero {
     padding-top: 120px;
+  }
+
+  .hero__mono {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero__mono {
+    font-size: 3.7rem !important;
   }
 
   .calendar__body {
@@ -963,6 +1023,7 @@ font-family: var(--f-body);
   .calendar {
     padding-left: 6px;
     padding-right: 6px;
+    position: relative;
   }
 
   .calendar__grid li {
@@ -1040,6 +1101,18 @@ font-family: var(--f-body);
   scale: 1.35;
   opacity: 0;
   transition: scale .6s ease, opacity .5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.seal__ring_heart {
+  font-size: 32px;
+  position: absolute;
+  top: 20%;
+  margin-right: 3%;
+  color: #E9E7DA;
 }
 
 /* ----- Flores da abertura (após abrir) ----- */

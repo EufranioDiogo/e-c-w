@@ -1,0 +1,110 @@
+/* ===== hero.css — load AFTER extras.css ===== */
+.hero{min-height:100svh;justify-content:center;padding:92px 24px 120px}
+.hero > *{position:relative}
+.hero__flora{position:absolute}
+.hero__kicker{order:1}
+.hero__mono{order:2}
+.hero__art{order:3}
+.hero_date{order:4}
+.hero__left{order:5}
+.rings{order:6}
+
+/* Nomes: grandes, empilhados, escritos a tinta, com brilho de folha */
+.hero__mono{display:flex;flex-direction:column;align-items:center;margin:6px 0 0;
+  font-size:inherit;line-height:1}
+.is-opened .hero__mono{animation:none}
+.nm{display:block;padding:.06em .14em .12em;
+  font-size:clamp(76px,25vw,118px);line-height:.95;
+  background:linear-gradient(100deg,var(--olive-deep) 38%,#CFCD7C 50%,var(--olive-deep) 62%) 0 0/250% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  clip-path:inset(-30% 100% -30% -30%)}
+.nm--b{margin-top:-.14em}
+.amp{font-family:var(--f-vibes);font-size:clamp(38px,12vw,56px);line-height:1;
+  color:var(--olive);margin:-.1em 0 0 -.9em;scale:0;opacity:0}
+.is-opened .nm{animation:ink-write 1.9s cubic-bezier(.6,.1,.3,1) forwards,foil 7s linear 4s infinite}
+.is-opened .nm--a{animation-delay:1s,4s}
+.is-opened .nm--b{animation-delay:2.4s,5s}
+.is-opened .amp{animation:amp-in .9s cubic-bezier(.34,1.56,.64,1) 2.1s forwards}
+
+/* Casal com halo */
+.hero__art{width:min(70vw,17rem);margin:18px 0 4px;isolation:isolate;will-change:transform}
+.hero__art .story__img{width:100%;margin:0;z-index:auto}
+.hero__art::before,.hero__art::after{content:"";position:absolute;border-radius:50%;z-index:-1;pointer-events:none}
+.hero__art::before{inset:-16%;background:radial-gradient(closest-side,rgba(186,184,108,.4),rgba(186,184,108,.12) 62%,transparent 74%)}
+.hero__art::after{inset:-7%;border:1px solid rgba(186,184,108,.6)}
+.is-opened .hero__art::before{animation:halo-in 2.2s ease .6s backwards,halo 7s ease-in-out 3s infinite}
+.is-opened .hero__art::after{animation:halo-in 2s ease 1s backwards}
+
+/* Data em destaque */
+.hero_date{margin:22px 0 0;gap:18px;font-size:inherit}
+.hero_date::before,.hero_date::after{content:none}
+.d-num{font-family:var(--f-display);font-size:clamp(84px,24vw,104px);line-height:.9;color:var(--olive-deep)}
+.d-rule{width:1px;height:76px;background:var(--olive)}
+.d-txt{display:flex;flex-direction:column;align-items:flex-start;line-height:1}
+.d-mo{font-family:var(--f-vibes);font-size:clamp(46px,13vw,58px);color:var(--olive-deep)}
+.d-yr{font-family:var(--f-display);font-size:20px;letter-spacing:.34em;color:var(--ink);margin-top:2px}
+.d-num,.d-rule,.d-txt{opacity:0}
+.is-opened .d-num{animation:digit-drop 1s cubic-bezier(.2,.8,.2,1) 3.2s forwards}
+.is-opened .d-rule{animation:grow-y .8s ease 3.5s forwards;transform-origin:top}
+.is-opened .d-txt{animation:rise-in 1s ease 3.7s forwards}
+
+.hero__left{margin-top:20px;padding:8px 20px;border:1px solid var(--olive);border-radius:999px;
+  font-style:italic;font-size:17px;color:var(--olive-text);opacity:0}
+.is-opened .hero__left{animation:rise-in 1s ease 4.2s forwards}
+.hero__left b{font-style:normal;font-family:var(--f-display);font-weight:400;color:var(--olive-deep);
+  font-variant-numeric:tabular-nums}
+
+.rings{margin-top:22px}
+
+/* Indicador de scroll */
+.hero__cue{position:absolute!important;left:50%;bottom:26px;width:1px;height:48px;
+  background:linear-gradient(var(--olive),transparent);opacity:0;translate:-50% 0}
+.hero__cue::after{content:"";position:absolute;left:-2px;top:0;width:5px;height:5px;border-radius:50%;
+  background:var(--olive-deep);animation:cue 2.2s ease-in-out infinite}
+.is-opened .hero__cue{animation:rise-in 1s ease 5s forwards}
+
+@keyframes foil{to{background-position:-250% 0}}
+@keyframes amp-in{from{scale:0;opacity:0}to{scale:1;opacity:1}}
+@keyframes halo-in{from{opacity:0;scale:.6}}
+@keyframes halo{50%{scale:1.05}}
+@keyframes grow-y{from{scale:1 0;opacity:1}to{scale:1 1;opacity:1}}
+@keyframes cue{0%{translate:0 0;opacity:0}30%{opacity:1}100%{translate:0 44px;opacity:0}}
+@keyframes rise-in{from{opacity:0;translate:0 18px}to{opacity:1;translate:0 0}}
+
+@media (prefers-reduced-motion:reduce){
+  .nm{clip-path:none;background-position:0 0}
+  .amp,.d-num,.d-rule,.d-txt,.hero__left,.hero__cue{opacity:1;scale:1}
+}
+
+/* ================= v2 ================= */
+
+/* --- Nomes com mais destaque --- */
+.hero{--p:0}
+.hero__mono{isolation:isolate;margin-top:10px}
+.hero__mono::before{content:"";position:absolute;inset:-4% -14%;z-index:-1;pointer-events:none;
+  background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,.55) 55%,transparent 78%)}
+.nm{font-size:clamp(84px,28vw,132px);
+  background:linear-gradient(100deg,#6A6830 36%,#BDBB5E 50%,#6A6830 64%) 0 0/250% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  filter:drop-shadow(0 1px 0 rgba(255,255,255,.9))
+         drop-shadow(0 calc(4px + var(--p)*3px) calc(10px + var(--p)*24px) rgba(133,131,64,calc(.32 + var(--p)*.4)))}
+.amp{display:flex;align-items:center;justify-content:center;gap:14px;margin:-.02em 0;
+  font-size:clamp(46px,14vw,66px);color:var(--olive-deep)}
+.amp::before,.amp::after{content:"";width:clamp(34px,12vw,64px);height:1px}
+.amp::before{background:linear-gradient(90deg,transparent,var(--olive))}
+.amp::after{background:linear-gradient(270deg,transparent,var(--olive))}
+
+/* --- Data centrada --- */
+.hero_date{flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  width:100%;margin:26px 0 0;text-align:center}
+.d-rule{width:60px;height:1px}
+.is-opened .d-rule{animation:grow-x .8s ease 3.5s forwards;transform-origin:center}
+.d-txt{flex-direction:row;align-items:baseline;justify-content:center;gap:14px}
+.d-yr{margin-top:0;padding-left:.34em} /* compensa o letter-spacing para centrar de verdade */
+.hero__left{align-self:center;text-align:center}
+@keyframes grow-x{from{scale:0 1;opacity:1}to{scale:1 1;opacity:1}}
+
+/* --- Pulso ao ritmo da música (ver pulse.js) --- */
+.hero__art.is-pulsing::before{scale:calc(1 + var(--p)*.14);opacity:calc(.75 + var(--p)*.25)}
+.hero__art.is-pulsing::after{scale:calc(1 + var(--p)*.07);border-color:rgba(186,184,108,calc(.45 + var(--p)*.5))}
+.is-opened .hero__art.is-pulsing::before{animation:halo-in 2.2s ease .6s backwards}
