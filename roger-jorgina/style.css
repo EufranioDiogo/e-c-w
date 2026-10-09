@@ -338,7 +338,8 @@ p {
   font-weight: 400;
   font-family: var(--f-script);
   color: var(--olive-deep);
-  font-size: clamp(1.8rem, 2rem, 2.2rem);
+  font-size: clamp(2.8rem, 4rem, 4.2rem);
+  /*font-size: clamp(1.8rem, 2rem, 2.2rem);*/
   line-height: 1.1;
 }
 
@@ -372,7 +373,8 @@ p {
   margin: 20px 10px 0;
 }
 
-.hero_date::after, .hero_date::before {
+.hero_date::after,
+.hero_date::before {
   content: "";
   position: relative;
   width: 20px;
@@ -751,12 +753,17 @@ p {
 }
 
 /* Confirmação */
-.rsvp {
+/*.rsvp {
   padding: 64px 24px 48px;
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 20px;
   align-items: center;
+}*/
+.rsvp {
+  padding: 64px 24px 48px;
+  display: flex;
+  flex-direction: column;
 }
 
 .rsvp__img {
