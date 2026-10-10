@@ -1,7 +1,7 @@
 async function submitForm(e, body) {
   e.preventDefault();
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzhkcH6WzCoyCJk9DASRSRjyn5YUfp1ECoXX75d1Z4FW2ebHQXMv0XDoYFETA0DWQ05/exec';
-  
+
   const rsvpForm = document.getElementById("rsvp-form");
   const submitBtn = rsvpForm.querySelector(".rsvp__submit");
   const errorEl = document.getElementById("rsvp-error");
@@ -446,7 +446,7 @@ async function submitForm(e, body) {
         guestsInput = choice;
         errorEl.textContent = "";
 
-      
+
       });
     });
 
@@ -459,7 +459,7 @@ async function submitForm(e, body) {
       const messageMobileNumber = messageMobileNumberInput.value.trim();
       const message = messageInput.value.trim();
 
-      
+
       if (!name) {
         errorEl.textContent = "Por favor, indique o seu nome.";
         nameInput.focus();
@@ -467,6 +467,10 @@ async function submitForm(e, body) {
       }
       if (!attending) {
         errorEl.textContent = "Por favor, confirme se estará presente.";
+        return;
+      }
+      if (guestsInput.trim().length == 0 && attending === "sim") {
+        errorEl.textContent = "Por favor, confirme o número de convidados.";
         return;
       }
 
@@ -494,9 +498,9 @@ async function submitForm(e, body) {
         })
         .catch((error) => {
           nameInput.disabled = false;
-      attendingInput.disabled = false;
-      messageMobileNumberInput.disabled = false;
-      messageInput.disabled = false;
+          attendingInput.disabled = false;
+          messageMobileNumberInput.disabled = false;
+          messageInput.disabled = false;
           console.error("Erro ao enviar formulário:", error);
         });
     });
