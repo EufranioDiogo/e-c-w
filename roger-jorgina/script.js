@@ -320,7 +320,7 @@ document.addEventListener("visibilitychange", () =>
 })();
 
 /* ===== Copiar IBAN ===== */
-
+/*
 document.getElementById("copyIban").addEventListener("click", async (e) => {
   const btn = e.currentTarget;
   const text = document.getElementById("iban").attributes["data"].value;
@@ -383,6 +383,7 @@ document.getElementById("copyIban-3").addEventListener("click", async (e) => {
     btn.classList.remove("is-done");
   }, 2500);
 });
+*/
 
 /* ===== Confirmação de presença ===== */
 (function rsvp() {
