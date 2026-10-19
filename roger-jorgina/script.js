@@ -320,15 +320,58 @@ document.addEventListener("visibilitychange", () =>
 })();
 
 /* ===== Copiar IBAN ===== */
+
 document.getElementById("copyIban").addEventListener("click", async (e) => {
   const btn = e.currentTarget;
-  const text = document.getElementById("iban").textContent.trim();
+  const text = document.getElementById("iban").attributes["data"].value;
   try {
     await navigator.clipboard.writeText(text);
     btn.textContent = "IBAN copiado";
   } catch {
     const r = document.createRange();
     r.selectNodeContents(document.getElementById("iban"));
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(r);
+    btn.textContent = "IBAN selecionado, copie-o";
+  }
+  btn.classList.add("is-done");
+  setTimeout(() => {
+    btn.textContent = "Copiar IBAN";
+    btn.classList.remove("is-done");
+  }, 2500);
+});
+
+document.getElementById("copyIban-2").addEventListener("click", async (e) => {
+  const btn = e.currentTarget;
+  const text = document.getElementById("iban-2").attributes["data"].value;
+  try {
+    await navigator.clipboard.writeText(text);
+    btn.textContent = "IBAN copiado";
+  } catch {
+    const r = document.createRange();
+    r.selectNodeContents(document.getElementById("iban-2"));
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(r);
+    btn.textContent = "IBAN selecionado, copie-o";
+  }
+  btn.classList.add("is-done");
+  setTimeout(() => {
+    btn.textContent = "Copiar IBAN";
+    btn.classList.remove("is-done");
+  }, 2500);
+});
+
+document.getElementById("copyIban-3").addEventListener("click", async (e) => {
+  const btn = e.currentTarget;
+  const text = document.getElementById("iban-3").attributes["data"].value;
+  try {
+    await navigator.clipboard.writeText(text);
+    btn.textContent = "IBAN copiado";
+  } catch {
+    const r = document.createRange();
+    r.selectNodeContents(document.getElementById("iban-3"));
     const sel = window.getSelection();
     sel.removeAllRanges();
     sel.addRange(r);
