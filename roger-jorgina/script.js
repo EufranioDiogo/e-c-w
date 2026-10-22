@@ -398,7 +398,7 @@ document.getElementById("copyIban-3").addEventListener("click", async (e) => {
       choice = b.dataset.choice;
       btns.forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
       err.textContent = "";
-    }),
+    }), 
   );
 
   form.addEventListener("submit", (e) => {
