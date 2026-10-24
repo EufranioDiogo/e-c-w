@@ -57,22 +57,32 @@
     '<button class="btn btn--solid" id="addIcs" type="button">Adicionar ao calendário</button>' +
     '<a class="btn btn--ghost" id="addGoogle" target="_blank" rel="noopener">Google Agenda</a>';
   const cd = $("#countdownDone"); cd?.after(box);*/
-  $("#addGoogle").href = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
-    "&text=" + encodeURIComponent(EVENT.title) + "&dates=" + EVENT.date + "/" + EVENT.next +
-    "&location=" + encodeURIComponent(EVENT.place) + "&details=" + encodeURIComponent(EVENT.desc);
-  $("#addIcs").addEventListener("click", () => {
+  const addGoogle = $("#addGoogle");
+  if (addGoogle) {
+    addGoogle.href = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+      "&text=" + encodeURIComponent(EVENT.title) + "&dates=" + EVENT.date + "/" + EVENT.next +
+      "&location=" + encodeURIComponent(EVENT.place) + "&details=" + encodeURIComponent(EVENT.desc);
+  }
+  $("#addIcs")?.addEventListener("click", () => {
     const a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([ics()], { type: "text/calendar" }));
     a.download = "save-the-date-J-R.ics"; a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 4000);
     say("Data guardada no seu calendário");
   });
-  $("#shareBtn").addEventListener("click", async () => {
+  $("#shareBtn")?.addEventListener("click", async () => {
     const url = location.origin + location.pathname;
     try {
-      if (navigator.share) await navigator.share({ title: document.title, text: "Save the date: J & R · 24 de abril de 2027", url });
-      else { await navigator.clipboard.writeText(url); say("Ligação copiada"); }
-    } catch {}
+      if (navigator.share) {
+        await navigator.share({ title: document.title, text: "Save the date: J & R · 24 de abril de 2027", url });
+        say("Ligação partilhada");
+      } else {
+        await navigator.clipboard.writeText(url);
+        say("Ligação copiada");
+      }
+    } catch (error) {
+      if (error.name !== "AbortError") say("Não foi possível partilhar a ligação.");
+    }
   });
 
   /* 4. Nº de pessoas no RSVP (entra na mensagem de WhatsApp) */
@@ -94,7 +104,7 @@
     form.addEventListener("submit", () => {
       const yes = $('[data-choice="yes"]', form).getAttribute("aria-pressed") === "true";
       if (yes && n > 1 && !/Seremos \d+/.test(area.value))
-        area.value = `` + (area.value ? "\n" + area.value : "");
+        area.value = `Seremos ${n} pessoas.` + (area.value ? "\n" + area.value : "");
       if (yes && !reduce) burst(form.getBoundingClientRect());
     }, true);
   }

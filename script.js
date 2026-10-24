@@ -1,8 +1,8 @@
 document.getElementById("year").textContent = new Date().getFullYear();
 
 /*
- * CONFIGURA AQUI OS DOIS SITES:
- * Substitui os URLs abaixo pelos endereços reais dos teus projectos.
+ * CONFIGURA AQUI OS SITES DO PORTFÓLIO:
+ * Mantém os endereços sincronizados com os cartões da página inicial.
  */
 const projects = [
   {
@@ -12,6 +12,14 @@ const projects = [
   {
     name: "Casamento - Eufránio & Creuma",
     url: "https://www.amor.ao/eufranio-creuma/index.html"
+  },
+  {
+    name: "Casamento - Eutrópio & Linda",
+    url: "https://www.amor.ao/eutropio-linda/index.html"
+  },
+  {
+    name: "Save the Date - Jorgina & Roger",
+    url: "https://www.amor.ao/roger-jorgina/index.html"
   }
 ];
 

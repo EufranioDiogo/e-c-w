@@ -51,6 +51,8 @@ a { color: inherit; text-decoration: none; }
 nav { display: flex; gap: 30px; }
 
 nav a {
+  display: inline-block;
+  padding: 10px 4px;
   font-size: 14px;
   font-weight: 600;
   color: #547084;
@@ -58,6 +60,13 @@ nav a {
 }
 
 nav a:hover { color: var(--pink); }
+
+a:focus-visible,
+button:focus-visible,
+iframe:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 4px;
+}
 
 .hero {
   min-height: calc(100vh - 78px);
@@ -178,6 +187,7 @@ h1 span { color: var(--pink); }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
 }
 
 .project-number {
@@ -277,9 +287,21 @@ footer span { align-self: center; }
 @media (max-width: 520px) {
   .topbar { height: 68px; }
   .brand img { width: 88px; }
-  nav a { font-size: 12px; }
+  nav { gap: 10px; }
+  nav a { font-size: 11px; }
   .hero { min-height: auto; }
   .hero-mark { min-height: 260px; border-radius: 35px; }
   .iframe-wrap { height: 420px; }
   footer { flex-direction: column; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }
