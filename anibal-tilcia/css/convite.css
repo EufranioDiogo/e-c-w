@@ -1,0 +1,311 @@
+:root {
+  --cream: #f5f0e2;
+  --paper: #fffcf4;
+  --ink: #342d21;
+  --olive: #6d7742;
+  --olive-dark: #4f5931;
+  --gold: #ae985b;
+  --line: #c8bf9a;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --script: 'Parisienne', cursive;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(255, 253, 247, .9), transparent 34rem),
+    var(--cream);
+  color: var(--ink);
+  font-family: var(--serif);
+}
+
+.invitation {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  overflow: hidden;
+  padding: 46px 24px 32px;
+}
+
+.floral {
+  position: absolute;
+  top: 50%;
+  /*width: min(33vw, 430px);*/
+  height: 84vh;
+  object-fit: contain;
+  pointer-events: none;
+  opacity: .8;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.floral--left {
+  left: -12vw;
+}
+
+.floral--right {
+  right: -12vw;
+}
+
+.invitation-card {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 590px);
+  padding: 10px;
+  background: rgba(255, 252, 244, .98);
+  box-shadow: 0 24px 75px rgba(73, 66, 42, .16), 0 4px 16px rgba(73, 66, 42, .08);
+}
+
+.card-frame {
+  position: relative;
+  display: flex;
+  min-height: 690px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 46px clamp(22px, 7vw, 64px) 36px;
+  border: 1px solid var(--line);
+  text-align: center;
+  z-index: 3;
+}
+
+.card-frame::before,
+.card-frame::after {
+  position: absolute;
+  right: 12px;
+  left: 12px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  content: "";
+}
+
+.card-frame::before {
+  top: 12px;
+}
+
+.card-frame::after {
+  bottom: 12px;
+}
+
+.monogram {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  margin-bottom: 13px;
+}
+
+.monogram img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.monogram span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--olive-dark);
+  font-size: 21px;
+}
+
+.monogram i {
+  margin: 0 5px;
+  color: var(--gold);
+  font-size: 17px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--olive);
+  font-size: 12px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+}
+
+.welcome {
+  margin: 0;
+  color: var(--ink);
+  font-size: 23px;
+  font-style: italic;
+}
+
+h1 {
+  max-width: 100%;
+  margin: 2px 0 13px;
+  color: var(--olive-dark);
+  font-family: var(--script);
+  font-size: clamp(42px, 9vw, 63px);
+  font-weight: 400;
+  line-height: 1.12;
+  overflow-wrap: anywhere;
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: min(100%, 210px);
+  margin: 5px 0 15px;
+  color: var(--gold);
+}
+
+.ornament span {
+  width: 55px;
+  height: 1px;
+  background: var(--line);
+}
+
+.ornament i {
+  font-size: 19px;
+  font-style: normal;
+}
+
+.message {
+  max-width: 410px;
+  margin: 0;
+  color: #5e5748;
+  font-size: 21px;
+  line-height: 1.42;
+}
+
+.couple {
+  margin: 23px 0 0;
+  color: var(--olive-dark);
+  font-family: var(--script);
+  font-size: clamp(39px, 8vw, 53px);
+  line-height: 1.1;
+}
+
+.couple span {
+  color: var(--gold);
+}
+
+.date {
+  margin: 5px 0 0;
+  color: var(--olive);
+  font-size: 15px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+.date span {
+  padding: 0 4px;
+  color: var(--gold);
+}
+
+.party {
+  margin: 12px 0 0;
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.open-invitation {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 21px;
+  padding: 10px 19px;
+  border: 1px solid var(--olive);
+  color: var(--olive-dark);
+  font-size: 16px;
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease;
+}
+
+.open-invitation:hover,
+.open-invitation:focus-visible {
+  background: var(--olive-dark);
+  color: var(--paper);
+}
+
+.open-invitation:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.closing {
+  margin: 16px 0 0;
+  color: #776d58;
+  font-size: 17px;
+  font-style: italic;
+}
+
+.page-note {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 10px;
+  left: 0;
+  margin: 0;
+  color: var(--olive);
+  font-size: 13px;
+  letter-spacing: .18em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .invitation {
+    padding: 22px 14px 36px;
+  }
+
+  .floral {
+    width: 45vw;
+    opacity: .35;
+  }
+
+  .floral--left {
+    left: -24vw;
+  }
+
+  .floral--right {
+    right: -24vw;
+  }
+
+  .card-frame {
+    min-height: 650px;
+    padding: 38px 21px 30px;
+  }
+
+  .message {
+    font-size: 19px;
+  }
+
+  .page-note {
+    bottom: 8px;
+    font-size: 11px;
+  }
+}
+
+@media (max-height: 740px) and (min-width: 601px) {
+  .invitation {
+    min-height: 760px;
+  }
+
+  .card-frame {
+    min-height: 650px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

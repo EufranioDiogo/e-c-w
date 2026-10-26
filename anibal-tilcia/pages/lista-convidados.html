@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lista de convidados confirmados do casamento de Aníbal e Tílcia.">
+  <title>Lista de convidados · Aníbal &amp; Tílcia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/lista-convidados.css">
+</head>
+
+<body>
+  <main class="guest-page">
+    <header class="page-header">
+      <a class="back-link" href="../index.html">← Voltar ao convite</a>
+      <div class="monogram" aria-label="Aníbal e Tílcia">A <span>&amp;</span> T</div>
+      <p class="eyebrow">19 de Dezembro · 2026</p>
+      <h1>Lista de convidados</h1>
+      <p class="intro">Cada presença torna este dia ainda mais especial.<br>Escolha um convidado e copie o seu convite personalizado.</p>
+      <div class="summary" aria-label="Resumo de confirmações">
+        <div class="summary-card">
+          <strong id="guest-record-count">—</strong>
+          <span>confirmações</span>
+        </div>
+        <span class="summary-divider" aria-hidden="true"></span>
+        <div class="summary-card">
+          <strong id="guest-person-count">—</strong>
+          <span>convidados</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="guest-list" aria-labelledby="guest-list-title">
+      <div class="list-heading">
+        <div>
+          <p class="eyebrow">Com carinho</p>
+          <h2 id="guest-list-title">Os nossos convidados</h2>
+        </div>
+        <label class="search">
+          <span class="visually-hidden">Pesquisar convidados</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="10.8" cy="10.8" r="6.8"></circle>
+            <path d="m16 16 4.5 4.5"></path>
+          </svg>
+          <input id="guest-search" type="search" placeholder="Pesquisar nome..." autocomplete="off">
+        </label>
+      </div>
+
+      <p class="list-status" id="list-status" aria-live="polite"></p>
+      <div class="guest-grid" id="guest-grid"></div>
+      <p class="empty-state" id="empty-state" hidden>Nenhum convidado encontrado. Experimente outro nome.</p>
+    </section>
+
+    <footer class="page-footer">
+      <span class="footer-flourish" aria-hidden="true">❦</span>
+      <p>Com amor, Aníbal &amp; Tílcia</p>
+      <a href="../index.html">Ver o convite completo</a>
+    </footer>
+  </main>
+  <div class="toast" id="copy-toast" role="status" aria-live="polite"></div>
+  <script src="../js/lista-convidados.js"></script>
+</body>
+
+</html>
