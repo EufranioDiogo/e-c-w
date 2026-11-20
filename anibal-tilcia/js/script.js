@@ -469,10 +469,10 @@ async function submitForm(e, body) {
         errorEl.textContent = "Por favor, confirme se estará presente.";
         return;
       }
-      if (guestsInput.trim().length == 0 && attending === "sim") {
+      /*if (guestsInput.trim().length == 0 && attending === "sim") {
         errorEl.textContent = "Por favor, confirme o número de convidados.";
         return;
-      }
+      }*/
 
       submitBtn.classList.add("is-loading");
       submitBtn.disabled = true;
@@ -480,10 +480,7 @@ async function submitForm(e, body) {
       const body = {
         name: name,
         presence: attending === "sim" ? true : false,
-        quant_people: attending !== 'sim' ? 0 :
-          !guestsInput.trim().length !== 0
-            ? Number(guestsInput.trim())
-            : 0,
+        quant_people: 0,
         message: message,
         mobile_number: messageMobileNumber,
       };

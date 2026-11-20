@@ -1622,6 +1622,19 @@ New contribuir
   margin: 0;
 }
 
+.footer__parties {
+  display: flex;
+  justify-content: center;
+  gap: .65rem;
+  margin-top: 1.5rem;
+  color: var(--blue-soft);
+  font-size: .78rem;
+}
+
+.footer__parties a:hover {
+  color: #fff;
+}
+
 /* ==========================================================================
    BACK TO TOP
    ========================================================================== */
