@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Back office para gerir convites, copiar links individuais e registar entradas no casamento de Eufránio e Creuma.">
+  <title>Gestão de convites | Eufránio &amp; Creuma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/convite.css">
+  <script src="javascript/convidados.js" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="page-header">
+      <a class="monogram" href="index.html" aria-label="Voltar ao site do casamento">E<span>&amp;</span>C</a>
+      <a class="back-link" href="index.html">Voltar ao site</a>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">Back office · 27 de Novembro de 2026</p>
+      <h1 id="page-title">Gestão de <span>convites</span></h1>
+      <p class="intro-copy">Pesquisa o convidado, copia o link único para enviar e regista a entrada de cada pessoa à chegada.</p>
+    </section>
+
+    <section class="search-panel" aria-label="Pesquisar convidados">
+      <label for="guest-search">Pesquisar convidado</label>
+      <div class="search-field">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></svg>
+        <input id="guest-search" type="search" placeholder="Escreve o nome do convidado..." autocomplete="off" aria-controls="search-results">
+      </div>
+      <p class="search-hint">Os casais aparecem num único convite, mesmo que pesquises pelo nome de qualquer um dos dois.</p>
+      <div id="search-results" class="search-results" aria-live="polite"></div>
+    </section>
+
+    <section id="personal-invitation" class="invitation-card" aria-live="polite" hidden>
+      <div class="card-flourish" aria-hidden="true">✦</div>
+      <p class="eyebrow">Convite individual</p>
+      <h2 id="invitation-name"></h2>
+      <p id="invitation-message" class="invitation-message"></p>
+      <div class="table-details">
+        <span class="table-icon" aria-hidden="true">⌂</span>
+        <div>
+          <span id="invitation-table-label" class="detail-label">A tua mesa</span>
+          <strong id="invitation-table"></strong>
+          <span id="invitation-table-note" class="table-note"></span>
+          <span id="invitation-table-description" class="table-description"></span>
+        </div>
+      </div>
+      <div id="party-members" class="party-members" hidden>
+        <span class="detail-label">Registar entrada por pessoa</span>
+        <ul id="party-list"></ul>
+      </div>
+      <button id="copy-invitation-link" class="copy-button" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"></rect><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"></path></svg>
+        Copiar link para enviar
+      </button>
+      <p id="copy-status" class="feedback" role="status"></p>
+    </section>
+
+    <section class="entry-panel" aria-labelledby="entry-heading">
+      <div>
+        <p class="eyebrow">Recepção</p>
+        <h2 id="entry-heading">Entradas registadas</h2>
+        <p class="entry-description">A entrada é marcada individualmente para cada pessoa.</p>
+      </div>
+      <p id="entry-count" class="entry-count">0 pessoas</p>
+      <ol id="entry-list" class="entry-list"></ol>
+      <p id="storage-note" class="storage-note" role="status"></p>
+    </section>
+
+    <footer class="page-footer">
+      <span>Eufránio <span class="amp">&amp;</span> Creuma</span>
+      <span>Gestão local neste dispositivo.</span>
+    </footer>
+  </main>
+</body>
+</html>

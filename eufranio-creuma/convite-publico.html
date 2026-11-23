@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="O teu convite para o casamento de Eufránio e Creuma.">
+  <title>O teu convite | Eufránio &amp; Creuma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/convite.css">
+  <script src="javascript/convidados.js" defer></script>
+  <script src="javascript/convite-publico.js" defer></script>
+</head>
+<body>
+  <main class="page-shell public-shell">
+    <header class="page-header">
+      <a class="monogram" href="index.html" aria-label="Voltar ao site do casamento">E<span>&amp;</span>C</a>
+      <a class="back-link" href="index.html">Site do casamento</a>
+    </header>
+
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">27 de Novembro de 2026 · Luanda</p>
+      <h1 id="page-title">Um lugar especial <span>à tua espera</span></h1>
+      <p class="intro-copy">Com carinho, preparámos este convite para ti.</p>
+    </section>
+
+    <section id="public-invitation" class="invitation-card public-invitation" aria-live="polite" hidden>
+      <div class="card-flourish" aria-hidden="true">✦</div>
+      <p class="eyebrow">Com carinho, para</p>
+      <h2 id="public-guest-names"></h2>
+      <p id="public-invitation-message" class="invitation-message"></p>
+      <div class="table-details">
+        <span class="table-icon" aria-hidden="true">⌂</span>
+        <div>
+          <span id="public-table-label" class="detail-label">A tua mesa</span>
+          <strong id="public-table-name"></strong>
+          <span id="public-table-details" class="table-note"></span>
+          <span id="public-table-description" class="table-description"></span>
+        </div>
+      </div>
+      <section class="event-details" aria-labelledby="event-details-heading">
+        <p class="eyebrow">Esperamos por ti</p>
+        <h3 id="event-details-heading">Onde e quando celebramos</h3>
+        <div class="event-details__grid">
+          <article class="event-card">
+            <span class="event-card__icon" aria-hidden="true">⌖</span>
+            <p class="event-card__label">Cerimónia religiosa</p>
+            <p class="event-card__time">14h00</p>
+            <p class="event-card__venue">Igreja Nossa Senhora de Fátima</p>
+            <a href="https://maps.app.goo.gl/N2z82VX1FKrXn6KZ9" target="_blank" rel="noopener noreferrer">Ver localização</a>
+          </article>
+          <article class="event-card">
+            <span class="event-card__icon" aria-hidden="true">♧</span>
+            <p class="event-card__label">Copo de água</p>
+            <p class="event-card__time">20h00</p>
+            <p class="event-card__venue">Projecto Nova Vida — Salão Silv Place</p>
+            <p class="event-card__address">Próximo ao Rabugento (Próximo ao ISPAJ) · Rua 49</p>
+            <a href="https://maps.app.goo.gl/ATHfLgqNCdaiBRgH8" target="_blank" rel="noopener noreferrer">Ver localização</a>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section id="invalid-invitation" class="search-panel invalid-invitation" role="status" hidden>
+      <h2>Este convite não está disponível</h2>
+      <p>Confirma se recebeste o link correcto e pede aos noivos que o enviem novamente.</p>
+    </section>
+
+    <audio class="invitation-music" autoplay loop preload="auto" aria-hidden="true">
+      <source src="resources/audio/i_got_a_feeling.mp3" type="audio/mpeg">
+    </audio>
+
+    <footer class="page-footer">
+      <span>Eufránio <span class="amp">&amp;</span> Creuma</span>
+      <span>Com amor, esperamos por vocês.</span>
+    </footer>
+  </main>
+</body>
+</html>
