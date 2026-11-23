@@ -25,6 +25,12 @@
       <p class="intro-copy">Com carinho, preparámos este convite para ti.</p>
     </section>
 
+    <section id="invitation-gate" class="invitation-gate" hidden>
+      <p class="eyebrow">Eufránio &amp; Creuma</p>
+      <p class="invitation-gate__message">Preparámos este convite com muito carinho.</p>
+      <button id="open-invitation" class="open-invitation" type="button">Abrir convite</button>
+    </section>
+
     <section id="public-invitation" class="invitation-card public-invitation" aria-live="polite" hidden>
       <div class="card-flourish" aria-hidden="true">✦</div>
       <p class="eyebrow">Com carinho, para</p>
@@ -67,9 +73,10 @@
       <p>Confirma se recebeste o link correcto e pede aos noivos que o enviem novamente.</p>
     </section>
 
-    <audio class="invitation-music" autoplay loop preload="auto" aria-hidden="true">
+    <audio class="invitation-music" loop preload="metadata" aria-hidden="true">
       <source src="resources/audio/i_got_a_feeling.mp3" type="audio/mpeg">
     </audio>
+    <p id="music-status" class="music-status" role="status" aria-live="polite"></p>
 
     <footer class="page-footer">
       <span>Eufránio <span class="amp">&amp;</span> Creuma</span>

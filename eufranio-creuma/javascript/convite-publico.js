@@ -2,6 +2,10 @@ const invitationData = window.weddingGuestData;
 const guestId = new URLSearchParams(window.location.search).get("convidado");
 const invitedGuest = invitationData?.guestsById.get(guestId);
 const invitationMusic = document.querySelector(".invitation-music");
+const invitationGate = document.getElementById("invitation-gate");
+const openInvitationButton = document.getElementById("open-invitation");
+const publicInvitation = document.getElementById("public-invitation");
+const musicStatus = document.getElementById("music-status");
 const musicStartTime = 30;
 
 window.addEventListener("pagehide", () => invitationMusic.pause());
@@ -12,8 +16,27 @@ function skipMusicIntro() {
   }
 }
 
-invitationMusic.addEventListener("loadedmetadata", skipMusicIntro, { once: true });
-if (invitationMusic.readyState >= HTMLMediaElement.HAVE_METADATA) skipMusicIntro();
+function startMusic() {
+  if (invitationMusic.readyState < HTMLMediaElement.HAVE_METADATA) {
+    invitationMusic.addEventListener("loadedmetadata", skipMusicIntro, { once: true });
+  } else {
+    skipMusicIntro();
+  }
+
+  invitationMusic.play().then(() => {
+    musicStatus.textContent = "";
+  }).catch((error) => {
+    musicStatus.textContent = "Não foi possível iniciar a música neste dispositivo.";
+    console.error("Falha ao iniciar a música do convite:", error);
+  });
+}
+
+openInvitationButton.addEventListener("click", () => {
+  startMusic();
+  invitationGate.hidden = true;
+  publicInvitation.hidden = false;
+  publicInvitation.scrollIntoView({ behavior: "smooth", block: "start" });
+});
 
 if (invitedGuest) {
   const companion = invitedGuest.partnerId
@@ -42,7 +65,7 @@ if (invitedGuest) {
     `${invitedGuest.table.group} · ${invitedGuest.table.seats} lugares`;
   document.getElementById("public-table-description").textContent =
     invitedGuest.table.description;
-  document.getElementById("public-invitation").hidden = false;
+  invitationGate.hidden = false;
 } else {
   document.getElementById("invalid-invitation").hidden = false;
 }

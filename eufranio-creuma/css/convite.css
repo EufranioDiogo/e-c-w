@@ -213,6 +213,13 @@ h1 span { display: block; color: var(--blue); font-style: italic; }
 .invalid-invitation h2 { margin: 0 0 8px; font-family: "Cormorant Garamond", serif; font-size: 1.8rem; }
 .invalid-invitation p { margin: 0; color: var(--muted); }
 .invitation-music { display: none; }
+.invitation-gate { width: min(100%, 520px); margin: 0 auto; padding: 30px 24px; border: 1px solid rgba(63, 124, 166, .2); border-radius: 22px; background: rgba(255, 255, 255, .9); box-shadow: 0 18px 48px rgba(36, 66, 90, .08); text-align: center; }
+.invitation-gate[hidden] { display: none; }
+.invitation-gate__message { margin: 0; color: var(--muted); }
+.open-invitation { min-height: 48px; margin-top: 19px; padding: 0 25px; border: 0; border-radius: 999px; color: #fff; background: var(--blue); box-shadow: 0 7px 18px rgba(63, 124, 166, .2); cursor: pointer; font-weight: 600; transition: background .2s, box-shadow .2s, transform .2s; }
+.open-invitation:hover, .open-invitation:focus-visible { background: var(--ink); box-shadow: 0 9px 22px rgba(36, 66, 90, .22); transform: translateY(-2px); }
+.open-invitation:focus-visible { outline: 3px solid rgba(63, 124, 166, .3); outline-offset: 3px; }
+.music-status { min-height: 1.2em; margin: 5px 0 0; color: var(--muted); font-size: .75rem; text-align: center; }
 
 .page-footer { display: flex; justify-content: space-between; gap: 10px; padding: 29px 4px 34px; color: var(--muted); font-size: .8rem; }
 .page-footer > span:first-child { font-family: "Cormorant Garamond", serif; font-size: 1.1rem; color: var(--ink); }
