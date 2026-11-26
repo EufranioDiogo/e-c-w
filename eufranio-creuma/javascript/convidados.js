@@ -1,7 +1,7 @@
 const tables = [
   {
     number: "1", name: "Kernel", owner: "Eufránio", group: "Família do Noivo", description: "Sem vocês, o sistema não arranca.", seats: 8, guests: [
-      ["Eutrópio Diogo"], ["Luisa Diogo"], ["Ari Silva"], ["Denise Silva", "guest-1-3"], ["Helga Valente", "guest-1-6"], ["Eleuterio Valente"], ["Marcos Caetano"], ["Suzana Samacongo", "guest-1-7"],
+      ["Eutrópio Diogo"], ["Luisa Diogo", "guest-1-1"], ["Ari Silva"], ["Denise Silva", "guest-1-3"], ["Helga Valente", "guest-1-6"], ["Eleuterio Valente"], ["Marcos Caetano"], ["Suzana Samacongo", "guest-1-7"],
     ]
   },
   {
