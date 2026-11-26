@@ -102,6 +102,24 @@ if (document.getElementById("guest-search")) {
     return url.toString();
   }
 
+  function buildInviteMessage(guest) {
+    const partner = getPartner(guest);
+    const invitees = partner ? [guest, partner] : [guest];
+    const names = invitees.map((invitee) => invitee.name).join(" e ");
+    const greeting = partner ? `Olá, ${names}!` : `Olá, ${guest.name}!`;
+    const invitation = partner ? "convidamo-vos" : "convidamos-te";
+    const pronoun = partner ? "vocês" : "ti";
+
+    return [
+      `${greeting}`,
+      `Com muita alegria, ${invitation} para celebrar connosco o nosso casamento no dia 27 de Novembro de 2026.`,
+      "Cerimónia religiosa: 14h00, na Igreja Nossa Senhora de Fátima.",
+      "Copo de água: 20h00, no Salão Silv Place (Projecto Nova Vida).",
+      `A mesa ${guest.table.number} — ${guest.table.name} está reservada para ${pronoun}.`,
+      `Consulta o teu convite personalizado: ${getInviteUrl(guest)}`,
+    ].join("\n\n");
+  }
+
   function getPartner(guest) {
     if (guest.partnerId) return guestsById.get(guest.partnerId) || null;
     return guests.find((candidate) => candidate.partnerId === guest.id) || null;
@@ -254,13 +272,13 @@ if (document.getElementById("guest-search")) {
   }
 
   async function copyInviteLink(guest, button) {
-    const url = getInviteUrl(guest);
+    const message = buildInviteMessage(guest);
     try {
       if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(url);
+        await navigator.clipboard.writeText(message);
       } else {
         const temporaryInput = document.createElement("textarea");
-        temporaryInput.value = url;
+        temporaryInput.value = message;
         temporaryInput.setAttribute("readonly", "");
         temporaryInput.style.position = "fixed";
         temporaryInput.style.opacity = "0";
@@ -271,12 +289,12 @@ if (document.getElementById("guest-search")) {
         if (!copied) throw new Error("O navegador não conseguiu copiar o link.");
       }
       const originalText = button.innerHTML;
-      button.textContent = "Link copiado";
-      copyStatus.textContent = "Link individual copiado. Já podes enviá-lo ao convidado.";
+      button.textContent = "Mensagem copiada";
+      copyStatus.textContent = "Mensagem personalizada e link copiados. Já podes enviar ao convidado.";
       window.setTimeout(() => { button.innerHTML = originalText; }, 1800);
     } catch (error) {
-      copyStatus.textContent = "Não foi possível copiar automaticamente. Selecciona e copia o endereço do navegador.";
-      console.error("Falha ao copiar o link do convite:", error);
+      copyStatus.textContent = "Não foi possível copiar a mensagem. Tenta novamente ou copia o link manualmente.";
+      console.error("Falha ao copiar a mensagem do convite:", error);
     }
   }
 
