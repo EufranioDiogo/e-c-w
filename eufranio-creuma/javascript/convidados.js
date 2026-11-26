@@ -263,7 +263,7 @@ if (document.getElementById("guest-search")) {
       const copy = document.createElement("button");
       copy.type = "button";
       copy.className = "result-copy";
-      copy.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"></rect><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"></path></svg> Copiar link';
+      copy.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"></rect><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"></path></svg> Copiar mensagem + link';
       copy.addEventListener("click", () => copyInviteLink(guest, copy));
       actions.append(open, copy);
       card.append(details, actions);
@@ -274,28 +274,48 @@ if (document.getElementById("guest-search")) {
   async function copyInviteLink(guest, button) {
     const message = buildInviteMessage(guest);
     try {
+      let clipboardError = null;
       if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(message);
-      } else {
-        const temporaryInput = document.createElement("textarea");
-        temporaryInput.value = message;
-        temporaryInput.setAttribute("readonly", "");
-        temporaryInput.style.position = "fixed";
-        temporaryInput.style.opacity = "0";
-        document.body.append(temporaryInput);
-        temporaryInput.select();
-        const copied = document.execCommand("copy");
-        temporaryInput.remove();
-        if (!copied) throw new Error("O navegador não conseguiu copiar o link.");
+        try {
+          await navigator.clipboard.writeText(message);
+          showCopySuccess(button);
+          return;
+        } catch (error) {
+          clipboardError = error;
+        }
       }
-      const originalText = button.innerHTML;
-      button.textContent = "Mensagem copiada";
-      copyStatus.textContent = "Mensagem personalizada e link copiados. Já podes enviar ao convidado.";
-      window.setTimeout(() => { button.innerHTML = originalText; }, 1800);
+
+      const temporaryInput = document.createElement("textarea");
+      temporaryInput.value = message;
+      temporaryInput.setAttribute("readonly", "");
+      temporaryInput.style.position = "fixed";
+      temporaryInput.style.opacity = "0";
+      document.body.append(temporaryInput);
+      temporaryInput.select();
+      let copied;
+      try {
+        copied = document.execCommand("copy");
+      } finally {
+        temporaryInput.remove();
+      }
+      if (!copied) {
+        throw clipboardError || new Error("O navegador não conseguiu copiar a mensagem.");
+      }
+      if (clipboardError) {
+        console.warn("A API de clipboard falhou; a mensagem foi copiada pelo método alternativo.", clipboardError);
+      }
+      showCopySuccess(button);
     } catch (error) {
       copyStatus.textContent = "Não foi possível copiar a mensagem. Tenta novamente ou copia o link manualmente.";
       console.error("Falha ao copiar a mensagem do convite:", error);
     }
+  }
+
+  function showCopySuccess(button) {
+    const originalText = button.innerHTML;
+    button.textContent = "Mensagem copiada";
+    copyStatus.textContent = "Mensagem personalizada e link copiados. Já podes enviar ao convidado.";
+    window.setTimeout(() => { button.innerHTML = originalText; }, 1800);
   }
 
   searchInput.addEventListener("input", (event) => renderSearchResults(event.target.value));
