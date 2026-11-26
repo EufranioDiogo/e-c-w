@@ -1,22 +1,22 @@
 const tables = [
   {
     number: "1", name: "Kernel", owner: "Eufránio", group: "Família do Noivo", description: "Sem vocês, o sistema não arranca.", seats: 8, guests: [
-      ["Eutrópio Diogo"], ["Luisa Diogo"], ["Ari Silva"], ["Denise Silva"], ["Helga Valente"], ["Eleuterio Valente"], ["Marcos Caetano"], ["Suzana Samacongo"],
+      ["Eutrópio Diogo"], ["Luisa Diogo"], ["Ari Silva"], ["Denise Silva", "guest-1-3"], ["Helga Valente", "guest-1-6"], ["Eleuterio Valente"], ["Marcos Caetano"], ["Suzana Samacongo", "guest-1-7"],
     ]
   },
   {
     number: "2", name: "Root", owner: "Creuma", group: "Família da Noiva", description: "Acesso total garantido, sem pedir palavra-passe.", seats: 8, guests: [
-      ["Isidro Coutinho"], ["Maria Pedro"], ["Arlindo Pedro"], ["Cristina Pedro"], ["Júlio Pedro"], ["Domingos Pedro"], ["Jacinto Coutinho"], ["Joana Coutinho"],
+      ["Isidro Coutinho", "guest-2-2"], ["Maria Pedro"], ["Arlindo Pedro", "guest-2-4"], ["Cristina Pedro"], ["Júlio Pedro"], ["Domingos Pedro"], ["Jacinto Coutinho"], ["Joana Coutinho"],
     ]
   },
   {
     number: "3", name: "Servidor", owner: "Eufránio", group: "Família do Noivo", description: "18 lugares e zero lentidão: há sempre espaço para mais um tio.", seats: 18, guests: [
-      ["Claudeth Fernandes"], ["Adriano Fernandes"], ["Amélia Alves"], ["Hélder Alves"], ["Paula Fortunato"], ["Narciso Fortunato"], ["Anabela Salvador"], ["Amélia Diogo"], ["Yana Magalhães"], ["Victoriano Magalhães"], ["Teresa Manuel (Avó)"], ["Celma Dos Anjos"], ["Leonel Lutumba"], ["Silvina Dos Anjos"], ["Claver Dos Anjos"], ["Teca Costa"], ["Jesus Costa"], ["Gizela"],
+      ["Claudeth Fernandes"], ["Adriano Fernandes", "guest-3-1"], ["Amélia Alves"], ["Hélder Alves", "guest-3-3"], ["Paula Fortunato"], ["Narciso Fortunato"], ["Anabela Salvador"], ["Amélia Diogo"], ["Yana Magalhães", "guest-3-10"], ["Victoriano Magalhães"], ["Teresa Manuel (Avó)"], ["Celma Dos Anjos"], ["Leonel Lutumba", "guest-3-12"], ["Silvina Dos Anjos", "guest-3-15"], ["Claver Dos Anjos"], ["Teca Costa", "guest-3-17"], ["Jesus Costa"], ["Gizela"],
     ]
   },
   {
     number: "4", name: "Mainframe", owner: "Creuma", group: "Família da Noiva", description: "Grande, potente e fiável, como toda a boa família.", seats: 18, guests: [
-      ["Edmundo Receado"], ["Esposa de Edmundo Receado", "guest-4-1"], ["João Coutinho"], ["Branca Miguel"], ["Catarina Coutinho"], ["Felix"], ["Esposa de Felix", "guest-4-6"], ["Miguel Ebox"], ["Rosa Ebo"], ["Fiel Constantino"], ["Esposa de Fiel Constantino", "guest-4-10"], ["Silvio Receado"], ["Esposa de Silvio Receado", "guest-4-12"], ["Walter Manuel"], ["Dorca Manuel (Esposa de Walter Manuel)", "guest-4-14"], ["Domingos Manuel"], ["Albertina Manuel"], ["Teresa Andre"],
+      ["Edmundo Receado"], ["Esposa de Edmundo Receado", "guest-4-1"], ["João Coutinho"], ["Branca Miguel"], ["Catarina Coutinho"], ["Felix"], ["Esposa de Felix", "guest-4-6"], ["Miguel Ebo"], ["Rosa Ebo", "guest-4-8"], ["Fiel Constantino"], ["Esposa de Fiel Constantino", "guest-4-10"], ["Silvio Receado"], ["Esposa de Silvio Receado", "guest-4-12"], ["Walter Manuel"], ["Dorca Manuel (Esposa de Walter Manuel)", "guest-4-14"], ["Domingos Manuel"], ["Albertina Manuel", "guest-4-16"], ["Teresa Andre"],
     ]
   },
   {
@@ -46,12 +46,12 @@ const tables = [
   },
   {
     number: "10", name: "Cluster", owner: "Creuma", group: "Colegas de Trabalho da Noiva", description: "Trabalham em equipa 24/7. Hoje estão de folga!", seats: 16, guests: [
-      ["Maenzinha"], ["Francisco Filipe"], ["Pedro Bandeira"], ["Cristina Bandeira"], ["Zé Neto"], ["Esposa de Zé Neto", "guest-10-5"], ["Ulisses Coutinho"], ["Lecticia Coutinho"], ["Valdemiro Gabriel"], ["Esposa de Valdemiro Gabriel", "guest-10-9"], ["Mária Tandala"], ["Leonel (Esposo de Mária Tandala)", "guest-10-11"], ["Laura"], ["Marinho"], ["Pedro"], ["Marisa"],
+      ["Maenzinha"], ["Francisco Filipe"], ["Pedro Bandeira"], ["Cristina Bandeira"], ["Zé Neto"], ["Esposa de Zé Neto", "guest-10-5"], ["Ulisses Coutinho", "guest-10-8"], ["Lecticia Coutinho"], ["Valdemiro Gabriel", "guest-10-10"], ["Esposa de Valdemiro Gabriel"], ["Mária Tandala"], ["Leonel (Esposo de Mária Tandala)", "guest-10-11"], ["Laura", "guest-10-14"], ["Marinho"], ["Pedro", "guest-10-16"], ["Marisa"],
     ]
   },
   {
     number: "11", name: "Intervenção", owner: "Eufránio", group: "Convidados", description: "Sexta-feira ninguém coloca nada em PRD, mas hoje abre-se uma excepção.", seats: 16, guests: [
-      ["Hernáni Neto"], ["Leila Neto", "guest-11-1"], ["Amâncio Sassamba"], ["Arminda Sassamba", "guest-11-3"], ["Anibal Brito"], ["Tilcia Brito", "guest-11-5"], ["Pedro Costa"], ["Laudina Costa", "guest-11-7"], ["Genésio António"], ["Luzia Miguel"], ["Constantino Dos Anjos"], ["Edmilson Fonseca"], ["Elca Fonseca (Esposa de Edmilson Fonseca)", "guest-11-12"], ["Esperança Dos Anjos"], ["Délio Africano"], ["Edson Costa"],
+      ["Hernáni Neto"], ["Leila Neto", "guest-11-1"], ["Amâncio Sassamba"], ["Arminda Sassamba", "guest-11-3"], ["Anibal Brito"], ["Tilcia Brito", "guest-11-5"], ["Pedro Costa"], ["Acompanhante Pedro Costa", "guest-11-7"], ["Genésio António", "guest-11-10"], ["Luzia Miguel"], ["Constantino Dos Anjos"], ["Edmilson Fonseca"], ["Elca Fonseca (Esposa de Edmilson Fonseca)", "guest-11-12"], ["Esperança Dos Anjos"], ["Délio Africano"], ["Edson Costa"],
     ]
   },
   {
@@ -160,6 +160,7 @@ if (document.getElementById("guest-search")) {
     selectedGuest = guest;
     const partner = getPartner(guest);
     const members = partner ? [guest, partner] : [guest];
+    document.getElementById("invitation-type").textContent = partner ? "Convite do casal" : "Convite individual";
     document.getElementById("invitation-name").textContent = members.map((member) => member.name).join(" & ");
     document.getElementById("invitation-message").textContent = partner
       ? "O vosso lugar está reservado para celebrarem connosco."
