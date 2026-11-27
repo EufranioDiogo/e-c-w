@@ -31,7 +31,7 @@ const tables = [
   },
   {
     number: "7", name: "Backup", owner: "Eufránio", group: "Amigos do Noivo", description: "Vocês são o nosso backup para a vida.", seats: 8, guests: [
-      ["Nalia Mutunda"], ["Audrey Salvador"], ["Anabela Francisco"], ["Jaime Borges"], ["Bebucha António"], ["Vicente Filipe"], ["Hevlin Valente"], ["Claudeth Fernandes"],
+      ["Nalia Mutunda"], ["Audrey Salvador"], ["Anabela Francisco"], ["Jaime Borges"], ["Auria Paula"], ["Vicente Filipe"], ["Hevlin Valente"], ["Claudeth Fernandes"],
     ]
   },
   {
@@ -56,7 +56,7 @@ const tables = [
   },
   {
     number: "12", name: "Compilar", owner: "Creuma", group: "Convidados", description: "Compilou à primeira. Milagre que só acontece em casamentos.", seats: 8, guests: [
-      ["Sara Tuma"], ["Isaura Manico"], ["Yuri Domingos"], ["Rita Chicoco"], ["Juscelino Francisco"], ["Baby do Juscelino"], ["Auria Paula"],
+      ["Sara Tuma"], ["Isaura Manico"], ["Yuri Domingos"], ["Rita Chicoco"], ["Juscelino Francisco"], ["Baby do Juscelino"], ["Afonso Kapenda"], ["Dionisia Kapenda", "guest-12-7"],
     ]
   },
   {
