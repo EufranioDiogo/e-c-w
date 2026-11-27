@@ -56,7 +56,7 @@ const tables = [
   },
   {
     number: "12", name: "Compilar", owner: "Creuma", group: "Convidados", description: "Compilou à primeira. Milagre que só acontece em casamentos.", seats: 8, guests: [
-      ["Sara Tuma"], ["Isaura Manico"], ["Yuri Domingos"], ["Rita Chicoco"], ["Juscelino Francisco"], ["Baby do Juscelino"], ["Afonso Kapenda"], ["Dionisia Kapenda", "guest-12-7"],
+      ["Sara Tuma"], ["Isaura Manico", "guest-12-3"], ["Yuri Domingos"], ["Rita Chicoco"], ["Juscelino Francisco", "guest-12-4"], ["Acompanhante Juscelino", "guest-12-5"], ["Afonso Kapenda"], ["Dionisia Kapenda", "guest-12-7"],
     ]
   },
   {
